@@ -62,8 +62,8 @@ namespace sm {
 /*   CONSTRUCTORS & DESTRUCTORS   */
 /* ****************************** */
 
-Writer::Writer()
-    : stats_(tdb_make_shared(Stats, "Writer"))
+Writer::Writer(stats::Stats* const parent_stats)
+    : stats_(parent_stats->create_child("Writer"))
     , array_(nullptr)
     , array_schema_(nullptr)
     , coords_buffer_(nullptr)
@@ -81,7 +81,6 @@ Writer::Writer()
     , storage_manager_(nullptr)
     , offsets_extra_element_(false)
     , offsets_bitsize_(constants::cell_var_offset_size * 8) {
-  stats::all_stats.register_stats(stats_);
 }
 
 Writer::~Writer() {

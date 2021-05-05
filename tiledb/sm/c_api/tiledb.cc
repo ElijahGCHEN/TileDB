@@ -4937,7 +4937,8 @@ int32_t tiledb_stats_disable() {
 }
 
 int32_t tiledb_stats_reset() {
-  tiledb::sm::stats::all_stats.reset();
+  // TODO JOE
+  // tiledb::sm::stats::all_stats.reset();
   return TILEDB_OK;
 }
 

@@ -53,6 +53,7 @@
 #include "tiledb/sm/fragment/single_fragment_info.h"
 #include "tiledb/sm/misc/cancelable_tasks.h"
 #include "tiledb/sm/misc/uri.h"
+#include "tiledb/sm/stats/global_stats.h"
 
 using namespace tiledb::common;
 
@@ -109,7 +110,8 @@ class StorageManager {
   /* ********************************* */
 
   /** Constructor. */
-  StorageManager(ThreadPool* compute_tp, ThreadPool* io_tp);
+  StorageManager(
+      ThreadPool* compute_tp, ThreadPool* io_tp, stats::Stats* parent_stats);
 
   /** Destructor. */
   ~StorageManager();
@@ -903,6 +905,9 @@ class StorageManager {
    */
   Status write(const URI& uri, void* data, uint64_t size) const;
 
+  /** Returns `stats_`. */
+  stats::Stats* stats();
+
  private:
   /* ********************************* */
   /*        PRIVATE DATATYPES          */
@@ -934,6 +939,9 @@ class StorageManager {
   /* ********************************* */
   /*        PRIVATE ATTRIBUTES         */
   /* ********************************* */
+
+  /** The class stats. */
+  tdb_shared_ptr<stats::Stats> stats_;
 
   /** Set to true when tasks are being cancelled. */
   bool cancellation_in_progress_;

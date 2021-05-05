@@ -34,6 +34,7 @@
 #define TILEDB_CONTEXT_H
 
 #include "tiledb/common/status.h"
+#include "tiledb/sm/stats/global_stats.h"
 #include "tiledb/sm/storage_manager/storage_manager.h"
 
 #include <mutex>
@@ -85,6 +86,9 @@ class Context {
   /* ********************************* */
   /*         PRIVATE ATTRIBUTES        */
   /* ********************************* */
+
+  /** The class stats. */
+  tdb_shared_ptr<stats::Stats> stats_;
 
   /** The last error occurred. */
   Status last_error_;

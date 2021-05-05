@@ -93,7 +93,7 @@ class Writer {
   /* ********************************* */
 
   /** Constructor. */
-  Writer();
+  Writer(stats::Stats* parent_stats);
 
   /** Destructor. */
   ~Writer();

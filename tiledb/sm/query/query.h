@@ -734,6 +734,9 @@ class Query {
   /** The query type. */
   QueryType type_;
 
+  /** The class stats. */
+  tdb_shared_ptr<stats::Stats> stats_;
+
   /** Query reader. */
   Reader reader_;
 

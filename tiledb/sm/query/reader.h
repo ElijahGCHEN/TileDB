@@ -121,7 +121,7 @@ class Reader {
    * @param array_schema The array schema.
    * @param fragment_metadata The fragment metadata.
    */
-  Reader();
+  Reader(stats::Stats* parent_stats);
 
   /** Destructor. */
   ~Reader();

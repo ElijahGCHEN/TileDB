@@ -73,8 +73,11 @@ namespace sm {
 /* ****************************** */
 
 StorageManager::StorageManager(
-    ThreadPool* const compute_tp, ThreadPool* const io_tp)
-    : cancellation_in_progress_(false)
+    ThreadPool* const compute_tp,
+    ThreadPool* const io_tp,
+    stats::Stats* const parent_stats)
+    : stats_(parent_stats->create_child("StorageManager"))
+    , cancellation_in_progress_(false)
     , queries_in_progress_(0)
     , compute_tp_(compute_tp)
     , io_tp_(io_tp)
@@ -2051,6 +2054,10 @@ Status StorageManager::write(const URI& uri, Buffer* buffer) const {
 
 Status StorageManager::write(const URI& uri, void* data, uint64_t size) const {
   return vfs_->write(uri, data, size);
+}
+
+Stats* StorageManager::stats() {
+  return stats_.get();
 }
 
 /* ****************************** */

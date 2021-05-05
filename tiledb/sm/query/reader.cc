@@ -97,8 +97,8 @@ inline IterT skip_invalid_elements(IterT it, const IterT& end) {
 /*   CONSTRUCTORS & DESTRUCTORS   */
 /* ****************************** */
 
-Reader::Reader()
-    : stats_(tdb_make_shared(Stats, "Reader"))
+Reader::Reader(stats::Stats* const parent_stats)
+    : stats_(parent_stats->create_child("Reader"))
     , array_(nullptr)
     , array_schema_(nullptr)
     , layout_(Layout::ROW_MAJOR)
@@ -106,7 +106,6 @@ Reader::Reader()
     , storage_manager_(nullptr)
     , offsets_extra_element_(false)
     , offsets_bitsize_(constants::cell_var_offset_size * 8) {
-  stats::all_stats.register_stats(stats_);
 }
 
 Reader::~Reader() {
