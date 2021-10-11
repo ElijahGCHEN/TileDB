@@ -152,6 +152,7 @@ Status FragmentInfo::get_sparse(uint32_t fid, int32_t* sparse) const {
 }
 
 uint32_t FragmentInfo::fragment_num() const {
+  std::cout<<"Hello world.\n"<< std::endl;
   return (uint32_t)fragments_.size();
 }
 
@@ -165,6 +166,7 @@ Status FragmentInfo::get_cell_num(uint32_t fid, uint64_t* cell_num) const {
         "Cannot get fragment URI; Invalid fragment index"));
 
   *cell_num = fragments_[fid].cell_num();
+  std::cout<<"Hello world.\n"<< std::endl;
 
   return Status::Ok();
 }
@@ -179,6 +181,7 @@ Status FragmentInfo::get_fragment_size(uint32_t fid, uint64_t* size) const {
         "Cannot get fragment URI; Invalid fragment index"));
 
   *size = fragments_[fid].fragment_size();
+  std::cout<<"Hello world.\n"<< std::endl;
 
   return Status::Ok();
 }
@@ -193,6 +196,7 @@ Status FragmentInfo::get_fragment_uri(uint32_t fid, const char** uri) const {
         "Cannot get fragment URI; Invalid fragment index"));
 
   *uri = fragments_[fid].uri().c_str();
+  std::cout<<"Hello world.\n"<< std::endl;
 
   return Status::Ok();
 }
@@ -228,7 +232,7 @@ Status FragmentInfo::get_timestamp_range(
   auto range = fragments_[fid].timestamp_range();
   *start = range.first;
   *end = range.second;
-
+  std::cout<<"Hello world.\n"<< std::endl;
   return Status::Ok();
 }
 
@@ -418,7 +422,7 @@ Status FragmentInfo::get_version(uint32_t fid, uint32_t* version) const {
         "Cannot get version; Invalid fragment index"));
 
   *version = fragments_[fid].format_version();
-
+  std::cout<<"Hello world.\n"<< std::endl;
   return Status::Ok();
 }
 
@@ -460,6 +464,7 @@ Status FragmentInfo::has_consolidated_metadata(
                                   "metadata; Invalid fragment index"));
 
   *has = fragments_[fid].has_consolidated_footer();
+  std::cout<<"Hello world.\n"<< std::endl;
 
   return Status::Ok();
 }
@@ -527,6 +532,7 @@ Status FragmentInfo::load(
   for (const auto& f : fragments_)
     unconsolidated_metadata_num_ += (uint32_t)!f.has_consolidated_footer();
 
+  std::cout<<"Hello world.\n"<< std::endl;
   return Status::Ok();
 }
 
@@ -554,6 +560,7 @@ uint32_t FragmentInfo::to_vacuum_num() const {
 }
 
 uint32_t FragmentInfo::unconsolidated_metadata_num() const {
+  std::cout<<"Hello world.\n"<< std::endl;
   return unconsolidated_metadata_num_;
 }
 
