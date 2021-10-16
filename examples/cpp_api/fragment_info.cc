@@ -104,8 +104,8 @@ void write_array() {
   // Open the array for writing and create the query. again
   std::vector<int> data1 = {9, 10, 11, 12, 13, 14};
   std::vector<int> subarray1 = {1, 1, 1, 6};
-  Array array(ctx, array_name, TILEDB_WRITE);
-  Query query(ctx, array);
+  //Array array(ctx, array_name, TILEDB_WRITE);
+  //Query query(ctx, array);
   query.set_layout(TILEDB_ROW_MAJOR)
       .set_buffer("a", data1)
       .set_subarray(subarray1);
