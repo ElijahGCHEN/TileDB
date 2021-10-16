@@ -94,7 +94,7 @@ void write_array() {
   Query query(ctx, array);
   query.set_layout(TILEDB_ROW_MAJOR)
       .set_buffer("a", data)
-      .set_subarray(subarray);
+      //.set_subarray(subarray);
 
   // Perform the write and close the array.
   //query.submit();
@@ -109,7 +109,7 @@ void write_array() {
   //Query query(ctx, array);
   query.set_layout(TILEDB_ROW_MAJOR)
       .set_buffer("a", data1)
-      .set_subarray(subarray1);
+      //.set_subarray(subarray1);
 
   // Perform the write and close the array.
   query.submit();
