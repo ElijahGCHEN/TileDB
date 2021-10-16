@@ -84,7 +84,7 @@ void write_array() {
   // }
 
   //
-  std::vector<int> subarray = {1, 2, 1, 4};
+  std::vector<int> subarray = {1, 3, 1, 4};
 
   //std::vector<int> subarray = {1, 1, 100, 160};
   //std::vector<int> subarray = {1, 1, 1, 61};
