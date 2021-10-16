@@ -96,8 +96,8 @@ void write_array() {
       .set_subarray(subarray);
 
   // Perform the write and close the array.
-  query.submit();
-  array.close();
+  //query.submit();
+  //array.close();
 
   
   
