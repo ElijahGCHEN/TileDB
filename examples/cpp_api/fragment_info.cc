@@ -46,8 +46,8 @@ void create_array() {
   // The array will be 4x4 with dimensions "rows" and "cols", with domain [1,4]
   // and space tiles 2x2
   Domain domain(ctx);
-  domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 4}}, 2))
-      .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 4}}, 2));
+  domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 400}}, 100))
+      .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 400}}, 100));
 
   // The array will be dense.
   ArraySchema schema(ctx, TILEDB_DENSE);
@@ -64,8 +64,24 @@ void write_array() {
   Context ctx;
 
   // Prepare some data for the array
-  std::vector<int> data = {1, 2, 3, 4, 5, 6, 7, 8};
-  std::vector<int> subarray = {1, 2, 1, 4};
+  //std::vector<int> data = {1, 2, 3, 4, 5, 6, 7, 8};
+
+  int size=16000
+  std::vector<int> data(size);
+  srand(time(0));
+  generate(V.begin(), V.end(), std::rand);
+
+  // std::vector<int> data;
+  // for(int i=0; i<size; i++){ 
+  //        srand(time(0)); 
+  //        int b = rand() % 10;  
+  //        data.push_back (b);
+  // }
+
+
+  //std::vector<int> subarray = {1, 2, 1, 4};
+
+  std::vector<int> subarray = {1, 1, 100, 160};
 
   // Open the array for writing and create the query.
   Array array(ctx, array_name, TILEDB_WRITE);
