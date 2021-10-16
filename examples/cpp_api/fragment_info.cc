@@ -61,7 +61,7 @@ void create_array() {
 
   // Add a single attribute "a" so each (i,j) cell can store an integer.
   schema.add_attribute(Attribute::create<int>(ctx, "a"));
-
+  schema.add_attribute(Attribute::create<int>(ctx, "b"));
   // Create the (empty) array on disk.
   Array::create(array_name, schema);
 }
@@ -107,7 +107,7 @@ void write_array() {
   //Array array(ctx, array_name, TILEDB_WRITE);
   //Query query(ctx, array);
   query.set_layout(TILEDB_ROW_MAJOR)
-      .set_buffer("a", data1)
+      .set_buffer("b", data1)
       .set_subarray(subarray1);
 
   // Perform the write and close the array.
