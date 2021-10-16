@@ -67,7 +67,7 @@ void create_array() {
   Array::create(array_name, schema);
 }
 
-void write_array() {
+void write_array_1() {
   Context ctx;
 
   // Prepare some data for the array
@@ -82,7 +82,6 @@ void write_array() {
   //        int b = std::rand() % 10;  
   //        data.push_back (b);
   // }
-
   //
   std::vector<int> subarray = {1, 2, 1, 4};
 
@@ -97,24 +96,36 @@ void write_array() {
       .set_subarray(subarray);
 
   // Perform the write and close the array.
-  //query.submit();
-  //array.close();
-
-  
-  
-  // Open the array for writing and create the query. again
-  std::vector<int> data1 = {9, 10, 11, 12, 13, 14};
-  std::vector<int> subarray1 = {1, 3, 1, 2};
-  //Array array(ctx, array_name, TILEDB_WRITE);
-  //Query query(ctx, array);
-  query.set_layout(TILEDB_ROW_MAJOR)
-      .set_buffer("a", data1)
-      .set_subarray(subarray1);
-
-  // Perform the write and close the array.
   query.submit();
   array.close();
 
+  // // Open the array for writing and create the query. again
+  // std::vector<int> data1 = {9, 10, 11, 12, 13, 14};
+  // std::vector<int> subarray1 = {1, 3, 1, 2};
+  // //Array array(ctx, array_name, TILEDB_WRITE);
+  // //Query query(ctx, array);
+  // query.set_layout(TILEDB_ROW_MAJOR)
+  //     .set_buffer("a", data1)
+  //     .set_subarray(subarray1);
+
+  // // Perform the write and close the array.
+  // query.submit();
+  // array.close();
+
+}
+
+void write_array_2() {
+
+  std::vector<int> data = {5, 6, 7, 8, 9, 10, 11, 12};
+  std::vector<int> subarray = {2, 3, 1, 4};
+  Context ctx;
+  Array array(ctx, array_name, TILEDB_WRITE);
+  Query query(ctx, array);
+  query.set_layout(TILEDB_ROW_MAJOR)
+       .set_buffer("a", data)
+       .set_subarray(subarray);
+  query.submit();
+  array.close();
 }
 
 void get_fragment_info() {
@@ -194,7 +205,8 @@ int main() {
     tiledb::Object::remove(ctx, array_name);
   }
   create_array();
-  write_array();
+  write_array_1();
+  write_array_2();
   get_fragment_info();
 
   return 0;
