@@ -49,8 +49,8 @@ void create_array() {
   // The array will be 4x4 with dimensions "rows" and "cols", with domain [1,4]
   // and space tiles 2x2
   Domain domain(ctx);
-  domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 4}}, 4))
-        .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 4}}, 4));
+  domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 4}}, 2))
+        .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 4}}, 2));
 
   // domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 400}}, 2))
   //     .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 400}}, 2));
