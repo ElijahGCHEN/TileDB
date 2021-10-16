@@ -69,7 +69,8 @@ void write_array() {
   // Prepare some data for the array
   //std::vector<int> data = {1, 2, 3, 4, 5, 6, 7, 8};
 
-  int size=16000;
+  //int size=16000;
+  int size=61;
   //std::vector<int> data(size);
   //srand(time(0));
   //generate(data.begin(), data.end(), std::rand());
@@ -84,8 +85,8 @@ void write_array() {
   //
   //std::vector<int> subarray = {1, 2, 1, 4};
 
-  std::vector<int> subarray = {1, 1, 100, 160};
-
+  //std::vector<int> subarray = {1, 1, 100, 160};
+  std::vector<int> subarray = {1, 1, 1, 61};
   // Open the array for writing and create the query.
   Array array(ctx, array_name, TILEDB_WRITE);
   Query query(ctx, array);
