@@ -69,7 +69,7 @@ void write_array() {
   // Prepare some data for the array
   //std::vector<int> data = {1, 2, 3, 4, 5, 6, 7, 8};
 
-  int size=16000
+  int size=16000;
   //std::vector<int> data(size);
   //srand(time(0));
   //generate(data.begin(), data.end(), std::rand());
