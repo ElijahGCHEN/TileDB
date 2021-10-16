@@ -32,6 +32,9 @@
  */
 
 #include <iostream>
+#include <random>
+#include <bits/stdc++.h>
+#include <algorithm>
 #include <tiledb/tiledb>
 
 using namespace tiledb;
@@ -73,8 +76,8 @@ void write_array() {
 
   std::vector<int> data;
   for(int i=0; i<size; i++){ 
-         srand(time(0)); 
-         int b = rand() % 10;  
+         std::srand(time(0)); 
+         int b = std::rand() % 10;  
          data.push_back (b);
   }
 
