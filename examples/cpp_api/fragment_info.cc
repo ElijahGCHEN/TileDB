@@ -174,7 +174,23 @@ void get_fragment_info() {
                 << ".\n"
                 << std::endl;
 
+      ////get the minimual range
+      std::pair<std::string, std::string> non_empty_domina_x=fragment_info.non_empty_domain_var(i, rows);
+      std::cout << "The non_empty_domina_x of fragment "<< i << " is {" << non_empty_domina_x.first << " ,"
+                << non_empty_domina_x.second << "}.\n"
+                << std::endl;
+
+      std::pair<std::string, std::string> non_empty_domain_y=fragment_info.non_empty_domain_var(i, cols);
+      std::cout << "The non_empty_domina_y of fragment "<< i << " is {" << non_empty_domain_y.first << " ,"
+                << non_empty_domain_y.second << "}.\n"
+                << std::endl;
+
+                
       // Get the format version of the fragment.
+      uint32_t version = fragment_info.version(i);
+      std::cout << "The fragment's format version is " << version << ".\n"
+                << std::endl;
+      
       uint32_t version = fragment_info.version(i);
       std::cout << "The fragment's format version is " << version << ".\n"
                 << std::endl;
