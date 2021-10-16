@@ -66,17 +66,17 @@ void write_array() {
   // Prepare some data for the array
   //std::vector<int> data = {1, 2, 3, 4, 5, 6, 7, 8};
 
-  int size=16000
-  std::vector<int> data(size);
-  srand(time(0));
-  generate(V.begin(), V.end(), std::rand());
+  //int size=16000
+  //std::vector<int> data(size);
+  //srand(time(0));
+  //generate(V.begin(), V.end(), std::rand());
 
-  // std::vector<int> data;
-  // for(int i=0; i<size; i++){ 
-  //        srand(time(0)); 
-  //        int b = rand() % 10;  
-  //        data.push_back (b);
-  // }
+  std::vector<int> data;
+  for(int i=0; i<size; i++){ 
+         srand(time(0)); 
+         int b = rand() % 10;  
+         data.push_back (b);
+  }
 
   //
   //std::vector<int> subarray = {1, 2, 1, 4};
