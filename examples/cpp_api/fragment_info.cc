@@ -50,7 +50,7 @@ void create_array() {
   // and space tiles 2x2
   Domain domain(ctx);
   domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 4}}, 2))
-    .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 4}}, 2));
+        .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 4}}, 2));
 
   // domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 400}}, 2))
   //     .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 400}}, 2));
@@ -75,8 +75,6 @@ void write_array() {
   //int size=16000;
   //int size=61;
 
-
-
   // std::vector<int> data;
   // for(int i=0; i<size; i++){ 
   //        std::srand(time(0)); 
@@ -100,6 +98,22 @@ void write_array() {
   // Perform the write and close the array.
   query.submit();
   array.close();
+
+  
+  
+  // Open the array for writing and create the query. again
+  std::vector<int> data = {9, 10, 11, 12, 13, 14};
+  std::vector<int> subarray = {1, 1, 1, 6};
+  Array array(ctx, array_name, TILEDB_WRITE);
+  Query query(ctx, array);
+  query.set_layout(TILEDB_ROW_MAJOR)
+      .set_buffer("a", data)
+      .set_subarray(subarray);
+
+  // Perform the write and close the array.
+  query.submit();
+  array.close();
+
 }
 
 void get_fragment_info() {
@@ -117,49 +131,55 @@ void get_fragment_info() {
   std::cout << "The number of written fragments is " << num << ".\n"
             << std::endl;
 
+  for(int i=0;i<num;i++){
   // Get fragment URI
-  std::string uri = fragment_info.fragment_uri(0);
-  std::cout << "The fragment URI is " << uri.c_str() << ".\n" << std::endl;
+  
 
-  // Get fragment size
-  uint64_t size = fragment_info.fragment_size(0);
-  std::cout << "The fragment size is " << size << ".\n" << std::endl;
+      std::string uri = fragment_info.fragment_uri(i);
+      std::cout << "The fragment URI is " << uri.c_str() << ".\n" << std::endl;
 
-  // Check if the fragment is dense or sparse.
-  bool dense = fragment_info.dense(0);
-  if (dense == 1)
-    std::cout << "The fragment is dense.\n" << std::endl;
-  else
-    std::cout << "The fragment is sparse.\n" << std::endl;
+      // Get fragment size
+      uint64_t size = fragment_info.fragment_size(i);
+      std::cout << "The fragment size is " << size << ".\n" << std::endl;
 
-  // Get the fragment timestamp range
-  std::pair<uint64_t, uint64_t> timestamps = fragment_info.timestamp_range(0);
-  std::cout << "The fragment's timestamp range is {" << timestamps.first << " ,"
-            << timestamps.second << "}.\n"
-            << std::endl;
+      // Check if the fragment is dense or sparse.
+      bool dense = fragment_info.dense(i);
+      if (dense == 1)
+        std::cout << "The fragment is dense.\n" << std::endl;
+      else
+        std::cout << "The fragment is sparse.\n" << std::endl;
 
-  // Get the number of cells written to the fragment.
-  uint64_t cell_num = fragment_info.cell_num(0);
-  std::cout << "The number of cells written to the fragment is " << cell_num
-            << ".\n"
-            << std::endl;
+      // Get the fragment timestamp range
+      std::pair<uint64_t, uint64_t> timestamps = fragment_info.timestamp_range(i);
+      std::cout << "The fragment's timestamp range is {" << timestamps.first << " ,"
+                << timestamps.second << "}.\n"
+                << std::endl;
 
-  // Get the format version of the fragment.
-  uint32_t version = fragment_info.version(0);
-  std::cout << "The fragment's format version is " << version << ".\n"
-            << std::endl;
+      // Get the number of cells written to the fragment.
+      uint64_t cell_num = fragment_info.cell_num(i);
+      //uint64_t cell_num = fragment_info.cell_num(); //test
+      std::cout << "The number of cells written to the fragment is " << cell_num
+                << ".\n"
+                << std::endl;
 
-  // Check if fragment has consolidated metadata.
-  // If not, get the number of fragments with unconsolidated metadata
-  //  in the fragment info object.
-  bool consolidated = fragment_info.has_consolidated_metadata(0);
-  if (consolidated != 0) {
-    std::cout << "The fragment has consolidated metadata.\n" << std::endl;
-  } else {
-    uint32_t unconsolidated = fragment_info.unconsolidated_metadata_num();
-    std::cout << "The fragment has " << unconsolidated
-              << " unconsolidated metadata fragments.\n"
-              << std::endl;
+      // Get the format version of the fragment.
+      uint32_t version = fragment_info.version(i);
+      std::cout << "The fragment's format version is " << version << ".\n"
+                << std::endl;
+
+      // Check if fragment has consolidated metadata.
+      // If not, get the number of fragments with unconsolidated metadata
+      //  in the fragment info object.
+      bool consolidated = fragment_info.has_consolidated_metadata(i);
+      if (consolidated != 0) {
+        std::cout << "The fragment has consolidated metadata.\n" << std::endl;
+      } else {
+        uint32_t unconsolidated = fragment_info.unconsolidated_metadata_num();
+        std::cout << "The fragment has " << unconsolidated
+                  << " unconsolidated metadata fragments.\n"
+                  << std::endl;
+      }
+
   }
 
   // Get non-empty domain from index
