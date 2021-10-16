@@ -49,14 +49,15 @@ void create_array() {
   // The array will be 4x4 with dimensions "rows" and "cols", with domain [1,4]
   // and space tiles 2x2
   Domain domain(ctx);
-  domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 4}}, 2))
-        .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 4}}, 2));
+  domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 4}}, 4))
+        .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 4}}, 4));
 
   // domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 400}}, 2))
   //     .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 400}}, 2));
 
   // The array will be dense.
   ArraySchema schema(ctx, TILEDB_DENSE);
+  
   schema.set_domain(domain).set_order({{TILEDB_ROW_MAJOR, TILEDB_ROW_MAJOR}});
 
   // Add a single attribute "a" so each (i,j) cell can store an integer.
@@ -103,7 +104,7 @@ void write_array() {
   
   // Open the array for writing and create the query. again
   std::vector<int> data1 = {9, 10, 11, 12, 13, 14};
-  std::vector<int> subarray1 = {1, 1, 2, 3};
+  std::vector<int> subarray1 = {1, 3, 1, 2};
   //Array array(ctx, array_name, TILEDB_WRITE);
   //Query query(ctx, array);
   query.set_layout(TILEDB_ROW_MAJOR)
