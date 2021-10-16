@@ -78,7 +78,7 @@ void write_array() {
   //        data.push_back (b);
   // }
 
-
+  //
   //std::vector<int> subarray = {1, 2, 1, 4};
 
   std::vector<int> subarray = {1, 1, 100, 160};
