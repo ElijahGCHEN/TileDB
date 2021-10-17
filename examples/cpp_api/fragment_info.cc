@@ -132,6 +132,8 @@ void get_fragment_info() {
   // Create TileDB context
   Context ctx;
 
+  Array array(ctx,array_name, TILEDB_READ); ///newadd
+
   // Create fragment info object
   FragmentInfo fragment_info(ctx, array_name);
 
@@ -174,16 +176,24 @@ void get_fragment_info() {
                 << ".\n"
                 << std::endl;
 
-      ////get the minimual range
-      std::pair<std::string, std::string> non_empty_domina_x=fragment_info.non_empty_domain_var(i, 0);
-      std::cout << "The non_empty_domina_x of fragment "<< i << " is {" << non_empty_domina_x.first << " ,"
-                << non_empty_domina_x.second << "}.\n"
-                << std::endl;
+      // ////get the minimual range
+      // std::pair<std::string, std::string> non_empty_domina_x=fragment_info.non_empty_domain_var(i, 0);
+      // std::cout << "The non_empty_domina_x of fragment "<< i << " is {" << non_empty_domina_x.first << " ,"
+      //           << non_empty_domina_x.second << "}.\n"
+      //           << std::endl;
 
-      std::pair<std::string, std::string> non_empty_domain_y=fragment_info.non_empty_domain_var(i, 1);
-      std::cout << "The non_empty_domina_y of fragment "<< i << " is {" << non_empty_domain_y.first << " ,"
-                << non_empty_domain_y.second << "}.\n"
-                << std::endl;
+      // std::pair<std::string, std::string> non_empty_domain_y=fragment_info.non_empty_domain_var(i, 1);
+      // std::cout << "The non_empty_domina_y of fragment "<< i << " is {" << non_empty_domain_y.first << " ,"
+      //           << non_empty_domain_y.second << "}.\n"
+      //           << std::endl;
+
+      //tiledb::Context ctx;
+      
+      // Specify the domain type (example uint32_t)
+      auto non_empty = array.non_empty_domain<uint32_t>();
+      std::cout << "Dimension named " << non_empty[0].first << " has cells in ["
+          << non_empty[0].second.first << ", " non_empty[0].second.second
+          << "]" << std::endl;
 
                 
       // Get the format version of the fragment.
