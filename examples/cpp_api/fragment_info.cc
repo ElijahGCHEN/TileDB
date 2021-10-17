@@ -192,8 +192,8 @@ void get_fragment_info() {
       //           << std::endl;
 
       //Domain dm(ctx);
-      void dm;
-      fragment_info.get_non_empty_domain(i, 0, dm);
+      // void dm;
+      // fragment_info.get_non_empty_domain(i, 0, dm);
       //std::cout<<"Number of dimensions == "<< dm.ndim();
       
 
