@@ -71,7 +71,11 @@ void write_array_1() {
   Context ctx;
 
   // Prepare some data for the array
-  std::vector<int> data = {1, 2, 3, 4, 5, 6, 7, 8};
+  //std::vector<int> data = {1, 2, 3, 4, 5, 6, 7, 8};
+
+  //test/// sparse array
+  std::vector<int> coords = {1, 1, 2, 4, 2, 3};
+  std::vector<int> data = {1, 2, 3};
 
   //int size=16000;
   //int size=61;
@@ -83,17 +87,17 @@ void write_array_1() {
   //        data.push_back (b);
   // }
   //
-  std::vector<int> subarray = {1, 2, 1, 4};
 
-  //std::vector<int> subarray = {1, 1, 100, 160};
-  //std::vector<int> subarray = {1, 1, 1, 61};
+  //std::vector<int> subarray = {1, 2, 1, 4};
+
 
   // Open the array for writing and create the query.
   Array array(ctx, array_name, TILEDB_WRITE);
   Query query(ctx, array);
-  query.set_layout(TILEDB_ROW_MAJOR)
-      .set_buffer("a", data);
-  //    .set_subarray(subarray);
+  query.set_layout(TILEDB_UNORDERED)
+      .set_buffer("a", data)
+      //.set_subarray(subarray);
+      .set_coordinates(coords);
 
   // Perform the write and close the array.
   query.submit();
@@ -114,25 +118,25 @@ void write_array_1() {
 
 }
 
-void write_array_2() {
+// void write_array_2() {
 
-  std::vector<int> data = {5, 6, 7, 8, 9, 10, 11, 12};
-  std::vector<int> subarray = {2, 3, 1, 4};
-  Context ctx;
-  Array array(ctx, array_name, TILEDB_WRITE);
-  Query query(ctx, array);
-  query.set_layout(TILEDB_ROW_MAJOR)
-       .set_buffer("a", data);
-  //     .set_subarray(subarray);
-  query.submit();
-  array.close();
-}
+//   std::vector<int> data = {5, 6, 7, 8, 9, 10, 11, 12};
+//   std::vector<int> subarray = {2, 3, 1, 4};
+//   Context ctx;
+//   Array array(ctx, array_name, TILEDB_WRITE);
+//   Query query(ctx, array);
+//   query.set_layout(TILEDB_ROW_MAJOR)
+//        .set_buffer("a", data)
+//        .set_subarray(subarray);
+//   query.submit();
+//   array.close();
+// }
 
 void get_fragment_info() {
   // Create TileDB context
   Context ctx;
 
-  Array array(ctx,array_name, TILEDB_READ); ///newadd
+  //Array array(ctx,array_name, TILEDB_READ); ///newadd
 
   // Create fragment info object
   FragmentInfo fragment_info(ctx, array_name);
@@ -232,7 +236,7 @@ int main() {
   }
   create_array();
   write_array_1();
-  write_array_2();
+  //write_array_2();
   get_fragment_info();
 
   return 0;
