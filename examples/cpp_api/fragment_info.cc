@@ -191,9 +191,9 @@ void get_fragment_info() {
       std::cout << "The fragment's format version is " << version << ".\n"
                 << std::endl;
       
-      uint32_t version = fragment_info.version(i);
-      std::cout << "The fragment's format version is " << version << ".\n"
-                << std::endl;
+      // uint32_t version = fragment_info.version(i);
+      // std::cout << "The fragment's format version is " << version << ".\n"
+      //           << std::endl;
 
       // Check if fragment has consolidated metadata.
       // If not, get the number of fragments with unconsolidated metadata
