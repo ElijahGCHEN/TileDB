@@ -191,9 +191,10 @@ void get_fragment_info() {
       //           << non_empty_domain_y.second << "}.\n"
       //           << std::endl;
 
-      Domain dm(ctx);
+      //Domain dm(ctx);
+      void dm;
       fragment_info.get_non_empty_domain(i, 0, dm);
-      std::cout<<"Number of dimensions == "<< dm.ndim();
+      //std::cout<<"Number of dimensions == "<< dm.ndim();
       
 
       //tiledb::Context ctx;
