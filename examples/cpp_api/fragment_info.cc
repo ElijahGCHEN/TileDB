@@ -175,12 +175,12 @@ void get_fragment_info() {
                 << std::endl;
 
       ////get the minimual range
-      std::pair<std::string, std::string> non_empty_domina_x=fragment_info.non_empty_domain_var(i, rows);
+      std::pair<std::string, std::string> non_empty_domina_x=fragment_info.non_empty_domain_var(i, 0);
       std::cout << "The non_empty_domina_x of fragment "<< i << " is {" << non_empty_domina_x.first << " ,"
                 << non_empty_domina_x.second << "}.\n"
                 << std::endl;
 
-      std::pair<std::string, std::string> non_empty_domain_y=fragment_info.non_empty_domain_var(i, cols);
+      std::pair<std::string, std::string> non_empty_domain_y=fragment_info.non_empty_domain_var(i, 1);
       std::cout << "The non_empty_domina_y of fragment "<< i << " is {" << non_empty_domain_y.first << " ,"
                 << non_empty_domain_y.second << "}.\n"
                 << std::endl;
