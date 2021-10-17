@@ -191,9 +191,8 @@ void get_fragment_info() {
       
       // Specify the domain type (example uint32_t)
       auto non_empty = array.non_empty_domain<uint32_t>();
-      std::cout << "Dimension named " << non_empty[0].first << " has cells in ["
-          << non_empty[0].second.first << ", " non_empty[0].second.second
-          << "]" << std::endl;
+      std::cout << "Dimension named " << non_empty[0].first << " has cells in [" << non_empty[0].second.first << ", " << 
+          non_empty[0].second.second << "]" << std::endl;
 
                 
       // Get the format version of the fragment.
