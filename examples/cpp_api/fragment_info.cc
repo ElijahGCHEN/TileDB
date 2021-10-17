@@ -180,20 +180,20 @@ void get_fragment_info() {
       //           << ".\n"
       //           << std::endl;
 
-      ////get the minimual range
-      std::pair<std::string, std::string> non_empty_domina_x=fragment_info.non_empty_domain_var(i, 0);
-      std::cout << "The non_empty_domina_x of fragment "<< i << " is {" << non_empty_domina_x.first << " ,"
-                << non_empty_domina_x.second << "}.\n"
-                << std::endl;
+      // ////get the minimual range
+      // std::pair<std::string, std::string> non_empty_domina_x=fragment_info.non_empty_domain_var(i, 0);
+      // std::cout << "The non_empty_domina_x of fragment "<< i << " is {" << non_empty_domina_x.first << " ,"
+      //           << non_empty_domina_x.second << "}.\n"
+      //           << std::endl;
 
       // std::pair<std::string, std::string> non_empty_domain_y=fragment_info.non_empty_domain_var(i, 1);
       // std::cout << "The non_empty_domina_y of fragment "<< i << " is {" << non_empty_domain_y.first << " ,"
       //           << non_empty_domain_y.second << "}.\n"
       //           << std::endl;
 
-      // Domain dm(ctx);
-      // FragmentInfo::get_non_empty_domain(i, 0, dm);
-      // std::cout<<"Number of dimensions == "<< dm.ndim();
+      Domain dm(ctx);
+      fragment_info.get_non_empty_domain(i, 0, dm);
+      std::cout<<"Number of dimensions == "<< dm.ndim();
       
 
       //tiledb::Context ctx;
