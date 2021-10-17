@@ -92,7 +92,7 @@ void write_array_1() {
   Array array(ctx, array_name, TILEDB_WRITE);
   Query query(ctx, array);
   query.set_layout(TILEDB_ROW_MAJOR)
-      .set_buffer("a", data)
+      .set_buffer("a", data);
   //    .set_subarray(subarray);
 
   // Perform the write and close the array.
@@ -122,7 +122,7 @@ void write_array_2() {
   Array array(ctx, array_name, TILEDB_WRITE);
   Query query(ctx, array);
   query.set_layout(TILEDB_ROW_MAJOR)
-       .set_buffer("a", data)
+       .set_buffer("a", data);
   //     .set_subarray(subarray);
   query.submit();
   array.close();
