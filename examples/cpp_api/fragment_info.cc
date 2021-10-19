@@ -118,19 +118,25 @@ void write_array_1() {
 
 }
 
-// void write_array_2() {
+void write_array_2() {
 
-//   std::vector<int> data = {5, 6, 7, 8, 9, 10, 11, 12};
-//   std::vector<int> subarray = {2, 3, 1, 4};
-//   Context ctx;
-//   Array array(ctx, array_name, TILEDB_WRITE);
-//   Query query(ctx, array);
-//   query.set_layout(TILEDB_ROW_MAJOR)
-//        .set_buffer("a", data)
-//        .set_subarray(subarray);
-//   query.submit();
-//   array.close();
-// }
+  // std::vector<int> data = {5, 6, 7, 8, 9, 10, 11, 12};
+  // std::vector<int> subarray = {2, 3, 1, 4};
+
+  std::vector<int> coords = {1, 2, 2, 3, 3, 4, 3, 3};
+  std::vector<int> data = {2, 3, 1, 4};
+
+  Context ctx;
+  Array array(ctx, array_name, TILEDB_WRITE);
+  Query query(ctx, array);
+  query.set_layout(TILEDB_ROW_MAJOR)
+       .set_buffer("a", data)
+       //.set_subarray(subarray);
+       .set_coordinates(coords);
+
+  query.submit();
+  array.close();
+}
 
 void get_fragment_info() {
   // Create TileDB context
@@ -203,14 +209,14 @@ void get_fragment_info() {
       //auto non_empty = array.non_empty_domain<uint32_t>();
       
       
-        auto non_empty = array.non_empty_domain<int>();
+       
+      }
+
+     auto non_empty = array.non_empty_domain<int>();
         int num_of_dim= non_empty.size();
       for(int i=0;i<num_of_dim;i++){
           std::cout << "Dimension named " << non_empty[i].first << " has cells in [" << non_empty[i].second.first << ", " << 
               non_empty[i].second.second << "]" << std::endl;
-      }
-
-
 //////////////////////////
                 
       // Get the format version of the fragment.
