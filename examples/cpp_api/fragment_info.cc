@@ -208,10 +208,10 @@ void get_fragment_info() {
       //   std::cout << "The fragment has " << unconsolidated
       //             << " unconsolidated metadata fragments.\n"
       //             << std::endl;
-      }
-
-
   }
+
+
+
 
   // auto non_empty = array.non_empty_domain<int>();
   // int num_of_dim= non_empty.size();
@@ -224,8 +224,8 @@ void get_fragment_info() {
   // uint64_t non_empty_dom[2];
   // fragment_info.get_non_empty_domain(0, 0, &non_empty_dom[0]);
   //std::cout<<non_empty_dom[0];
-
 }
+
 
 int main() {
   Context ctx;
