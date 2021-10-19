@@ -179,35 +179,35 @@ void get_fragment_info() {
                 << timestamps.second << "}.\n"
                 << std::endl;
 
-      // // Get the number of cells written to the fragment.
-      // uint64_t cell_num = fragment_info.cell_num(i);
-      // //uint64_t cell_num = fragment_info.cell_num(); //test
-      // std::cout << "The number of cells written to the fragment is " << cell_num
-      //           << ".\n"
-      //           << std::endl;
+      // Get the number of cells written to the fragment.
+      uint64_t cell_num = fragment_info.cell_num(i);
+      //uint64_t cell_num = fragment_info.cell_num(); //test
+      std::cout << "The number of cells written to the fragment is " << cell_num
+                << ".\n"
+                << std::endl;
 
 
 
 
-      //       // Get the format version of the fragment.
-      // uint32_t version = fragment_info.version(i);
-      // std::cout << "The fragment's format version is " << version << ".\n"
-      //           << std::endl;
+            // Get the format version of the fragment.
+      uint32_t version = fragment_info.version(i);
+      std::cout << "The fragment's format version is " << version << ".\n"
+                << std::endl;
 
 //////////////////////////
                 
 
-      // // Check if fragment has consolidated metadata.
-      // // If not, get the number of fragments with unconsolidated metadata
-      // //  in the fragment info object.
-      // bool consolidated = fragment_info.has_consolidated_metadata(i);
-      // if (consolidated != 0) {
-      //   std::cout << "The fragment has consolidated metadata.\n" << std::endl;
-      // } else {
-      //   uint32_t unconsolidated = fragment_info.unconsolidated_metadata_num();
-      //   std::cout << "The fragment has " << unconsolidated
-      //             << " unconsolidated metadata fragments.\n"
-      //             << std::endl;
+      // Check if fragment has consolidated metadata.
+      // If not, get the number of fragments with unconsolidated metadata
+      //  in the fragment info object.
+      bool consolidated = fragment_info.has_consolidated_metadata(i);
+      if (consolidated != 0) {
+        std::cout << "The fragment has consolidated metadata.\n" << std::endl;
+      } else {
+        uint32_t unconsolidated = fragment_info.unconsolidated_metadata_num();
+        std::cout << "The fragment has " << unconsolidated
+                  << " unconsolidated metadata fragments.\n"
+                  << std::endl;
   }
 
 
