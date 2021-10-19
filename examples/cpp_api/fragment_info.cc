@@ -218,12 +218,12 @@ void get_fragment_info() {
 
   }
 
-  auto non_empty = array.non_empty_domain<int>();
-  int num_of_dim= non_empty.size();
-  for(int i=0;i<num_of_dim;i++){
-      std::cout << "Dimension named " << non_empty[i].first << " has cells in [" << non_empty[i].second.first << ", " << 
-          non_empty[i].second.second << "]" << std::endl;
-  }
+  // auto non_empty = array.non_empty_domain<int>();
+  // int num_of_dim= non_empty.size();
+  // for(int i=0;i<num_of_dim;i++){
+  //     std::cout << "Dimension named " << non_empty[i].first << " has cells in [" << non_empty[i].second.first << ", " << 
+  //         non_empty[i].second.second << "]" << std::endl;
+  // }
 
   // Get non-empty domain from index
   // uint64_t non_empty_dom[2];
