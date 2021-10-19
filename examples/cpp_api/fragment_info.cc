@@ -194,10 +194,10 @@ void get_fragment_info() {
 
 
 
-            // Get the format version of the fragment.
-      uint32_t version = fragment_info.version(i);
-      std::cout << "The fragment's format version is " << version << ".\n"
-                << std::endl;
+      //       // Get the format version of the fragment.
+      // uint32_t version = fragment_info.version(i);
+      // std::cout << "The fragment's format version is " << version << ".\n"
+      //           << std::endl;
 
 //////////////////////////
                 
