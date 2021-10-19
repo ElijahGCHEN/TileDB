@@ -129,7 +129,7 @@ void write_array_2() {
   Context ctx;
   Array array(ctx, array_name, TILEDB_WRITE);
   Query query(ctx, array);
-  query.set_layout(TILEDB_ROW_MAJOR)
+  query.set_layout(TILEDB_UNORDERED)
        .set_buffer("a", data)
        //.set_subarray(subarray);
        .set_coordinates(coords);
