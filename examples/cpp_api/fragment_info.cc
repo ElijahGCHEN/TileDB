@@ -201,10 +201,14 @@ void get_fragment_info() {
       
       // Specify the domain type (example uint32_t)
       //auto non_empty = array.non_empty_domain<uint32_t>();
-     auto non_empty = array.non_empty_domain<int>();
-      std::cout << "Dimension named " << non_empty[0].first << " has cells in [" << non_empty[0].second.first << ", " << 
-          non_empty[0].second.second << "]" << std::endl;
-
+      
+      
+        auto non_empty = array.non_empty_domain<int>();
+        int num_of_dim= non_empty.size();
+      for(int i=0;i<num_of_dim;i++){
+          std::cout << "Dimension named " << non_empty[0].first << " has cells in [" << non_empty[0].second.first << ", " << 
+              non_empty[0].second.second << "]" << std::endl;
+      }
 
 
 //////////////////////////
