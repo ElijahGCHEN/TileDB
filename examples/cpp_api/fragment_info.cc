@@ -233,7 +233,7 @@ void get_fragment_info() {
   // Get non-empty domain from index
   uint64_t non_empty_dom[2];
   fragment_info.get_non_empty_domain(0, 0, &non_empty_dom[0]);
-  std::cout<<non_empty_dom[0].first;
+  std::cout<<non_empty_dom[0][0];
 
 }
 
