@@ -235,9 +235,9 @@ void get_fragment_info() {
 
 int main() {
   Context ctx;
-  if (Object::object(ctx, array_name).type() == Object::Type::Array) {
-    tiledb::Object::remove(ctx, array_name);
-  }
+  // if (Object::object(ctx, array_name).type() == Object::Type::Array) {
+  //   tiledb::Object::remove(ctx, array_name);
+  // }
   create_array();
   write_array_1();
   write_array_2();
