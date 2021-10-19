@@ -212,7 +212,7 @@ void get_fragment_info() {
       uint64_t non_empty_dom[2];
       //int non_empty_dom[2];
       fragment_info.get_non_empty_domain(0, 0, &non_empty_dom[0]);
-      std::cout<<non_empty_dom[0];<<std::endl;
+      std::cout<<non_empty_dom[0]<<std::endl;
   }
 
   auto non_empty = array.non_empty_domain<int>();
