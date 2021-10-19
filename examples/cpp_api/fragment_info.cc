@@ -179,18 +179,13 @@ void get_fragment_info() {
                 << timestamps.second << "}.\n"
                 << std::endl;
 
-      // Get the number of cells written to the fragment.
-      uint64_t cell_num = fragment_info.cell_num(i);
-      //uint64_t cell_num = fragment_info.cell_num(); //test
-      std::cout << "The number of cells written to the fragment is " << cell_num
-                << ".\n"
-                << std::endl;
-      
+      // // Get the number of cells written to the fragment.
+      // uint64_t cell_num = fragment_info.cell_num(i);
+      // //uint64_t cell_num = fragment_info.cell_num(); //test
+      // std::cout << "The number of cells written to the fragment is " << cell_num
+      //           << ".\n"
+      //           << std::endl;
 
-      //tiledb::Context ctx;
-      
-      // Specify the domain type (example uint32_t)
-      //auto non_empty = array.non_empty_domain<uint32_t>();
 
 
 
