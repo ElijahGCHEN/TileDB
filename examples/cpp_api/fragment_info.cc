@@ -179,17 +179,12 @@ void get_fragment_info() {
                 << timestamps.second << "}.\n"
                 << std::endl;
 
-      // // Get the number of cells written to the fragment.
-      // uint64_t cell_num = fragment_info.cell_num(i);
-      // //uint64_t cell_num = fragment_info.cell_num(); //test
-      // std::cout << "The number of cells written to the fragment is " << cell_num
-      //           << ".\n"
-      //           << std::endl;
-
-      //Domain dm(ctx);
-      // void dm;
-      // fragment_info.get_non_empty_domain(i, 0, dm);
-      //std::cout<<"Number of dimensions == "<< dm.ndim();
+      // Get the number of cells written to the fragment.
+      uint64_t cell_num = fragment_info.cell_num(i);
+      //uint64_t cell_num = fragment_info.cell_num(); //test
+      std::cout << "The number of cells written to the fragment is " << cell_num
+                << ".\n"
+                << std::endl;
       
 
       //tiledb::Context ctx;
@@ -225,14 +220,14 @@ void get_fragment_info() {
 
   auto non_empty = array.non_empty_domain<int>();
   int num_of_dim= non_empty.size();
-      for(int i=0;i<num_of_dim;i++){
-          std::cout << "Dimension named " << non_empty[i].first << " has cells in [" << non_empty[i].second.first << ", " << 
-              non_empty[i].second.second << "]" << std::endl;
-      }
+  for(int i=0;i<num_of_dim;i++){
+      std::cout << "Dimension named " << non_empty[i].first << " has cells in [" << non_empty[i].second.first << ", " << 
+          non_empty[i].second.second << "]" << std::endl;
+  }
 
   // Get non-empty domain from index
-  uint64_t non_empty_dom[2];
-  fragment_info.get_non_empty_domain(0, 0, &non_empty_dom[0]);
+  // uint64_t non_empty_dom[2];
+  // fragment_info.get_non_empty_domain(0, 0, &non_empty_dom[0]);
   //std::cout<<non_empty_dom[0];
 
 }
