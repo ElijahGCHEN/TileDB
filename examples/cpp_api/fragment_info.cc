@@ -240,7 +240,7 @@ int main() {
   }
   create_array();
   write_array_1();
-  //write_array_2();
+  write_array_2();
   get_fragment_info();
 
   return 0;
