@@ -186,17 +186,6 @@ void get_fragment_info() {
       //           << ".\n"
       //           << std::endl;
 
-      // ////get the minimual range
-      // std::pair<std::string, std::string> non_empty_domina_x=fragment_info.non_empty_domain_var(i, 0);
-      // std::cout << "The non_empty_domina_x of fragment "<< i << " is {" << non_empty_domina_x.first << " ,"
-      //           << non_empty_domina_x.second << "}.\n"
-      //           << std::endl;
-
-      // std::pair<std::string, std::string> non_empty_domain_y=fragment_info.non_empty_domain_var(i, 1);
-      // std::cout << "The non_empty_domina_y of fragment "<< i << " is {" << non_empty_domain_y.first << " ,"
-      //           << non_empty_domain_y.second << "}.\n"
-      //           << std::endl;
-
       //Domain dm(ctx);
       // void dm;
       // fragment_info.get_non_empty_domain(i, 0, dm);
@@ -207,24 +196,16 @@ void get_fragment_info() {
       
       // Specify the domain type (example uint32_t)
       //auto non_empty = array.non_empty_domain<uint32_t>();
-      
-      
-       
-      }
 
-     auto non_empty = array.non_empty_domain<int>();
-        int num_of_dim= non_empty.size();
-      for(int i=0;i<num_of_dim;i++){
-          std::cout << "Dimension named " << non_empty[i].first << " has cells in [" << non_empty[i].second.first << ", " << 
-              non_empty[i].second.second << "]" << std::endl;
-//////////////////////////
-                
-      // Get the format version of the fragment.
+
+
+            // Get the format version of the fragment.
       uint32_t version = fragment_info.version(i);
       std::cout << "The fragment's format version is " << version << ".\n"
                 << std::endl;
-      
 
+//////////////////////////
+                
 
       // Check if fragment has consolidated metadata.
       // If not, get the number of fragments with unconsolidated metadata
@@ -239,11 +220,21 @@ void get_fragment_info() {
                   << std::endl;
       }
 
+
   }
+
+  auto non_empty = array.non_empty_domain<int>();
+  int num_of_dim= non_empty.size();
+      for(int i=0;i<num_of_dim;i++){
+          std::cout << "Dimension named " << non_empty[i].first << " has cells in [" << non_empty[i].second.first << ", " << 
+              non_empty[i].second.second << "]" << std::endl;
+      }
 
   // Get non-empty domain from index
   uint64_t non_empty_dom[2];
   fragment_info.get_non_empty_domain(0, 0, &non_empty_dom[0]);
+  std::cout<<non_empty_dom[0].first;
+
 }
 
 int main() {
@@ -253,7 +244,7 @@ int main() {
   }
   create_array();
   write_array_1();
-  //write_array_2();
+  write_array_2();
   get_fragment_info();
 
   return 0;
