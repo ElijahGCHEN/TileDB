@@ -193,8 +193,6 @@ void get_fragment_info() {
       uint32_t version = fragment_info.version(i);
       std::cout << "The fragment's format version is " << version << ".\n"
                 << std::endl;
-
-//////////////////////////
                 
 
       // Check if fragment has consolidated metadata.
@@ -208,11 +206,9 @@ void get_fragment_info() {
         std::cout << "The fragment has " << unconsolidated
                   << " unconsolidated metadata fragments.\n"
                   << std::endl;
+      }
   }
-
-
-
-
+  
   // auto non_empty = array.non_empty_domain<int>();
   // int num_of_dim= non_empty.size();
   // for(int i=0;i<num_of_dim;i++){
@@ -224,8 +220,8 @@ void get_fragment_info() {
   // uint64_t non_empty_dom[2];
   // fragment_info.get_non_empty_domain(0, 0, &non_empty_dom[0]);
   //std::cout<<non_empty_dom[0];
+      
 }
-
 
 int main() {
   Context ctx;
