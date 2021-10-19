@@ -151,11 +151,11 @@ void get_fragment_info() {
   fragment_info.load();
 
   // Get number of written fragments.
-  uint32_t num = fragment_info.fragment_num();
+  uint32_t num_f = fragment_info.fragment_num();
   std::cout << "The number of written fragments is " << num << ".\n"
             << std::endl;
 
-  for(int i=0;i<num;i++){
+  for(int i=0;i<num_f;i++){
   // Get fragment URI
   
 
@@ -210,9 +210,15 @@ void get_fragment_info() {
 
         //Get non-empty domain from index
       //uint64_t non_empty_dom[2];
+
+    int num_of_dim= 2;
+
+    for(int j=0;j<num_of_dim;j++){
       int non_empty_dom[2];
-      fragment_info.get_non_empty_domain(0, 0, &non_empty_dom[0]);
-      std::cout<<non_empty_dom[0]<<" : "<<non_empty_dom[1]<<std::endl;
+      fragment_info.get_non_empty_domain(i, j, &non_empty_dom[0]);
+      std::cout <<"Fragment "<<i<<" : "<<"dimension "<< j <<" : ("<<non_empty_dom[0]<<" , "<<non_empty_dom[1]<<"). \n"
+                <<std::endl;
+    }
 
   }
 
