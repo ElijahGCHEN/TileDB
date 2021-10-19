@@ -151,11 +151,11 @@ void get_fragment_info() {
   fragment_info.load();
 
   // Get number of written fragments.
-  uint32_t num_f = fragment_info.fragment_num();
+  uint32_t num = fragment_info.fragment_num();
   std::cout << "The number of written fragments is " << num << ".\n"
             << std::endl;
 
-  for(int i=0;i<num_f;i++){
+  for(int i=0;i<num;i++){
   // Get fragment URI
   
 
