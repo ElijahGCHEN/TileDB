@@ -31,7 +31,7 @@
  */
 
 
-#include "tiledb/sm/graph/graph.h"
+#include "graph.h"
 #include "tiledb/common/logger.h"
 #include "tiledb/sm/array_schema/dimension.h"
 #include "tiledb/sm/buffer/buffer.h"

@@ -36,7 +36,7 @@
 #include <vector>
 #include <unordered_map>
 
-#include "tiledb/sm/graph/vertex.h"
+#include "vertex.h"
 #include "tiledb/common/status.h"
 #include "tiledb/sm/array_schema/domain.h"
 #include "tiledb/sm/misc/tile_overlap.h"
