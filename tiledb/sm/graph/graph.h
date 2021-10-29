@@ -90,7 +90,7 @@ class Graph{
 
     unsigned dim_num;
     int size;
-	  std::vector<std::vector<std::int>> adjacent_matrix;
+	  std::vector<std::vector<unit64_t>> adjacent_matrix;
     
 	  Vertex* root;
 
