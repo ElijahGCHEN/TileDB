@@ -29,10 +29,10 @@
 add_custom_target(examples_cpp DEPENDS tiledb_shared)
 add_library(graph
   STATIC
-    vertex.h
-    vertex.cc
-    graph.h
-    graph.cc
+    graph/vertex.h
+    graph/vertex.cc
+    graph/graph.h
+    graph/graph.cc
 )
 # Function that builds an executable per example
 function(build_TileDB_example_cppapi TARGET)
