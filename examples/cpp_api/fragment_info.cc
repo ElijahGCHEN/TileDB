@@ -71,7 +71,7 @@ void create_array() {
   Array::create(array_name, schema);
 }
 
-void write_array_1(std::vector<NDRange> * non_empty_vector, std::vector<std::string> * uri) {
+void write_array_1(std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>>  *non_empty_vector, std::vector<std::string> * uri) {
   Context ctx;
 
   // Prepare some data for the array
@@ -110,9 +110,9 @@ void write_array_1(std::vector<NDRange> * non_empty_vector, std::vector<std::str
 
   non_empty_vector.push_back(non_empty);
 
-  std::string uri=array.uri();
+  std::string urii=array.uri();
 
-  uri.push_back(uri);
+  uri.push_back(urii);
 
   int num_of_dim= non_empty_vector.size();
   
@@ -161,9 +161,9 @@ void write_array_2(std::vector<std::vector<std::pair<std::string, std::pair<int,
 
   non_empty_vector.push_back(non_empty);
 
-  std::string uri=array.uri();
+  std::string urii=array.uri();
 
-  uri.push_back(uri);
+  uri.push_back(urii);
 
   int num_of_dim= non_empty_vector.size();
   
