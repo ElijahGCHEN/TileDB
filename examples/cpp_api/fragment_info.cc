@@ -31,6 +31,8 @@
  * with one query (creating a fragment) and collect information on the fragment.
  */
 
+#include "tiledb/sm/graph/graph.h"
+#include "tiledb/sm/graph/vertex.h"
 #include <iostream>
 #include <random>
 #include <bits/stdc++.h>
@@ -51,7 +53,7 @@ void create_array() {
   Domain domain(ctx);
   domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 4}}, 2))
         .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 4}}, 2));
-
+  
   // domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 400}}, 2))
   //     .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 400}}, 2));
 
@@ -67,7 +69,7 @@ void create_array() {
   Array::create(array_name, schema);
 }
 
-void write_array_1() {
+void write_array_1(vector<NDRange> * non_empty, vector<std::string> * uri) {
   Context ctx;
 
   // Prepare some data for the array
@@ -101,6 +103,23 @@ void write_array_1() {
 
   // Perform the write and close the array.
   query.submit();
+
+  auto non_empty = array.non_empty_domain<int>();
+
+  non_empty.push_back(non_empty);
+
+  std::string uri=array.uri();
+
+  uri.push_back(uri);
+
+  int num_of_dim= non_empty.size();
+  
+  for(int i=0;i<num_of_dim;i++){
+      std::cout << "Dimension named " << non_empty[i].first << " has cells in [" << non_empty[i].second.first << ", " << 
+          non_empty[i].second.second << "]" << std::endl;
+  }
+
+
   array.close();
 
   // // Open the array for writing and create the query. again
@@ -118,7 +137,7 @@ void write_array_1() {
 
 }
 
-void write_array_2() {
+void write_array_2(vector<NDRange> * non_empty, vector<std::string> * uri) {
 
   // std::vector<int> data = {5, 6, 7, 8, 9, 10, 11, 12};
   // std::vector<int> subarray = {2, 3, 1, 4};
@@ -135,14 +154,33 @@ void write_array_2() {
        .set_coordinates(coords);
 
   query.submit();
+  
+  auto non_empty = array.non_empty_domain<int>();
+
+  non_empty.push_back(non_empty);
+
+  std::string uri=array.uri();
+
+  uri.push_back(uri);
+
+  int num_of_dim= non_empty.size();
+  
+  for(int i=0;i<num_of_dim;i++){
+      std::cout << "Dimension named " << non_empty[i].first << " has cells in [" << non_empty[i].second.first << ", " << 
+          non_empty[i].second.second << "]" << std::endl;
+  }
+
+  
+  
   array.close();
+
 }
 
 void get_fragment_info() {
   // Create TileDB context
   Context ctx;
 
-  Array array(ctx,array_name, TILEDB_READ); ///newadd
+  //Array array(ctx,array_name, TILEDB_READ); ///newadd
 
   // Create fragment info object
   FragmentInfo fragment_info(ctx, array_name);
@@ -239,8 +277,19 @@ int main() {
   //   tiledb::Object::remove(ctx, array_name);
   // }
   create_array();
-  write_array_1();
-  write_array_2();
+
+  std::vector<NDRange>  non_empty;
+  std::vector<std::string>  uri;
+
+  write_array_1(&non_empty,&uri);
+  write_array_2(&non_empty,&uri);
+
+  int num_of_fragments=uri.size();
+  for (int i = 0; i < num_of_fragments; i++)
+  {
+    Vertex(domain,non_empty,array.uri(),ver=i);
+  }
+
   get_fragment_info();
 
   return 0;

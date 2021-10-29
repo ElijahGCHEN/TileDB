@@ -210,6 +210,22 @@ class Range {
     return range_ == r.range_ && range_start_size_ == r.range_start_size_;
   }
 
+  bool operator<=(const Range& r) const {
+    //return range_ <= r.range_;
+    //&& range_start_size_ <= r.range_start_size_;
+
+    if( range_[0] > r.range_[0]  &&  range_[1] < r.range_[1] ){
+
+
+      return true;
+    }
+  }
+
+  // bool operator>=(const Range& r) const {
+  //   return range_ >= r.range_ && range_start_size_ >= r.range_start_size_;
+  // }
+
+
   /** Returns true if the range start is the same as its end. */
   bool unary() const {
     // If the range is empty, then it corresponds to strings
