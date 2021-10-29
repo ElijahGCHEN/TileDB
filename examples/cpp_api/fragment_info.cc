@@ -40,7 +40,7 @@
 #include <tiledb/tiledb>
 #include <vector>
 //#include "tiledb/sm/misc/types.h"
-#include "../../tiledb/sm/misc/types.h"
+//#include "../../tiledb/sm/misc/types.h"
 using namespace tiledb;
 
 // Name of array.
