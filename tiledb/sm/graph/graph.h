@@ -43,7 +43,7 @@
 //#include "../array_schema/domain.h"
 //#include "tiledb/sm/misc/tile_overlap.h"
 
-using namespace tiledb::sm;
+//using namespace tiledb::sm;
 
 namespace tiledb {
 namespace sm {
