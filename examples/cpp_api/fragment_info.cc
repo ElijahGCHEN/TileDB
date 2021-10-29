@@ -38,6 +38,7 @@
 #include <bits/stdc++.h>
 #include <algorithm>
 #include <tiledb/tiledb>
+#include <vector>
 
 using namespace tiledb;
 
