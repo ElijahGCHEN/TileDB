@@ -39,7 +39,8 @@
 #include <algorithm>
 #include <tiledb/tiledb>
 #include <vector>
-
+#include "tiledb/sm/misc/types.h"
+#include "../../tiledb/sm/misc/types.h"
 using namespace tiledb;
 
 // Name of array.
@@ -70,7 +71,7 @@ void create_array() {
   Array::create(array_name, schema);
 }
 
-void write_array_1(vector<NDRange> * non_empty, vector<std::string> * uri) {
+void write_array_1(std::vector<NDRange> * non_empty, std::vector<std::string> * uri) {
   Context ctx;
 
   // Prepare some data for the array
