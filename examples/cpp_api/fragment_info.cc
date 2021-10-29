@@ -46,7 +46,7 @@ using namespace tiledb;
 // Name of array.
 std::string array_name("fragment_info_array");
 
-void create_array(Domain &domain) {
+void create_array(Domain &domain, Context &ctx) {
   // Create a TileDB context.
   //Context ctx; ///modiified
 
@@ -282,8 +282,8 @@ int main() {
   // if (Object::object(ctx, array_name).type() == Object::Type::Array) {
   //   tiledb::Object::remove(ctx, array_name);
   // }
-  Domain domian(ctx);
-  create_array(domain);
+  Domain domain(ctx);
+  create_array(domain,ctx);
   //vector<Range>
 
   std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>>  non_empty_vector;
