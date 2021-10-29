@@ -86,7 +86,7 @@ class Graph{
 	void materialization();
   std::vector<int> get_parents_from_ver(int ver);
   
-  private:
+  //private:
 
     unsigned dim_num;
     int size;

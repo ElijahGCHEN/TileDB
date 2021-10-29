@@ -69,6 +69,8 @@ Graph::Graph(int dim_num,int size)
     row.assign(size,0);
     std::vector<std::vector<unit64_t>> adj_m;
     adjacent_metrix=adj_m;
+
+    //root= &Vertex;
       
 }
 

@@ -46,13 +46,14 @@ using namespace tiledb;
 // Name of array.
 std::string array_name("fragment_info_array");
 
-void create_array() {
+void create_array(Domain &domain) {
   // Create a TileDB context.
-  Context ctx;
+  //Context ctx; ///modiified
 
   // The array will be 4x4 with dimensions "rows" and "cols", with domain [1,4]
   // and space tiles 2x2
-  Domain domain(ctx);
+  //Domain domain(ctx); ///modified
+
   domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 4}}, 2))
         .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 4}}, 2));
   
@@ -277,10 +278,12 @@ void get_fragment_info() {
 
 int main() {
   Context ctx;
+  Graph graph(2,2);
   // if (Object::object(ctx, array_name).type() == Object::Type::Array) {
   //   tiledb::Object::remove(ctx, array_name);
   // }
-  create_array();
+  Domain domian(ctx);
+  create_array(domain);
   //vector<Range>
 
   std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>>  non_empty_vector;
@@ -293,7 +296,8 @@ int main() {
   int num_of_fragments=uri.size();
   for (int i = 0; i < num_of_fragments; i++)
   {
-    Vertex(domain,non_empty,array.uri(),ver=i);
+    Vertex v=Vertex(domain,non_empty_vector[i],uri[i],i+1);
+    graph.insert(new Vertex(domain,,"",i),v);
   }
 
   get_fragment_info();
