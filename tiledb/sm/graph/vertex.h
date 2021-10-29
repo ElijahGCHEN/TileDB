@@ -58,7 +58,7 @@ class Vertex{
   Vertex();
 
   /** Constructor. */
-  Vertex(const Domain* domain, NDRange non_empty,
+  Vertex(const Domain* domain, std::vector<std::pair<std::string, std::pair<int, int>>> non_empty,
           string uri,int ver);
 
   /** Destructor. */
@@ -92,7 +92,7 @@ class Vertex{
 
   Vertex* get_parent(); 
 
-  const NDRange& get_NDRange():
+  std::vector<std::pair<std::string, std::pair<int, int>>> get_NDRange():
 
   get_fragment_from_uri();
   void if_materialized();
@@ -105,8 +105,9 @@ class Vertex{
 
   const Domain* domain_;
 
-  NDRange NDRange_;
-  
+  //NDRange NDRange_;
+
+  std::vector<std::pair<std::string, std::pair<int, int>>>  NDRange_;
   int versionNo;
 
   bool materialized=0;

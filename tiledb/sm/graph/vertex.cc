@@ -57,7 +57,7 @@ Vertex::Vertex(){
     uri="";
 }
 
-Vertex::Vertex(const Domain* domain, std::string uri,NDRange non_empty,int ver)
+Vertex::Vertex(const Domain* domain, std::string uri,std::vector<std::pair<std::string, std::pair<int, int>>> non_empty,int ver)
     :domain_(domain),uri(uri),non_empty_domain_(non_empty),versionNo(ver)
     {
       no_of_cells=domain_->cell_num(ptr->domain_->domain());
@@ -110,7 +110,10 @@ bool Vertex::if_contain(vertex*vtr){
   for(int i=0;i<(int)dim_num<i++){
     // Range Outside=vtr->domain_->domain(i);
     // Range Inside=domain_->domain(i);
-    if(newNDRange[i] > NDRange_[i]){
+    if(newNDRange[i].second.first >= NDRange_[i].second.first
+    &&
+    newNDRange[i].second.second <= NDRange_[i].second.second
+    ){
         return false;
     }
   }

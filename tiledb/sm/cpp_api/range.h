@@ -125,37 +125,37 @@ class Range {
     set_range_var(s1.data(), s1.size(), s2.data(), s2.size());
   }
 
-  /** Returns the pointer to the range flattened bytes. */
-  const void* data() const {
-    return range_.empty() ? nullptr : &range_[0];
-  }
+//   /** Returns the pointer to the range flattened bytes. */
+//   const void* data() const {
+//     return range_.empty() ? nullptr : &range_[0];
+//   }
 
   /** Returns a pointer to the start of the range. */
   const void* start() const {
     return &range_[0];
   }
 
-  /** Copies 'start' into this range's start bytes for fixed-size ranges. */
-  void set_start(const void* const start) {
-    if (range_start_size_ != 0)
-      LOG_FATAL("Unexpected var-sized range; cannot set end range.");
-    const size_t fixed_size = range_.size() / 2;
-    std::memcpy(&range_[0], start, fixed_size);
-  }
+//   /** Copies 'start' into this range's start bytes for fixed-size ranges. */
+//   void set_start(const void* const start) {
+//     if (range_start_size_ != 0)
+//       LOG_FATAL("Unexpected var-sized range; cannot set end range.");
+//     const size_t fixed_size = range_.size() / 2;
+//     std::memcpy(&range_[0], start, fixed_size);
+//   }
 
-  /** Returns the start as a string. */
-  std::string start_str() const {
-    if (start_size() == 0)
-      return std::string();
-    return std::string((const char*)start(), start_size());
-  }
+//   /** Returns the start as a string. */
+//   std::string start_str() const {
+//     if (start_size() == 0)
+//       return std::string();
+//     return std::string((const char*)start(), start_size());
+//   }
 
-  /** Returns the end as a string. */
-  std::string end_str() const {
-    if (end_size() == 0)
-      return std::string();
-    return std::string((const char*)end(), end_size());
-  }
+//   /** Returns the end as a string. */
+//   std::string end_str() const {
+//     if (end_size() == 0)
+//       return std::string();
+//     return std::string((const char*)end(), end_size());
+//   }
 
   /**
    * Returns the size of the start of the range.

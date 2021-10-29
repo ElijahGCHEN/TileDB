@@ -139,7 +139,7 @@ void write_array_1(std::vector<NDRange> * non_empty_vector, std::vector<std::str
 
 }
 
-void write_array_2(vector<NDRange> * non_empty_vector, vector<std::string> * uri) {
+void write_array_2(std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>>  *non_empty_vector, vector<std::string> * uri) {
 
   // std::vector<int> data = {5, 6, 7, 8, 9, 10, 11, 12};
   // std::vector<int> subarray = {2, 3, 1, 4};
@@ -261,6 +261,8 @@ void get_fragment_info() {
     }
 
   }
+  
+  std::vector<std::pair<std::string, std::pair<int, int>>>
 
   auto non_empty = array.non_empty_domain<int>();
   int num_of_dim= non_empty.size();
@@ -281,7 +283,7 @@ int main() {
   create_array();
   //vector<Range>
 
-  std::vector<NDRange>  non_empty_vector;
+  std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>>  non_empty_vector;
   //std::vector<NDRange>  non_empty;
   std::vector<std::string>  uri;
 
