@@ -108,10 +108,10 @@ class Vertex{
   //NDRange NDRange_;
 
   std::vector<std::pair<std::string, std::pair<int, int>>>  NDRange_;
-  
+
   int versionNo;
 
-  bool materialized=0;
+  bool materialized;
 
 
 

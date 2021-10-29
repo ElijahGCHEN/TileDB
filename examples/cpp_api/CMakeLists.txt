@@ -27,7 +27,13 @@
 
 # Add custom target 'examples_coo'
 add_custom_target(examples_cpp DEPENDS tiledb_shared)
-
+add_library(graph
+  STATIC
+    vertex.h
+    vertex.cc
+    graph.h
+    graph.cc
+)
 # Function that builds an executable per example
 function(build_TileDB_example_cppapi TARGET)
   add_executable(${TARGET}_cpp EXCLUDE_FROM_ALL ${TARGET}.cc)
@@ -40,6 +46,11 @@ function(build_TileDB_example_cppapi TARGET)
     # to libzstd or libcurl to work.
     target_link_libraries(${TARGET}_cpp pthread dl)
   endif()
+
+
+  target_link_libraries(${TARGET}_cpp graph)
+
+
   add_dependencies(examples_cpp ${TARGET}_cpp)
 endfunction()
 
