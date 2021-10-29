@@ -71,7 +71,7 @@ void create_array() {
   Array::create(array_name, schema);
 }
 
-void write_array_1(std::vector<NDRange> * non_empty, std::vector<std::string> * uri) {
+void write_array_1(std::vector<NDRange> * non_empty_vector, std::vector<std::string> * uri) {
   Context ctx;
 
   // Prepare some data for the array
@@ -108,13 +108,13 @@ void write_array_1(std::vector<NDRange> * non_empty, std::vector<std::string> * 
 
   auto non_empty = array.non_empty_domain<int>();
 
-  non_empty.push_back(non_empty);
+  non_empty_vector.push_back(non_empty);
 
   std::string uri=array.uri();
 
   uri.push_back(uri);
 
-  int num_of_dim= non_empty.size();
+  int num_of_dim= non_empty_vector.size();
   
   for(int i=0;i<num_of_dim;i++){
       std::cout << "Dimension named " << non_empty[i].first << " has cells in [" << non_empty[i].second.first << ", " << 
@@ -139,7 +139,7 @@ void write_array_1(std::vector<NDRange> * non_empty, std::vector<std::string> * 
 
 }
 
-void write_array_2(vector<NDRange> * non_empty, vector<std::string> * uri) {
+void write_array_2(vector<NDRange> * non_empty_vector, vector<std::string> * uri) {
 
   // std::vector<int> data = {5, 6, 7, 8, 9, 10, 11, 12};
   // std::vector<int> subarray = {2, 3, 1, 4};
@@ -159,13 +159,13 @@ void write_array_2(vector<NDRange> * non_empty, vector<std::string> * uri) {
   
   auto non_empty = array.non_empty_domain<int>();
 
-  non_empty.push_back(non_empty);
+  non_empty_vector.push_back(non_empty);
 
   std::string uri=array.uri();
 
   uri.push_back(uri);
 
-  int num_of_dim= non_empty.size();
+  int num_of_dim= non_empty_vector.size();
   
   for(int i=0;i<num_of_dim;i++){
       std::cout << "Dimension named " << non_empty[i].first << " has cells in [" << non_empty[i].second.first << ", " << 
@@ -279,12 +279,14 @@ int main() {
   //   tiledb::Object::remove(ctx, array_name);
   // }
   create_array();
+  //vector<Range>
 
-  std::vector<NDRange>  non_empty;
+  std::vector<NDRange>  non_empty_vector;
+  //std::vector<NDRange>  non_empty;
   std::vector<std::string>  uri;
 
-  write_array_1(&non_empty,&uri);
-  write_array_2(&non_empty,&uri);
+  write_array_1(&non_empty_vector,&uri);
+  write_array_2(&non_empty_vector,&uri);
 
   int num_of_fragments=uri.size();
   for (int i = 0; i < num_of_fragments; i++)
