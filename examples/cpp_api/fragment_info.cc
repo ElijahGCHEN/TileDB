@@ -262,7 +262,7 @@ void get_fragment_info() {
 
   }
   
-  std::vector<std::pair<std::string, std::pair<int, int>>>
+  
 
   auto non_empty = array.non_empty_domain<int>();
   int num_of_dim= non_empty.size();
