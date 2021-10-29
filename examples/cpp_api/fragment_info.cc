@@ -280,7 +280,7 @@ void get_fragment_info() {
 
 int main() {
   Context ctx;
-  sm::Graph graph(2,2);
+  Graph graph(2,2);
   // if (Object::object(ctx, array_name).type() == Object::Type::Array) {
   //   tiledb::Object::remove(ctx, array_name);
   // }
@@ -298,7 +298,7 @@ int main() {
   int num_of_fragments=uri.size();
   for (int i = 0; i < num_of_fragments; i++)
   {
-    sm::Vertex v=Vertex(domain,non_empty_vector[i],uri[i],i+1);
+    Vertex v=Vertex(domain,non_empty_vector[i],uri[i],i+1);
     graph.insert(new Vertex(domain,,"",i),v);
   }
 

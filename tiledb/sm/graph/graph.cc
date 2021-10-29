@@ -45,8 +45,8 @@
 
 //using namespace tiledb::sm;
 
-namespace tiledb {
-namespace sm {
+//namespace tiledb {
+//namespace sm {
 
 /* ****************************** */
 /*   CONSTRUCTORS & DESTRUCTORS   */
@@ -60,7 +60,7 @@ Graph::Graph(){
 }
 
 Graph::Graph(int dim_num,int size)
-    :dim_num(dim_num),size(size)
+    :dim_num(dim_num),size(size){
     // {
     //     for(int v = 0; v < adjacent_metrix.size(); v++) {
 	// 	adjacent_metrix[v].push_back(0);
@@ -71,8 +71,8 @@ Graph::Graph(int dim_num,int size)
     adjacent_metrix=adj_m;
 
     //root= &Vertex;
-      
 }
+
 
 Graph::~Graph() =default;
 

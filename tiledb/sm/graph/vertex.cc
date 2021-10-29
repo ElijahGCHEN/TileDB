@@ -45,8 +45,8 @@
 
 //using namespace tiledb::sm;
 
-namespace tiledb {
-namespace sm {
+//namespace tiledb {
+//namespace sm {
 
 /* ****************************** */
 /*   CONSTRUCTORS & DESTRUCTORS   */
