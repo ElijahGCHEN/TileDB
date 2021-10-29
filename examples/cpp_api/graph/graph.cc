@@ -81,24 +81,24 @@ Graph::Graph(const Graph& vtx):Graph(){
   swap(clone);
 }
 
- /** Move constructor. */
-Graph::Graph(Graph&& vtx) noexcept
-    : Graph() {
-  swap(vtx);
-}
+//  /** Move constructor. */
+// Graph::Graph(Graph&& vtx) noexcept
+//     : Graph() {
+//   swap(vtx);
+// }
 
-Graph& Graph::operator=(const Graph& vtx) {
-  auto clone = vtx.clone();
-  swap(clone);
+// Graph& Graph::operator=(const Graph& vtx) {
+//   auto clone = vtx.clone();
+//   swap(clone);
 
-  return *this;
-}
+//   return *this;
+// }
 
-Graph& Graph::operator=(Graph&& vtx) noexcept {
-  swap(vtx);
+// Graph& Graph::operator=(Graph&& vtx) noexcept {
+//   swap(vtx);
 
-  return *this;
-}
+//   return *this;
+// }
 
 
 /* ********************************* */

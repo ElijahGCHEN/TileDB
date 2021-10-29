@@ -66,29 +66,29 @@ Vertex::Vertex(const Domain* domain, std::string uri,std::vector<std::pair<std::
 
 Vertex::~Vertex() =default;
 
-Vertex::Vertex(const Vertex& vtx):Vertex(){
-  auto clone = vtx.clone();
-  swap(clone);
-}
+// Vertex::Vertex(const Vertex& vtx):Vertex(){
+//   auto clone = vtx.clone();
+//   swap(clone);
+// }
 
- /** Move constructor. */
-Vertex::Vertex(Vertex&& vtx) noexcept
-    : Vertex() {
-  swap(vtx);
-}
+//  /** Move constructor. */
+// Vertex::Vertex(Vertex&& vtx) noexcept
+//     : Vertex() {
+//   swap(vtx);
+// }
 
-Vertex& Vertex::operator=(const Vertex& vtx) {
-  auto clone = vtx.clone();
-  swap(clone);
+// Vertex& Vertex::operator=(const Vertex& vtx) {
+//   auto clone = vtx.clone();
+//   swap(clone);
 
-  return *this;
-}
+//   return *this;
+// }
 
-Vertex& Vertex::operator=(Vertex&& vtx) noexcept {
-  swap(vtx);
+// Vertex& Vertex::operator=(Vertex&& vtx) noexcept {
+//   swap(vtx);
 
-  return *this;
-}
+//   return *this;
+// }
 
 
 /* ********************************* */

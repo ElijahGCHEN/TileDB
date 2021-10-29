@@ -64,17 +64,17 @@ class Graph{
   /** Destructor. */
   ~Graph();
 
-  /** Copy constructor. This performs a deep copy. */
-  Graph(const Graph& g);
+  // /** Copy constructor. This performs a deep copy. */
+  // Graph(const Graph& g);
 
-  /** Move constructor. */
-  Graph(Graph&& g) noexcept;
+  // /** Move constructor. */
+  // Graph(Graph&& g) noexcept;
 
-  /** Copy-assign operator. This performs a deep copy. */
-  Graph& operator=(const Graph& g);
+  // /** Copy-assign operator. This performs a deep copy. */
+  // Graph& operator=(const Graph& g);
 
-  /** Move-assign operator. */
-  Graph& operator=(Graph&& g) noexcept;
+  // /** Move-assign operator. */
+  // Graph& operator=(Graph&& g) noexcept;
 
   /* ********************************* */
   /*                 API               */

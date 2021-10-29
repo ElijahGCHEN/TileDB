@@ -64,17 +64,17 @@ class Vertex{
   /** Destructor. */
   ~Vertex();
 
-  /** Copy constructor. This performs a deep copy. */
-  Vertex(const Vertex& vtx);
+  // /** Copy constructor. This performs a deep copy. */
+  // Vertex(const Vertex& vtx);
 
-  /** Move constructor. */
-  Vertex(Vertex&& vtx) noexcept;
+  // /** Move constructor. */
+  // Vertex(Vertex&& vtx) noexcept;
 
-  /** Copy-assign operator. This performs a deep copy. */
-  Vertex& operator=(const Vertex& vtx);
+  // /** Copy-assign operator. This performs a deep copy. */
+  // Vertex& operator=(const Vertex& vtx);
 
-  /** Move-assign operator. */
-  Vertex& operator=(Vertex&& vtx) noexcept;
+  // /** Move-assign operator. */
+  // Vertex& operator=(Vertex&& vtx) noexcept;
 
   /* ********************************* */
   /*                 API               */
@@ -108,6 +108,7 @@ class Vertex{
   //NDRange NDRange_;
 
   std::vector<std::pair<std::string, std::pair<int, int>>>  NDRange_;
+  
   int versionNo;
 
   bool materialized=0;
