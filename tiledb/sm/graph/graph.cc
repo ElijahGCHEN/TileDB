@@ -65,9 +65,9 @@ Graph::Graph(int dim_num,int size)
     //     for(int v = 0; v < adjacent_metrix.size(); v++) {
 	// 	adjacent_metrix[v].push_back(0);
 	// }
-    std::vector<uint_32> row;
+    std::vector<unit64_t> row;
     row.assign(size,0);
-    std::vector<std::vector<unit_32>> adj_m;
+    std::vector<std::vector<unit64_t>> adj_m;
     adjacent_metrix=adj_m;
       
 }

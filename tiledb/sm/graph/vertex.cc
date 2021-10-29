@@ -95,7 +95,7 @@ Vertex& Vertex::operator=(Vertex&& vtx) noexcept {
 /*                 API               */
 /* ********************************* */
 
-bool Vertex::if_contain(vertex*vtr){
+bool Vertex::if_contain(Vertex*vtr){
   //unsigned dim_num_=vtr->domain_->dim_num();
   //int dim_num = NDRange.size();
   unsigned dim_num=domian_->dim_num();
@@ -131,7 +131,7 @@ void Vertex::add_children(vertex* ptr){
     //cell_num(fragments[i].expanded_non_empty_domain());
 }
 
-void Vertex::add_parent(vertex* ptr){
+void Vertex::add_parent(Vertex* ptr){
 
   parents.push_back(ptr->get_version());
 
