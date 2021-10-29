@@ -45,8 +45,8 @@
 
 //using namespace tiledb::sm;
 
-namespace tiledb {
-namespace sm {
+//namespace tiledb {
+//namespace sm {
 
 
 class Graph{
@@ -109,7 +109,7 @@ class Graph{
 
 };
 
-}  // namespace sm
-}  // namespace tiledb
+//}  // namespace sm
+//}  // namespace tiledb
 
 #endif  // TILEDB_GRAPH_H

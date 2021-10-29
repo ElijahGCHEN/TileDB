@@ -44,8 +44,8 @@
 
 //using namespace tiledb::common;
 
-namespace tiledb {
-namespace sm {
+//namespace tiledb {
+//namespace sm {
 
 
 class Vertex{
@@ -123,7 +123,7 @@ class Vertex{
 
 };
 
-}  // namespace sm
-}  // namespace tiledb
+//}  // namespace sm
+//}  // namespace tiledb
 
 #endif  // TILEDB_VERTEX_H
