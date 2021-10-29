@@ -182,7 +182,7 @@ void get_fragment_info() {
   // Create TileDB context
   Context ctx;
 
-  //Array array(ctx,array_name, TILEDB_READ); ///newadd
+  Array array(ctx,array_name, TILEDB_READ); ///newadd
 
   // Create fragment info object
   FragmentInfo fragment_info(ctx, array_name);
