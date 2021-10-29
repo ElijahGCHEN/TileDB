@@ -43,7 +43,7 @@
 #include <iostream>
 #include <list>
 
-using namespace tiledb::common;
+using namespace tiledb::sm;
 
 namespace tiledb {
 namespace sm {

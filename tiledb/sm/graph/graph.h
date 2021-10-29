@@ -43,7 +43,7 @@
 //#include "../array_schema/domain.h"
 //#include "tiledb/sm/misc/tile_overlap.h"
 
-using namespace tiledb::common;
+using namespace tiledb::sm;
 
 namespace tiledb {
 namespace sm {
@@ -81,20 +81,20 @@ class Graph{
   /* ********************************* */
 
 
-	void insert(vertex* base_, vertex* new_);
-	void add_child(vertex* parent_, vertex* new_);
+	void insert(Vertex* base_, Vertex* new_);
+	void add_child(Vertex* parent_, Vertex* new_);
 	void materialization();
-  vector<int> get_parents_from_ver(int ver);
+  std::vector<int> get_parents_from_ver(int ver);
   
   private:
 
     unsigned dim_num;
     int size;
-	  std::vector<std::vector<uint_32>> adjacent_matrix;
+	  std::vector<std::vector<std::int>> adjacent_matrix;
     
 	  Vertex* root;
 
-    std::vector<std::vector<bool>> visited;
+    std::vector<std::vector<std::bool>> visited;
     
     std::vector<Vertex> vertexs;
     
