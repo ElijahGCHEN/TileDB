@@ -140,7 +140,7 @@ int Graph::find_common_ancestor(const Vertex* v){
         // parents_list1.push_back(ver)
         
 
-        if (std::find(parents_list0.begin(), parents_list0.end(), ver) != parents_list0.end()) {
+        if (std::find(parents_list0[1]], parents_list0.end(), ver) != parents_list0.end()) {
             return ver;
         }
         // else {
@@ -157,14 +157,14 @@ int Graph::find_common_ancestor(const Vertex* v){
 void Graph::insert(std::vector<Vertex> bases, Vertex* n){
 
     if(bases.size()==1){
-        if(n->if_contain(bases.begin())){
-            if(!bases.begin()->has_fragment()){
-                int ca=find_common_ancestor(bases.begin());
+        if(n->if_contain(bases[1])){
+            if(!bases[1]->has_fragment()){
+                int ca=find_common_ancestor(bases[1]);
                 Vertex v=vertexs[ca];
                 insert(v,n);
             }else{
-                if(bases.begin()->has_parent()){
-                    std::vector<int> parents=bases.begin()->get_parent();
+                if(bases[1]->has_parent()){
+                    std::vector<int> parents=bases[1]->get_parent();
                     //for (int i = 0; i < parents.size(); i++)
                     //{
                         //if(   ){
@@ -184,7 +184,7 @@ void Graph::insert(std::vector<Vertex> bases, Vertex* n){
             //insert(base's parents,n);
             }
         }else{// 
-            add_child(bases.begin(),n);
+            add_child(bases[1]],n);
         }
     }else{
         for (int i = 0; i < bases.size(); i++)
@@ -268,7 +268,7 @@ void Graph::DFS(int v,int sum_of_weight)
 
     //vector<int>::iterator i;
     //int sum_of_weight=0;
-    //for (i = adjacent_matrix[v].begin(); i != adjacent_matrix[v].end(); ++i){
+    //for (i = adjacent_matrix[v][1]]; i != adjacent_matrix[v].end(); ++i){
     for (int i = 0; i < adjacent_matrix[v].size(); i++)
     {
         if(adjacent_matrix[v][i]!=0){
