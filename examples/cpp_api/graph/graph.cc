@@ -154,6 +154,11 @@ int Graph::find_common_ancestor(const Vertex* v){
 }
 
 //Vertex* base 
+
+void Graph::insertRoot(Vertex* n){
+    root=n;
+}
+
 void Graph::insert(std::vector<Vertex> bases, Vertex* n){
 
     if(bases.size()==1){

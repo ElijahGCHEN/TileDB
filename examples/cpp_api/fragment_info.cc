@@ -295,17 +295,18 @@ int main() {
   write_array_1(non_empty_vector,uri);
   write_array_2(non_empty_vector,uri);
 
-  Vertex v(,"",0);
-  vector<Vertex> vec;
+  Vertex v;
+  std::vector<Vertex> vec;
   vec.push_back(v);
-  //graph.insert(V)
+  graph.insert(V);
+
   int num_of_fragments=uri.size();
 
-  for (int i = 0; i < num_of_fragments; i++)
-  {
-    Vertex V(non_empty_vector[i],uri[i],i+1);
-    vec.push_back();
-  }
+  // for (int i = 0; i < num_of_fragments; i++)
+  // {
+  //   Vertex V(non_empty_vector[i],uri[i],i+1);
+  //   vec.push_back();
+  // }
 
   //graph.insert(vec,)
 

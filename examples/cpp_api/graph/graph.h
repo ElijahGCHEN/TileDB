@@ -88,7 +88,7 @@ class Graph{
   std::vector<int> get_parents_from_ver(int ver);
   int find_common_ancestor(const Vertex* v);
   void DFS(int v,int sum_of_weight);
-
+  void insertRoot(Vertex* n);
 
   //private:
 
@@ -96,8 +96,8 @@ class Graph{
     int size;
 	  std::vector<std::vector<int>> adjacent_matrix;
     
-	  //Vertex* root;
-    std::shared_ptr<Vertex> root;
+	  Vertex* root;
+    //std::shared_ptr<Vertex> root;
 
     std::vector<std::vector<bool>> visited;
     
