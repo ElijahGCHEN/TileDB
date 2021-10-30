@@ -115,7 +115,7 @@ Graph::~Graph() =default;
 /*                 API               */
 /* ********************************* */
 
-int Graph::find_common_ancestor(Vertex* v){
+int Graph::find_common_ancestor(const Vertex* v){
     std::vector<int> parents=v->get_parent();
     std::vector<int> parents_list0;
     std::vector<int> parents_list1;
@@ -160,7 +160,7 @@ void Graph::insert(std::initializer_list<Vertex> bases, Vertex* n){
         if(n->if_contain(bases.begin())){
             if(!bases.begin()->has_fragment()){
                 int ca=find_common_ancestor(bases.begin()));
-                insert(vertexs[ca],n);
+                insert(&vertexs[ca],n);
             }else{
                 if(bases.begin()->has_parent()){
                     std::vector<int> parents=bases.begin()->get_parent();

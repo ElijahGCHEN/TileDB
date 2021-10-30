@@ -101,7 +101,7 @@ std::vector<std::pair<std::string, std::pair<int, int>>> Vertex::get_NDRange() c
 
 }
 
-bool Vertex::if_contain(const Vertex*vtr){
+bool Vertex::if_contain(const Vertex*vtr) const{
   //unsigned dim_num_=vtr->domain_->dim_num();
   //int dim_num = NDRange.size();
   
@@ -143,24 +143,24 @@ void Vertex::add_parent(Vertex* ptr){
 
 }
 
-bool Vertex::has_parent(){
+bool Vertex::has_parent() const{
 
   if(parents.empty()){return true;}
   return false;
 }
 
 
-int Vertex::no_of_cells(){
+int Vertex::no_of_cells() const{
   if(num_of_cells){return num_of_cells;}
   return 0;
 }
 
-int Vertex::get_version(){
+int Vertex::get_version() const{
 
   return versionNo;
 }
 
-std::vector<int> Vertex::get_parent(){
+std::vector<int> Vertex::get_parent() const{
     return parents;
 }
 
@@ -190,15 +190,15 @@ int Vertex::dim_num() const {
 //   std::swap(child_map, vtx.child_map);
 // }
 
-bool Vertex::if_materialized(){
+bool Vertex::if_materialized() const{
   return materialized;
 }
 
-void Vertex::set_materialized(){
+void Vertex::set_materialized() {
   materialized=1;
 }
 
-bool Vertex::has_fragment(){
+bool Vertex::has_fragment() const{
   if(uri==""){return false;}
   return true;
 }

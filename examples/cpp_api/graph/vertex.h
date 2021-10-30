@@ -86,17 +86,17 @@ class Vertex{
   /** Returns the domain. */
   //Domain* domain();
 
-  bool if_contain(const Vertex* vtr) ;
+  bool if_contain(const Vertex* vtr) const;
 
   void add_children(Vertex * ptr);
 
-  bool has_parent();
+  bool has_parent() const;
 
-  int no_of_cells();
+  int no_of_cells() const;
 
-  int get_version();
+  int get_version() const;
 
-  std::vector<int> get_parent(); 
+  std::vector<int> get_parent() const; 
 
   void add_parent(Vertex* ptr);
   
@@ -104,11 +104,11 @@ class Vertex{
   std::vector<std::pair<std::string, std::pair<int, int>>> get_NDRange() const;
 
   //get_fragment_from_uri();
-  bool if_materialized();
+  bool if_materialized() const;
 
   void set_materialized();
 
-  bool has_fragment();
+  bool has_fragment() const;
 
   private:
 
