@@ -97,7 +97,7 @@ class Graph{
     
 	  Vertex* root;
 
-    std::vector<std::vector<std::bool>> visited;
+    std::vector<std::vector<bool>> visited;
     
     std::vector<Vertex> vertexs;
     

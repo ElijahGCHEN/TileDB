@@ -111,14 +111,17 @@ int Graph::find_common_ancestor(Vertex* v){
     std::vector<int> parents_list1;
     //int i,j=0;
 
-    int ver=parents[0]->get_parent()[0];
+
+    //int ver=parents[0]->get_parent()[0];
+    int ver=get_parents_from_ver(parents[0]);
     while (ver!=root->get_version())
     {
         parents_list0.push_back(ver)
         ver=get_parents_from_ver(ver);
     }
 
-    ver=parents[1]->get_parent()[0];
+    //ver=parents[1]->get_parent()[0];
+    ver=get_parents_from_ver(parents[1]);
     while (ver!=root->get_version())
     {
         // parents_list1.push_back(ver)
@@ -132,7 +135,7 @@ int Graph::find_common_ancestor(Vertex* v){
         // }
         ver=get_parents_from_ver(ver);
     }
-    
+
     return 0;
 }
 
