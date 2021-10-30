@@ -123,7 +123,7 @@ class Vertex{
 
   bool materialized;
 
-  int no_of_cells;
+  int num_of_cells;
 
   std::vector<int> parents;
   //NDRange ndrange;

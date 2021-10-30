@@ -145,7 +145,7 @@ bool Vertex::has_parent(){
 
 
 int Vertex::no_of_cells(){
-  if(no_of_cells){return no_of_cells;}
+  if(num_of_cells){return num_of_cells;}
   return 0;
 }
 
