@@ -81,7 +81,7 @@ class Graph{
   /* ********************************* */
 
 
-	void insert(std::initializer_list<Vertex> bases, Vertex* n);
+	void insert(std::vector<Vertex> bases, Vertex* n);
 	void add_child(Vertex* newParent, Vertex* n);
 	void materialization(int i);
   void set_materialized(int i);
