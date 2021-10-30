@@ -96,8 +96,9 @@ class Graph{
     int size;
 	  std::vector<std::vector<int>> adjacent_matrix;
     
-	  Vertex* root;
-
+	  //Vertex* root;
+    std::shared_ptr<Vertex> root;
+    
     std::vector<std::vector<bool>> visited;
     
     std::vector<Vertex> vertexs;
