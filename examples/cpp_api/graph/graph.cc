@@ -113,15 +113,18 @@ int Graph::find_common_ancestor(Vertex* v){
 
 
     //int ver=parents[0]->get_parent()[0];
-    int ver=get_parents_from_ver(parents[0]);
+    std::vector<int> vers=get_parents_from_ver(parents[0]);
+    int ver=vers[0];
     while (ver!=root->get_version())
     {
         parents_list0.push_back(ver)
-        ver=get_parents_from_ver(ver);
+        vers=get_parents_from_ver(ver);
+        ver=vers[0];
     }
 
     //ver=parents[1]->get_parent()[0];
-    ver=get_parents_from_ver(parents[1]);
+    vers=get_parents_from_ver(parents[1]);
+    ver=vers[0];
     while (ver!=root->get_version())
     {
         // parents_list1.push_back(ver)
@@ -133,7 +136,8 @@ int Graph::find_common_ancestor(Vertex* v){
         // else {
         //     std::cout << "Element not found";
         // }
-        ver=get_parents_from_ver(ver);
+        vers=get_parents_from_ver(ver);
+        ver=vers[0];
     }
 
     return 0;
@@ -260,7 +264,7 @@ void Graph::DFS(int v,int sum_of_weight)
                 if(sum_of_weight>thresh){
                     //materialization(v,i);
                     materialization(i);
-                    set_materialzed();
+                    //set_materialized();
                     sum_of_weight=0;
                 }
 

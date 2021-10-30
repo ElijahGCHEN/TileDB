@@ -87,7 +87,7 @@ class Graph{
   std::vector<int> get_parents_from_ver(int ver);
   int find_common_ancestor(Vertex* v);
   void DFS(int v,int sum_of_weight);
-
+  
 
   //private:
 
@@ -100,6 +100,8 @@ class Graph{
     std::vector<std::vector<bool>> visited;
     
     std::vector<Vertex> vertexs;
+
+    int thresh;
     
     //std::vector<std::vector<Vertex>> vertexs;
 
