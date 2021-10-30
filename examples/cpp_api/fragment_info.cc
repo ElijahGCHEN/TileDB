@@ -315,8 +315,8 @@ int main() {
   Vertex V1(non_empty_vector[0],uri[0],1);
   Vertex V2(non_empty_vector[1],uri[1],2);
 
-  graph.insert(V0,V1);
-  graph.insert(V1,V2);
+  graph.insert(&V0,&V1);
+  graph.insert(&V1,&V2);
   //graph.insert(vec,)
 
   get_fragment_info();
