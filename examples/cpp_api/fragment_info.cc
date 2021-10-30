@@ -74,7 +74,7 @@ void create_array() {//Domain &domain, Context &ctx
   Array::create(array_name, schema);
 }
 
-void write_array_1(std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>>  &non_empty_vector, std::vector<std::string> &uri) {
+void write_array_1(std::vector<std::vector<std::pair<std::int, std::pair<int, int>>>>  &non_empty_vector, std::vector<std::string> &uri) {
   Context ctx;
 
   // Prepare some data for the array
@@ -126,6 +126,7 @@ void write_array_1(std::vector<std::vector<std::pair<std::string, std::pair<int,
 
 
   array.close();
+  //Array array(ctx,array_name, TILEDB_READ);
 
   // // Open the array for writing and create the query. again
   // std::vector<int> data1 = {9, 10, 11, 12, 13, 14};
@@ -142,7 +143,7 @@ void write_array_1(std::vector<std::vector<std::pair<std::string, std::pair<int,
 
 }
 
-void write_array_2(std::vector<std::vector<std::pair<std::string,std::pair<int, int>>>>  &non_empty_vector, std::vector<std::string> &uri) {
+void write_array_2(std::vector<std::vector<std::pair<std::int,std::pair<int, int>>>>  &non_empty_vector, std::vector<std::string> &uri) {
 
   // std::vector<int> data = {5, 6, 7, 8, 9, 10, 11, 12};
   // std::vector<int> subarray = {2, 3, 1, 4};
@@ -181,7 +182,7 @@ void write_array_2(std::vector<std::vector<std::pair<std::string,std::pair<int, 
 
 }
 
-void get_fragment_info() {
+void get_fragment_info(std::vector<std::vector<std::pair<std::int, std::pair<int, int>>>> &non_empty_vector, std::vector<std::string> &uri) {
   // Create TileDB context
   Context ctx;
 
@@ -204,7 +205,7 @@ void get_fragment_info() {
 
       std::string uri = fragment_info.fragment_uri(i);
       std::cout << "The fragment URI is " << uri.c_str() << ".\n" << std::endl;
-
+      uri.push_back(uri);
       // Get fragment size
       uint64_t size = fragment_info.fragment_size(i);
       std::cout << "The fragment size is " << size << ".\n" << std::endl;
@@ -256,13 +257,30 @@ void get_fragment_info() {
 
     int num_of_dim= 2;
 
+    std::vector<std::pair<std::int, std::pair<int, int>>> f;
+
     for(int j=0;j<num_of_dim;j++){
       int non_empty_dom[2];
       fragment_info.get_non_empty_domain(i, j, &non_empty_dom[0]);
       std::cout <<"Fragment "<<i<<" : "<<"dimension "<< j <<" : ("<<non_empty_dom[0]<<" , "<<non_empty_dom[1]<<"). \n"
                 <<std::endl;
+                
+      std::pair<int, int> range;
+      range.first = non_empty_dom[0];
+      range.second = non_empty_dom[1];
+
+      std::pair<std::int, std::pair<int, int>> dimension;
+      //std::pair<int, int> dimension;
+      dimension.first=j;
+      dimension.second=range;
+
+      
+      f.push_back(dimension);
+    
+      
     }
 
+    non_empty_vector.push_back(f);
   }
   
   
@@ -281,15 +299,20 @@ void get_fragment_info() {
 int main() {
   //Context ctx;
   Graph graph(2,2);
+
   if (Object::object(ctx, array_name).type() == Object::Type::Array) {
     tiledb::Object::remove(ctx, array_name);
   }
   //Domain domain(ctx);
   //create_array(domain,ctx);
+
   create_array();
   //vector<Range>
 
-  std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>>  non_empty_vector;
+  //std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>>  non_empty_vector;
+
+  std::vector<std::vector<std::pair<std::int, std::pair<int, int>>>>  non_empty_vector;
+
   //std::vector<NDRange>  non_empty;
   std::vector<std::string>  uri;
 
