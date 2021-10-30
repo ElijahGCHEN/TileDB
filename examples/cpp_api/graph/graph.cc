@@ -65,10 +65,20 @@ Graph::Graph(int dim_num,int size)
     //     for(int v = 0; v < adjacent_metrix.size(); v++) {
 	// 	adjacent_metrix[v].push_back(0);
 	// }
-    std::vector<int> row;
-    row.assign(size,0);
-    std::vector<std::vector<int>> adj_m;
-    adjacent_metrix=adj_m;
+    
+    //std::vector<int> row;
+    //row.assign(size,0);
+
+    
+
+
+    //std::vector<std::vector<int>> adj_m;
+
+
+    vector<vector<int>> vec(size, vector<int> (size, 0));
+    adjacent_metrix=vec;
+
+    //adjacent_metrix=adj_m;
 
     //root= &Vertex;
 }
@@ -298,19 +308,24 @@ void Graph::DFS(int v,int sum_of_weight)
     // Vertex* Graph::get_vertex_from_ver(int ver){
 
     // }
-
-//    void Graph::materialization(int v,int i){
-
-//        std::vector<int> parents = get_parents_from_ver(i);
-
-//         get_vertex_from_ver();
+    void Graph::set_materialized(int i){
+        vertexs[i].set_materialized();
+    }
 
 
-//         parents+ver;
+   void Graph::materialization(int i){
 
-//         return;
+    //    std::vector<int> parents = get_parents_from_ver(i);
 
-//    }
+    //     get_vertex_from_ver();
+
+
+    //     parents+ver;
+        set_materialized(i);
+
+        return;
+
+   }
 
 
 
