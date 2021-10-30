@@ -281,9 +281,9 @@ void get_fragment_info() {
 int main() {
   Context ctx;
   Graph graph(2,2);
-  // if (Object::object(ctx, array_name).type() == Object::Type::Array) {
-  //   tiledb::Object::remove(ctx, array_name);
-  // }
+  if (Object::object(ctx, array_name).type() == Object::Type::Array) {
+    tiledb::Object::remove(ctx, array_name);
+  }
   Domain domain(ctx);
   create_array(domain,ctx);
   //vector<Range>
@@ -316,7 +316,9 @@ int main() {
   Vertex V2(non_empty_vector[1],uri[1],2);
 
   std::vector<Vertex> v0(1,V0);
+
   std::vector<Vertex> v1(1,V2);
+
   graph.insert(v0,&V1);
   graph.insert(v1,&V2);
   //graph.insert(vec,)

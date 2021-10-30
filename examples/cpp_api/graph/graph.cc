@@ -201,10 +201,20 @@ void Graph::insert(std::vector<Vertex> bases, Vertex* n){
             add_child(&bases[i],n);
         }
     }
+
+    vertexs.push_back(*n);
 }
 
 // bool Graph::insert_recreated_version(){
 
+// }
+
+// void Graph::printVertexs(){
+//     for (int i = 0; i < vertexs.size(); i++)
+//     {
+        
+//     }
+    
 // }
 
 
