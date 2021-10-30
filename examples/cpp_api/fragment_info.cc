@@ -315,8 +315,10 @@ int main() {
   Vertex V1(non_empty_vector[0],uri[0],1);
   Vertex V2(non_empty_vector[1],uri[1],2);
 
-  graph.insert(&V0,&V1);
-  graph.insert(&V1,&V2);
+  std::vector<Vertex> v0(1,V0);
+  std::vector<Vertex> v1(1,V2);
+  graph.insert(v0,&V1);
+  graph.insert(v1,&V2);
   //graph.insert(vec,)
 
   get_fragment_info();
