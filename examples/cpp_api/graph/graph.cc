@@ -140,7 +140,7 @@ int Graph::find_common_ancestor(const Vertex* v){
         // parents_list1.push_back(ver)
         
 
-        if (std::find(parents_list0[.begin()], parents_list0.end(), ver) != parents_list0.end()) {
+        if (std::find(parents_list0.begin(), parents_list0.end(), ver) != parents_list0.end()) {
             return ver;
         }
         // else {
