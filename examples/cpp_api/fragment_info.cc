@@ -182,7 +182,7 @@ void write_array_2() {
 
 }
 
-void get_fragment_info(std::vector<std::vector<std::pair<int, std::pair<int, int>>>> &non_empty_vector, std::vector<std::string> &uri) {
+void get_fragment_info(std::vector<std::vector<std::pair<int, std::pair<int, int>>>> &non_empty_vector, std::vector<std::string> &urii) {
   // Create TileDB context
   Context ctx;
 
@@ -205,7 +205,7 @@ void get_fragment_info(std::vector<std::vector<std::pair<int, std::pair<int, int
 
       std::string uri = fragment_info.fragment_uri(i);
       std::cout << "The fragment URI is " << uri.c_str() << ".\n" << std::endl;
-      uri.push_back(uri);
+      urii.push_back(uri);
       // Get fragment size
       uint64_t size = fragment_info.fragment_size(i);
       std::cout << "The fragment size is " << size << ".\n" << std::endl;
