@@ -158,12 +158,12 @@ void Graph::insert(std::initializer_list<Vertex> bases, Vertex* n){
 
     if(bases.size()==1){
         if(n->if_contain(bases)){
-            if(!bases->has_fragment()){
+            if(!bases[1].has_fragment()){
                 Vertex* ca=find_common_ancestor(bases));
                 insert(ca,n);
             }else{
-                if(base->has_parent()){
-                    std::vector<int> parents=bases->get_parent();
+                if(bases[1].has_parent()){
+                    std::vector<int> parents=bases[1].get_parent();
                     //for (int i = 0; i < parents.size(); i++)
                     //{
                         //if(   ){
