@@ -108,6 +108,7 @@ class Vertex{
 
   void set_materialized();
 
+  bool has_fragment();
 
   private:
 

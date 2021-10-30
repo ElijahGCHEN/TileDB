@@ -197,3 +197,8 @@ bool Vertex::if_materialized(){
 void Vertex::set_materialized(){
   materialized=1;
 }
+
+bool Vertex::has_fragment(){
+  if(uri==""){return false;}
+  return true;
+}
