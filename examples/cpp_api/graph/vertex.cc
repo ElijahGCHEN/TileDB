@@ -166,22 +166,22 @@ const Domain* Vertex::domain() const {
   return domain_;
 }
 
-Vertex Vertex::clone() const {
-  Vertex clone;
-  clone.domain_ = domain_;
-  clone.uri=uri;
-  clone.child_map=child_map;
-  //clone.fanout_ = fanout_;
-  //clone.levels_ = levels_;
+// Vertex Vertex::clone() const {
+//   Vertex clone;
+//   clone.domain_ = domain_;
+//   clone.uri=uri;
+//   //clone.child_map=child_map;
+//   //clone.fanout_ = fanout_;
+//   //clone.levels_ = levels_;
 
-  return clone;
-}
+//   return clone;
+// }
 
-void Vertex::swap(Vertex& vtx) {
-  std::swap(domain_, vtx.domain_);
-  std::swap(uri, vtx.uri);
-  std::swap(child_map, vtx.child_map);
-}
+// void Vertex::swap(Vertex& vtx) {
+//   std::swap(domain_, vtx.domain_);
+//   std::swap(uri, vtx.uri);
+//   std::swap(child_map, vtx.child_map);
+// }
 
 bool Vertex::if_materialized(){
   return materialized
