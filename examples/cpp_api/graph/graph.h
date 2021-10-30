@@ -37,7 +37,7 @@
 #include <unordered_map>
 #include <initializer_list>
 #include <tiledb/tiledb>
-
+#include <memory>
 #include "vertex.h"
 //#include "tiledb/common/status.h"
 //#include "../array_schema/domain.h"
