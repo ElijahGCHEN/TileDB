@@ -115,8 +115,8 @@ class Vertex{
 
   //std::unordered_map<Vertex* vtx,std::int num_of_cells> child_map;
 
-  tiledb::sm::Domain* domain_;
-
+  //tiledb::sm::Domain* domain_;
+  Domain* domain_;
   //NDRange NDRange_;
 
   std::vector<std::pair<std::string, std::pair<int, int>>>  NDRange_;
