@@ -192,7 +192,7 @@ void Graph::insert(std::vector<Vertex> bases, Vertex* n){
     }else{
         for (int i = 0; i < bases.size(); i++)
         {
-            add_child(bases[i],n);
+            add_child(&bases[i],n);
         }
     }
 }
