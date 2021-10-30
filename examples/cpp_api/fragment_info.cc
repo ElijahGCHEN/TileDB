@@ -295,10 +295,12 @@ int main() {
   write_array_1(non_empty_vector,uri);
   write_array_2(non_empty_vector,uri);
 
-  Vertex v;
-  std::vector<Vertex> vec;
-  vec.push_back(v);
-  graph.insertRoot(&v);
+  Vertex V0;
+  //std::vector<Vertex> vec;
+
+  //vec.push_back(V0);
+
+  graph.insertRoot(&V0);
 
   int num_of_fragments=uri.size();
 
@@ -306,8 +308,15 @@ int main() {
   // {
   //   Vertex V(non_empty_vector[i],uri[i],i+1);
   //   vec.push_back();
+    
   // }
+  // for (int i = 0; i < num_of_fragments; i++)
+  // {
+  Vertex V1(non_empty_vector[0],uri[0],1);
+  Vertex V2(non_empty_vector[1],uri[1],2);
 
+  graph.insert(V0,V1);
+  graph.insert(V1,V2);
   //graph.insert(vec,)
 
   get_fragment_info();
