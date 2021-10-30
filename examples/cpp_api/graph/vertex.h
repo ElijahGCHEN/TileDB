@@ -98,6 +98,7 @@ class Vertex{
 
   std::vector<int> get_parent(); 
 
+  void add_parent(Vertex* ptr);
   
 
   std::vector<std::pair<std::string, std::pair<int, int>>> get_NDRange();
