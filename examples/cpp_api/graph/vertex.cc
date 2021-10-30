@@ -98,16 +98,16 @@ Vertex::~Vertex() =default;
 bool Vertex::if_contain(Vertex*vtr){
   //unsigned dim_num_=vtr->domain_->dim_num();
   //int dim_num = NDRange.size();
-  unsigned dim_num=domian_->dim_num();
+  unsigned dim_num=domain_->dim_num();
 
-  if(vtr->domina_->dim_num() > dim_num){return false;}
+  if(vtr->domain_->dim_num() > dim_num){return false;}
   
   auto newNDRange=domain_->get_NDRange();
 
   
   
 
-  for(int i=0;i<(int)dim_num<i++){
+  for(int i=0;i<(int)dim_num;i++){
     // Range Outside=vtr->domain_->domain(i);
     // Range Inside=domain_->domain(i);
     if(newNDRange[i].second.first >= NDRange_[i].second.first
@@ -120,16 +120,16 @@ bool Vertex::if_contain(Vertex*vtr){
     return true;
 }
 
-void Vertex::add_children(Vertex* ptr){
+// void Vertex::add_children(Vertex* ptr){
 
-    if(if_contain(ptr)){
-    int cell_num=ptr->domain_->cell_num(ptr->domain_->domain());
+//     if(if_contain(ptr)){
+//     int cell_num=ptr->domain_->cell_num(ptr->domain_->domain());
 
-    child_map.insert(ptr,cell_num);
-    ptr->add_parents(this);
-    }
-    //cell_num(fragments[i].expanded_non_empty_domain());
-}
+//     child_map.insert(ptr,cell_num);
+//     ptr->add_parents(this);
+//     }
+//     //cell_num(fragments[i].expanded_non_empty_domain());
+// }
 
 void Vertex::add_parent(Vertex* ptr){
 
@@ -158,11 +158,11 @@ Vector<int> Vertex::get_parent(){
 }
 
 
-unsigned Vertex::dim_num() const {
+unsigned Vertex::dim_num() {
   return (domain_ == nullptr) ? 0 : domain_->dim_num();
 }
 
-const Domain* Vertex::domain() const {
+Domain* Vertex::domain() {
   return domain_;
 }
 
