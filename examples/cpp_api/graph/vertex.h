@@ -81,12 +81,12 @@ class Vertex{
   /* ********************************* */
 
   /** The number of dimensions of the R-tree. */
-  int dim_num();
+  int dim_num() const;
 
   /** Returns the domain. */
   //Domain* domain();
 
-  bool if_contain(const Vertex* vtr);
+  bool if_contain(const Vertex* vtr) ;
 
   void add_children(Vertex * ptr);
 
@@ -101,7 +101,7 @@ class Vertex{
   void add_parent(Vertex* ptr);
   
 
-  std::vector<std::pair<std::string, std::pair<int, int>>> get_NDRange();
+  std::vector<std::pair<std::string, std::pair<int, int>>> get_NDRange() const;
 
   //get_fragment_from_uri();
   bool if_materialized();

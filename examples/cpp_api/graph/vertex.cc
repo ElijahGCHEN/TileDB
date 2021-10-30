@@ -95,7 +95,7 @@ Vertex::~Vertex() =default;
 /*                 API               */
 /* ********************************* */
 
-std::vector<std::pair<std::string, std::pair<int, int>>> Vertex::get_NDRange(){
+std::vector<std::pair<std::string, std::pair<int, int>>> Vertex::get_NDRange() const{
 
   return NDRange_;
 
@@ -165,7 +165,7 @@ std::vector<int> Vertex::get_parent(){
 }
 
 
-int Vertex::dim_num() {
+int Vertex::dim_num() const {
   return num_dim;
 }
 
