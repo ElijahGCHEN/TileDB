@@ -65,9 +65,9 @@ Graph::Graph(int dim_num,int size)
     //     for(int v = 0; v < adjacent_metrix.size(); v++) {
 	// 	adjacent_metrix[v].push_back(0);
 	// }
-    std::vector<unit64_t> row;
+    std::vector<int> row;
     row.assign(size,0);
-    std::vector<std::vector<unit64_t>> adj_m;
+    std::vector<std::vector<int>> adj_m;
     adjacent_metrix=adj_m;
 
     //root= &Vertex;
@@ -76,10 +76,10 @@ Graph::Graph(int dim_num,int size)
 
 Graph::~Graph() =default;
 
-Graph::Graph(const Graph& vtx):Graph(){
-  auto clone = vtx.clone();
-  swap(clone);
-}
+// Graph::Graph(const Graph& vtx):Graph(){
+//   auto clone = vtx.clone();
+//   swap(clone);
+// }
 
 //  /** Move constructor. */
 // Graph::Graph(Graph&& vtx) noexcept
@@ -169,12 +169,12 @@ bool Graph::insert(initializer_list<Vertex> bases, Vertex* n){
     }
 }
 
-bool Graph::insert_recreated_version(){
+// bool Graph::insert_recreated_version(){
 
-}
+// }
 
 
-vector<int> Graph::get_parents_from_ver(int ver){
+std::vector<int> Graph::get_parents_from_ver(int ver){
     std::vector<int> Parents;
     for (int i = 0; i < adjacent_matrix.size(); i++)
     {
@@ -279,27 +279,29 @@ void Graph::DFS(int v,int sum_of_weight)
         //     DFS(*i);
         // }
         // }
+
+        return;
         
 }
         
 
 
-    Vertex* Graph::get_vertex_from_ver(int ver){
+    // Vertex* Graph::get_vertex_from_ver(int ver){
 
-    }
+    // }
 
-   void Graph::materialization(int v,int i){
+//    void Graph::materialization(int v,int i){
 
-       std::vector<int> parents = get_parents_from_ver(i);
+//        std::vector<int> parents = get_parents_from_ver(i);
 
-        get_vertex_from_ver();
+//         get_vertex_from_ver();
 
 
-        parents+ver;
+//         parents+ver;
 
-        return;
+//         return;
 
-   }
+//    }
 
 
 

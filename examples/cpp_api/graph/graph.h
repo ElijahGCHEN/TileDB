@@ -81,16 +81,19 @@ class Graph{
   /* ********************************* */
 
 
-	void insert(Vertex* base_, Vertex* new_);
-	void add_child(Vertex* parent_, Vertex* new_);
+	void insert(initializer_list<Vertex> base_, Vertex* n);
+	void add_child(Vertex* newParent, Vertex* n);
 	void materialization();
   std::vector<int> get_parents_from_ver(int ver);
-  
+  int find_common_ancestor(Vertex* v);
+  void DFS(int v,int sum_of_weight);
+
+
   //private:
 
-    unsigned dim_num;
+    int dim_num;
     int size;
-	  std::vector<std::vector<unit64_t>> adjacent_matrix;
+	  std::vector<std::vector<int>> adjacent_matrix;
     
 	  Vertex* root;
 
