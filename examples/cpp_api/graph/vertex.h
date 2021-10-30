@@ -39,7 +39,7 @@
 #include <tiledb/tiledb>
 
 //#include "tiledb/common/status.h"
-//#include "../array_schema/domain.h"
+//#include "../../../tiledb/sm/array_schema/domain.h"
 //#include "tiledb/sm/misc/tile_overlap.h"
 
 //using namespace tiledb::common;
@@ -59,7 +59,7 @@ class Vertex{
 
   /** Constructor. */
   Vertex(const Domain* domain, std::vector<std::pair<std::string, std::pair<int, int>>> non_empty,
-          string uri,int ver);
+          std::string uri,int ver);
 
   /** Destructor. */
   ~Vertex();
@@ -86,9 +86,9 @@ class Vertex{
   /** Returns the domain. */
   const Domain* domain() const;
 
-  bool if_contain(vertex& vtr);
+  bool if_contain(Vertex& vtr);
 
-  void add_children(vertex * ptr);
+  void add_children(Vertex * ptr);
 
   Vertex* get_parent(); 
 
@@ -115,7 +115,7 @@ class Vertex{
 
 
 
-  vector<int> parents;
+  std::vector<int> parents;
   //NDRange ndrange;
 
   Vertex clone() const;
