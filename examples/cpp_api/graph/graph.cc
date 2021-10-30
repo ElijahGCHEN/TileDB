@@ -180,14 +180,14 @@ void Graph::insert(std::vector<Vertex> bases, Vertex* n){
                     //std::Vertex new_root;
                     
 
-                    add_child(new_root, root);
-                    add_child(new_root, n);
+                    add_child(new_root.get(), root.get());
+                    add_child(new_root.get(), n);
                     root = new_root;
                 }
             //insert(base's parents,n);
             }
         }else{// 
-            add_child(bases[0],n);
+            add_child(&bases[0],n);
         }
     }else{
         for (int i = 0; i < bases.size(); i++)
