@@ -257,7 +257,7 @@ void get_fragment_info(std::vector<std::vector<std::pair<int, std::pair<int, int
 
     int num_of_dim= 2;
 
-    std::vector<std::pair<int, std::pair<int, int>>> f;
+    std::vector<std::pair<std::string, std::pair<int, int>>> f;
 
     for(int j=0;j<num_of_dim;j++){
       int non_empty_dom[2];
@@ -269,9 +269,9 @@ void get_fragment_info(std::vector<std::vector<std::pair<int, std::pair<int, int
       range.first = non_empty_dom[0];
       range.second = non_empty_dom[1];
 
-      std::pair<int, std::pair<int, int>> dimension;
+      std::pair<std::string, std::pair<int, int>> dimension;
       //std::pair<int, int> dimension;
-      dimension.first=j;
+      dimension.first=std::to_string(j);
       dimension.second=range;
 
       
@@ -311,7 +311,7 @@ int main() {
 
   std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>>  non_empty_vector;
 
-  std::vector<std::vector<std::pair<int, std::pair<int, int>>>>  non_empty_vector;
+  //std::vector<std::vector<std::pair<int, std::pair<int, int>>>>  non_empty_vector;
 
   //std::vector<NDRange>  non_empty;
   std::vector<std::string>  uri;

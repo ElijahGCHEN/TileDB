@@ -58,7 +58,7 @@ Vertex::Vertex(){
     versionNo=0;
 }
 
-Vertex::Vertex(std::vector<std::pair<std::int, std::pair<int, int>>> non_empty, std::string uri,int ver)
+Vertex::Vertex(std::vector<std::pair<std::string, std::pair<int, int>>> non_empty, std::string uri,int ver)
     :uri(uri),NDRange_(non_empty),versionNo(ver)
     {
       //no_of_cells=domain_->cell_num(ptr->domain_->domain());
@@ -96,7 +96,7 @@ Vertex::~Vertex() =default;
 /*                 API               */
 /* ********************************* */
 
-std::vector<std::pair<int, std::pair<int, int>>> Vertex::get_NDRange() const{
+std::vector<std::pair<std::string, std::pair<int, int>>> Vertex::get_NDRange() const{
 
   return NDRange_;
 
