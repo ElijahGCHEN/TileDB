@@ -94,14 +94,14 @@ class Vertex{
 
   std::vector<std::pair<std::string, std::pair<int, int>>> get_NDRange():
 
-  get_fragment_from_uri();
+  //get_fragment_from_uri();
   void if_materialized();
   
   private:
 
   std::string uri;
 
-  std::unordered_map<Vertex* vtx,std::int num_of_cells> child_map;
+  //std::unordered_map<Vertex* vtx,std::int num_of_cells> child_map;
 
   const Domain* domain_;
 

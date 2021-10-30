@@ -120,7 +120,7 @@ bool Vertex::if_contain(Vertex*vtr){
     return true;
 }
 
-void Vertex::add_children(vertex* ptr){
+void Vertex::add_children(Vertex* ptr){
 
     if(if_contain(ptr)){
     int cell_num=ptr->domain_->cell_num(ptr->domain_->domain());
