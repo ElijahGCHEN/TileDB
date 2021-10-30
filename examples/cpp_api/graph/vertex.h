@@ -30,8 +30,8 @@
  * This file defines class RTree.
  */
 
-#ifndef TILEDB_RTREE_H
-#define TILEDB_RTREE_H
+#ifndef TILEDB_VERTEX_H
+#define TILEDB_VERTEX_H
 
 #include <vector>
 #include <unordered_map>

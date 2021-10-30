@@ -30,8 +30,8 @@
  * This file defines class RTree.
  */
 
-#ifndef TILEDB_RTREE_H
-#define TILEDB_RTREE_H
+#ifndef TILEDB_GRAPH_H
+#define TILEDB_GRAPH_H
 
 #include <vector>
 #include <unordered_map>
@@ -106,9 +106,9 @@ class Graph{
 
   
 
-  Graph clone() const;
+  //Graph clone() const;
 
-  void swap(Graph& vtx);
+  //void swap(Graph& vtx);
 
 };
 
