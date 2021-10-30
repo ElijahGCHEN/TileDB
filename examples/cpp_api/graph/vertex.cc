@@ -57,7 +57,7 @@ Vertex::Vertex(){
     uri="";
 }
 
-Vertex::Vertex(const Domain* domain, std::string uri,std::vector<std::pair<std::string, std::pair<int, int>>> non_empty,int ver)
+Vertex::Vertex(Domain* domain, std::string uri,std::vector<std::pair<std::string, std::pair<int, int>>> non_empty,int ver)
     :domain_(domain),uri(uri),NDRange_(non_empty),versionNo(ver)
     {
       //no_of_cells=domain_->cell_num(ptr->domain_->domain());

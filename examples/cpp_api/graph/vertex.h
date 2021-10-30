@@ -58,7 +58,7 @@ class Vertex{
   Vertex();
 
   /** Constructor. */
-  Vertex(const Domain* domain, std::vector<std::pair<std::string, std::pair<int, int>>> non_empty,
+  Vertex(Domain* domain, std::vector<std::pair<std::string, std::pair<int, int>>> non_empty,
           std::string uri,int ver);
 
   /** Destructor. */
@@ -128,9 +128,9 @@ class Vertex{
   std::vector<int> parents;
   //NDRange ndrange;
 
-  Vertex clone() const;
+  //Vertex clone() const;
 
-  void swap(Vertex& vtx);
+  //void swap(Vertex& vtx);
 
 };
 
