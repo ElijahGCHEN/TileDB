@@ -59,7 +59,7 @@ class Graph{
   Graph();
 
   /** Constructor. */
-  Graph(int dim_num);
+  Graph(int dim_num,int size);
 
   /** Destructor. */
   ~Graph();

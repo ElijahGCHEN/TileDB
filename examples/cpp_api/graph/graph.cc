@@ -132,6 +132,8 @@ int Graph::find_common_ancestor(Vertex* v){
         // }
         ver=get_parents_from_ver(ver);
     }
+    
+    return 0;
 }
 
 //Vertex* base 
