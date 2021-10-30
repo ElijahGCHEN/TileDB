@@ -76,7 +76,7 @@ Graph::Graph(int dim_num,int size)
 
 
     std::vector<std::vector<int>> vec(size, std::vector<int> (size, 0));
-    adjacent_metrix=vec;
+    adjacent_matrix=vec;
 
     //adjacent_metrix=adj_m;
 
@@ -127,7 +127,7 @@ int Graph::find_common_ancestor(Vertex* v){
     int ver=vers[0];
     while (ver!=root->get_version())
     {
-        parents_list0.push_back(ver)
+        parents_list0.push_back(ver);
         vers=get_parents_from_ver(ver);
         ver=vers[0];
     }
@@ -225,7 +225,7 @@ void Graph::add_child(Vertex* newParent, Vertex* n){
 
     int parentVer=newParent->get_version();
 
-	adjacent_metrix[parentVer][adjacent_metrix[parentVer].size()-1] = n->no_of_cells();
+	adjacent_matrix[parentVer][adjacent_matrix[parentVer].size()-1] = n->no_of_cells();
 
     n->add_parent(newParent);
 
