@@ -54,7 +54,7 @@
 
 Graph::Graph(){
     dim_num=0;
-    size=0
+    size=0;
 
     Graph(dim_num,size);
 }
