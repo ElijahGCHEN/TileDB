@@ -145,7 +145,8 @@ bool Vertex::has_parent(){
 
 
 int Vertex::no_of_cells(){
-  return no_of_cells;
+  if(no_of_cells){return no_of_cells;}
+  return 0;
 }
 
 int Vertex::get_version(){
@@ -153,7 +154,7 @@ int Vertex::get_version(){
   return versionNo;
 }
 
-Vector<int> Vertex::get_parent(){
+std::vector<int> Vertex::get_parent(){
     return parents;
 }
 
