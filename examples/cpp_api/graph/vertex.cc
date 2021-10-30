@@ -96,7 +96,7 @@ Vertex::~Vertex() =default;
 /*                 API               */
 /* ********************************* */
 
-std::vector<std::pair<std::int, std::pair<int, int>>> Vertex::get_NDRange() const{
+std::vector<std::pair<int, std::pair<int, int>>> Vertex::get_NDRange() const{
 
   return NDRange_;
 
