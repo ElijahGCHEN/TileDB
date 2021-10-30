@@ -154,7 +154,7 @@ int Graph::find_common_ancestor(Vertex* v){
 }
 
 //Vertex* base 
-bool Graph::insert(std::initializer_list<Vertex> bases, Vertex* n){
+void Graph::insert(std::initializer_list<Vertex> bases, Vertex* n){
 
     if(initializer_list.size()==1){
         if(n->if_contain(base)){
