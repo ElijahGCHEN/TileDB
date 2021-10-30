@@ -35,7 +35,7 @@
 
 #include <vector>
 #include <unordered_map>
-
+#include <initializer_list>
 #include <tiledb/tiledb>
 
 #include "vertex.h"
@@ -81,7 +81,7 @@ class Graph{
   /* ********************************* */
 
 
-	void insert(initializer_list<Vertex> base_, Vertex* n);
+	void insert(std::initializer_list<Vertex> base_, Vertex* n);
 	void add_child(Vertex* newParent, Vertex* n);
 	void materialization();
   std::vector<int> get_parents_from_ver(int ver);
