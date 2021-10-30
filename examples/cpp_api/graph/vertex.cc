@@ -55,6 +55,7 @@
 Vertex::Vertex(){
     //domain_=nullptr;
     uri="";
+    versionNo
 }
 
 Vertex::Vertex(std::vector<std::pair<std::string, std::pair<int, int>>> non_empty, std::string uri,int ver)
