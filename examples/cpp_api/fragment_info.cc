@@ -298,8 +298,8 @@ int main() {
   int num_of_fragments=uri.size();
   for (int i = 0; i < num_of_fragments; i++)
   {
-    Vertex v=Vertex(domain,non_empty_vector[i],uri[i],i+1);
-    graph.insert(new Vertex(domain,,"",i),v);
+    Vertex v=Vertex(non_empty_vector[i],uri[i],i+1);
+    graph.insert(new Vertex("",i,v));
   }
 
   get_fragment_info();

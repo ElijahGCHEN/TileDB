@@ -58,7 +58,7 @@ class Vertex{
   Vertex();
 
   /** Constructor. */
-  Vertex(Domain* domain, std::vector<std::pair<std::string, std::pair<int, int>>> non_empty,
+  Vertex(std::vector<std::pair<std::string, std::pair<int, int>>> non_empty,
           std::string uri,int ver);
 
   /** Destructor. */
@@ -116,7 +116,7 @@ class Vertex{
   //std::unordered_map<Vertex* vtx,std::int num_of_cells> child_map;
 
   //tiledb::sm::Domain* domain_;
-  Domain* domain_;
+  //Domain* domain_;
   //NDRange NDRange_;
 
   std::vector<std::pair<std::string, std::pair<int, int>>>  NDRange_;

@@ -53,12 +53,12 @@
 /* ****************************** */
 
 Vertex::Vertex(){
-    domain_=nullptr;
+    //domain_=nullptr;
     uri="";
 }
 
-Vertex::Vertex(Domain* domain, std::string uri,std::vector<std::pair<std::string, std::pair<int, int>>> non_empty,int ver)
-    :domain_(domain),uri(uri),NDRange_(non_empty),versionNo(ver)
+Vertex::Vertex( std::string uri,std::vector<std::pair<std::string, std::pair<int, int>>> non_empty,int ver)
+    :uri(uri),NDRange_(non_empty),versionNo(ver)
     {
       //no_of_cells=domain_->cell_num(ptr->domain_->domain());
       
