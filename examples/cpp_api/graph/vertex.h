@@ -96,7 +96,7 @@ class Vertex{
 
   int get_version();
 
-  Vertex* get_parent(); 
+  std::vector<int> get_parent(); 
 
   
 
