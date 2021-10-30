@@ -159,9 +159,11 @@ void Graph::insert(std::vector<Vertex> bases, Vertex* n){
     if(bases.size()==1){
         if(n->if_contain(&bases[0])){
             if(!bases[0].has_fragment()){
-                int ca=find_common_ancestor(bases[0]);
-                Vertex v=vertexs[ca];
+                int ca=find_common_ancestor(&bases[0]);
+                std::vector<Vertex> v(1,vertexs[ca]);
+                //v.push_back(vertexs[ca]);
                 insert(v,n);
+
             }else{
                 if(bases[0].has_parent()){
                     std::vector<int> parents=bases[0].get_parent();
@@ -169,8 +171,9 @@ void Graph::insert(std::vector<Vertex> bases, Vertex* n){
                     //{
                         //if(   ){
                         int p=parents[0];
-                        Vertex v=vertexs[p];
-                        insert(v,n);
+                        std::vector<Vertex> ver(1,vertexs[p]);
+                        //ver.push_back(vertexs[p]);
+                        insert(ver,n);
                     //}
                 }else{
                     std::shared_ptr<Vertex> new_root;
