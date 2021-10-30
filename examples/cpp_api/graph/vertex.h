@@ -42,7 +42,7 @@
 //#include "../../../tiledb/sm/array_schema/domain.h"
 //#include "tiledb/sm/misc/tile_overlap.h"
 
-using namespace tiledb::sm;
+//using namespace tiledb::sm;
 
 //namespace tiledb {
 //namespace sm {
@@ -103,7 +103,7 @@ class Vertex{
 
   //std::unordered_map<Vertex* vtx,std::int num_of_cells> child_map;
 
-  const Domain* domain_;
+  tiledb::sm::Domain* domain_;
 
   //NDRange NDRange_;
 
