@@ -185,9 +185,9 @@ void Graph::insert(std::vector<Vertex> bases, Vertex* n){
                     //std::Vertex new_root;
                     
 
-                    add_child(new_root->get(), root->get());
-                    add_child(new_root->get(), n);
-                    root = new_root->get();
+                    add_child(new_root.get(), root);
+                    add_child(new_root.get(), n);
+                    root = new_root.get();
                 }
             //insert(base's parents,n);
             }
