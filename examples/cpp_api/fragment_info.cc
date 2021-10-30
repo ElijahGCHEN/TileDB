@@ -74,7 +74,7 @@ void create_array() {//Domain &domain, Context &ctx
   Array::create(array_name, schema);
 }
 
-void write_array_1(std::vector<std::vector<std::pair<std::int, std::pair<int, int>>>>  &non_empty_vector, std::vector<std::string> &uri) {
+void write_array_1() {
   Context ctx;
 
   // Prepare some data for the array
@@ -109,20 +109,20 @@ void write_array_1(std::vector<std::vector<std::pair<std::int, std::pair<int, in
   // Perform the write and close the array.
   query.submit();
 
-  auto non_empty = array.non_empty_domain<int>();
+  // auto non_empty = array.non_empty_domain<int>();
 
-  non_empty_vector.push_back(non_empty);
+  // non_empty_vector.push_back(non_empty);
 
-  std::string urii=array.uri();
+  // std::string urii=array.uri();
 
-  uri.push_back(urii);
+  // uri.push_back(urii);
 
-  int num_of_dim= non_empty_vector.size();
+  // int num_of_dim= non_empty_vector.size();
   
-  for(int i=0;i<num_of_dim;i++){
-      std::cout << "Dimension named " << non_empty[i].first << " has cells in [" << non_empty[i].second.first << ", " << 
-          non_empty[i].second.second << "]" << std::endl;
-  }
+  // for(int i=0;i<num_of_dim;i++){
+  //     std::cout << "Dimension named " << non_empty[i].first << " has cells in [" << non_empty[i].second.first << ", " << 
+  //         non_empty[i].second.second << "]" << std::endl;
+  // }
 
 
   array.close();
@@ -143,7 +143,7 @@ void write_array_1(std::vector<std::vector<std::pair<std::int, std::pair<int, in
 
 }
 
-void write_array_2(std::vector<std::vector<std::pair<std::int,std::pair<int, int>>>>  &non_empty_vector, std::vector<std::string> &uri) {
+void write_array_2() {
 
   // std::vector<int> data = {5, 6, 7, 8, 9, 10, 11, 12};
   // std::vector<int> subarray = {2, 3, 1, 4};
@@ -161,20 +161,20 @@ void write_array_2(std::vector<std::vector<std::pair<std::int,std::pair<int, int
 
   query.submit();
   
-  auto non_empty = array.non_empty_domain<int>();
+  // auto non_empty = array.non_empty_domain<int>();
 
-  non_empty_vector.push_back(non_empty);
+  // non_empty_vector.push_back(non_empty);
 
-  std::string urii=array.uri();
+  // std::string urii=array.uri();
 
-  uri.push_back(urii);
+  // uri.push_back(urii);
 
-  int num_of_dim= non_empty_vector.size();
+  // int num_of_dim= non_empty_vector.size();
   
-  for(int i=0;i<num_of_dim;i++){
-      std::cout << "Dimension named " << non_empty[i].first << " has cells in [" << non_empty[i].second.first << ", " << 
-          non_empty[i].second.second << "]" << std::endl;
-  }
+  // for(int i=0;i<num_of_dim;i++){
+  //     std::cout << "Dimension named " << non_empty[i].first << " has cells in [" << non_empty[i].second.first << ", " << 
+  //         non_empty[i].second.second << "]" << std::endl;
+  // }
 
   
   
@@ -264,7 +264,7 @@ void get_fragment_info(std::vector<std::vector<std::pair<std::int, std::pair<int
       fragment_info.get_non_empty_domain(i, j, &non_empty_dom[0]);
       std::cout <<"Fragment "<<i<<" : "<<"dimension "<< j <<" : ("<<non_empty_dom[0]<<" , "<<non_empty_dom[1]<<"). \n"
                 <<std::endl;
-                
+
       std::pair<int, int> range;
       range.first = non_empty_dom[0];
       range.second = non_empty_dom[1];
@@ -316,8 +316,9 @@ int main() {
   //std::vector<NDRange>  non_empty;
   std::vector<std::string>  uri;
 
-  write_array_1(non_empty_vector,uri);
-  write_array_2(non_empty_vector,uri);
+  write_array_1();
+  write_array_2();
+  get_fragment_info(non_empty_vector,uri);
 
   Vertex V0;
   //std::vector<Vertex> vec;
@@ -347,7 +348,7 @@ int main() {
   graph.insert(v1,&V2);
   //graph.insert(vec,)
 
-  get_fragment_info();
+  
 
   return 0;
 }
