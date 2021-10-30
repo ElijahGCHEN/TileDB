@@ -157,10 +157,10 @@ int Graph::find_common_ancestor(Vertex* v){
 void Graph::insert(std::initializer_list<Vertex> bases, Vertex* n){
 
     if(bases.size()==1){
-        if(n->if_contain(bases)){
+        if(n->if_contain(bases[1])){
             if(!bases[1].has_fragment()){
-                Vertex* ca=find_common_ancestor(bases));
-                insert(ca,n);
+                int ca=find_common_ancestor(bases[1]));
+                insert(vertexs[ca],n);
             }else{
                 if(bases[1].has_parent()){
                     std::vector<int> parents=bases[1].get_parent();
