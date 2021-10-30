@@ -167,7 +167,7 @@ void Graph::insert(std::initializer_list<Vertex> bases, Vertex* n){
                     //for (int i = 0; i < parents.size(); i++)
                     //{
                         //if(   ){
-                        insert(parents[1],n);
+                        insert({parents[1]},n);
                     //}
                 }else{
                     std::shared_ptr<Vertex> new_root;
