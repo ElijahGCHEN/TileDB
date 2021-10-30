@@ -81,10 +81,10 @@ class Graph{
   /* ********************************* */
 
 
-	void insert(std::initializer_list<Vertex> base_, Vertex* n);
+	void insert(std::initializer_list<Vertex> bases, Vertex* n);
 	void add_child(Vertex* newParent, Vertex* n);
 	void materialization(int i);
-  void set_set_materialized(int i);
+  void set_materialized(int i);
   std::vector<int> get_parents_from_ver(int ver);
   int find_common_ancestor(Vertex* v);
   void DFS(int v,int sum_of_weight);

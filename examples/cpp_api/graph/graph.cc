@@ -241,14 +241,14 @@ void Graph::add_child(Vertex* newParent, Vertex* n){
     return;
 	}
 
-    void Graph::check_materialization(int sum_of_weight,int thresh){
+    // void Graph::check_materialization(int sum_of_weight,int thresh){
 
 
-        if(sum_of_weight > thresh){
-            return true;
-        }
-        return false;
-    }
+    //     if(sum_of_weight > thresh){
+    //         return true;
+    //     }
+    //     return false;
+    // }
 
 void Graph::DFS(int v,int sum_of_weight)
 {
