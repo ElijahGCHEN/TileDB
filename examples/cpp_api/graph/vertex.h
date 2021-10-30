@@ -84,7 +84,7 @@ class Vertex{
   unsigned dim_num();
 
   /** Returns the domain. */
-  Domain* domain();
+  //Domain* domain();
 
   bool if_contain(Vertex* vtr);
 
@@ -128,6 +128,8 @@ class Vertex{
   int num_of_cells;
 
   std::vector<int> parents;
+
+  int num_dim;
   //NDRange ndrange;
 
   //Vertex clone() const;

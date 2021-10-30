@@ -95,19 +95,25 @@ Vertex::~Vertex() =default;
 /*                 API               */
 /* ********************************* */
 
+std::vector<std::pair<std::string, std::pair<int, int>>> Vertex::get_NDRange(Vertex*vtr){
+
+  return NDRange_;
+
+}
+
 bool Vertex::if_contain(Vertex*vtr){
   //unsigned dim_num_=vtr->domain_->dim_num();
   //int dim_num = NDRange.size();
-  unsigned dim_num=domain_->dim_num();
-
-  if(vtr->domain_->dim_num() > dim_num){return false;}
-  
-  auto newNDRange=domain_->get_NDRange();
-
-  
   
 
-  for(int i=0;i<(int)dim_num;i++){
+  if(vtr->dim_num() > num_dim){return false;}
+  
+  auto newNDRange=vtr->get_NDRange();
+
+  
+  
+
+  for(int i=0;i<(int)num_dim;i++){
     // Range Outside=vtr->domain_->domain(i);
     // Range Inside=domain_->domain(i);
     if(newNDRange[i].second.first >= NDRange_[i].second.first
@@ -160,12 +166,12 @@ std::vector<int> Vertex::get_parent(){
 
 
 unsigned Vertex::dim_num() {
-  return (domain_ == nullptr) ? 0 : domain_->dim_num();
+  return num_dim;
 }
 
-Domain* Vertex::domain() {
-  return domain_;
-}
+// Domain* Vertex::domain() {
+//   return domain_;
+// }
 
 // Vertex Vertex::clone() const {
 //   Vertex clone;
