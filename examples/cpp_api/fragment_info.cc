@@ -182,7 +182,7 @@ void write_array_2() {
 
 }
 
-void get_fragment_info(std::vector<std::vector<std::pair<int, std::pair<int, int>>>> &non_empty_vector, std::vector<std::string> &urii) {
+void get_fragment_info(std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>> &non_empty_vector, std::vector<std::string> &urii) {
   // Create TileDB context
   Context ctx;
 
