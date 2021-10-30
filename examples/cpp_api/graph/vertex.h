@@ -86,7 +86,7 @@ class Vertex{
   /** Returns the domain. */
   //Domain* domain();
 
-  bool if_contain(Vertex* vtr);
+  bool if_contain(const Vertex* vtr);
 
   void add_children(Vertex * ptr);
 
