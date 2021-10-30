@@ -184,7 +184,7 @@ const Domain* Vertex::domain() const {
 // }
 
 bool Vertex::if_materialized(){
-  return materialized
+  return materialized;
 }
 
 void Vertex::set_materialized(){

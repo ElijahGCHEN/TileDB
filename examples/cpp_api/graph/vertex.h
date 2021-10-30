@@ -42,7 +42,7 @@
 //#include "../../../tiledb/sm/array_schema/domain.h"
 //#include "tiledb/sm/misc/tile_overlap.h"
 
-//using namespace tiledb::common;
+using namespace tiledb::sm;
 
 //namespace tiledb {
 //namespace sm {
@@ -86,7 +86,7 @@ class Vertex{
   /** Returns the domain. */
   const Domain* domain() const;
 
-  bool if_contain(Vertex& vtr);
+  bool if_contain(Vertex* vtr);
 
   void add_children(Vertex * ptr);
 
