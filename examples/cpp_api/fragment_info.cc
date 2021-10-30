@@ -298,7 +298,7 @@ int main() {
   Vertex v;
   std::vector<Vertex> vec;
   vec.push_back(v);
-  graph.insert(V);
+  graph.insert(v);
 
   int num_of_fragments=uri.size();
 
