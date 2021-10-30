@@ -100,10 +100,11 @@ class Vertex{
 
   
 
-  std::vector<std::pair<std::string, std::pair<int, int>>> get_NDRange():
+  std::vector<std::pair<std::string, std::pair<int, int>>> get_NDRange();
 
   //get_fragment_from_uri();
   bool if_materialized();
+
   void set_materialized();
 
 
