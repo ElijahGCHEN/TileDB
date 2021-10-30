@@ -81,7 +81,7 @@ class Vertex{
   /* ********************************* */
 
   /** The number of dimensions of the R-tree. */
-  unsigned dim_num();
+  int dim_num();
 
   /** Returns the domain. */
   //Domain* domain();

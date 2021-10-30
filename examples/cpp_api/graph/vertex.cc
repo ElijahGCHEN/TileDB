@@ -57,7 +57,7 @@ Vertex::Vertex(){
     uri="";
 }
 
-Vertex::Vertex( std::string uri,std::vector<std::pair<std::string, std::pair<int, int>>> non_empty,int ver)
+Vertex::Vertex(std::vector<std::pair<std::string, std::pair<int, int>>> non_empty, std::string uri,int ver)
     :uri(uri),NDRange_(non_empty),versionNo(ver)
     {
       //no_of_cells=domain_->cell_num(ptr->domain_->domain());
@@ -165,7 +165,7 @@ std::vector<int> Vertex::get_parent(){
 }
 
 
-unsigned Vertex::dim_num() {
+int Vertex::dim_num() {
   return num_dim;
 }
 
