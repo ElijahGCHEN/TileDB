@@ -163,6 +163,13 @@ void Graph::insertRoot(Vertex* n){
     vertexs.push_back(*n);
 }
 
+void Graph::registerVertex(Vertex* n){
+    int ver=n->get_version();
+    if(vertexs.size()-1==n){return;} //vertex already exist
+
+    vertexs.push_back(*n);
+}
+
 void Graph::insert(std::vector<Vertex*> bases, Vertex* n){
 std::cout<<"-----line 167"<<std::endl;
     if(bases.size()==1){
@@ -225,7 +232,8 @@ std::cout<<"-----line 167"<<std::endl;
         }
     }
 
-    vertexs.push_back(*n);
+    //vertexs.push_back(*n);
+    registerVertex(* n);
 }
 
 // bool Graph::insert_recreated_version(){
