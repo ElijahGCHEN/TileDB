@@ -165,7 +165,7 @@ void Graph::insertRoot(Vertex* n){
 
 void Graph::registerVertex(Vertex* n){
     int ver=n->get_version();
-    if(vertexs.size()-1==n){return;} //vertex already exist
+    if(vertexs.size()-1==ver){return;} //vertex already exist
 
     vertexs.push_back(*n);
 }
