@@ -188,7 +188,7 @@ bool Vertex::has_fragment() const{
   return true;
 }
 
-bool Vertex::print(){
+void Vertex::print(){
   std::cout<< "Fragment ver : "<< versionNo << std::endl;
 
   std::cout<< "NDRange :  "<< std::endl;

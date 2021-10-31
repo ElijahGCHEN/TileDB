@@ -94,7 +94,7 @@ class Vertex{
 
   bool has_fragment() const;
 
-  bool print();
+  void print();
 
   private:
 
