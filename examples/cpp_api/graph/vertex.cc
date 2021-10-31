@@ -96,7 +96,7 @@ bool Vertex::if_contain(const Vertex*vtr) const{
   
   if(vtr->get_version()==0){return false;}
 
-  auto newNDRange=vtr->get_NDRange();
+  auto baseNDRange=vtr->get_NDRange();
 
   
   
@@ -104,9 +104,10 @@ bool Vertex::if_contain(const Vertex*vtr) const{
   for(int i=0;i<(int)num_dim;i++){
     // Range Outside=vtr->domain_->domain(i);
     // Range Inside=domain_->domain(i);
-    if(newNDRange[i].second.first >= NDRange_[i].second.first
-    &&
-    newNDRange[i].second.second <= NDRange_[i].second.second
+    if(
+    baseNDRange[i].second.first < NDRange_[i].second.first
+    ||
+    baseNDRange[i].second.second > NDRange_[i].second.second
     ){
         return false;
     }
