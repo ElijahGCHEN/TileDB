@@ -191,6 +191,8 @@ std::cout<<"-----line 167"<<std::endl;
                     //for (int i = 0; i < parents.size(); i++)
                     //{
                         //if(   ){
+
+                        std::cout<<"-----line 195 parents number "<<parents.size()<<std::endl;
                         int p=parents[0];
                         std::cout<<"-----line 195 parent = "<<p<<std::endl;
                         std::vector<Vertex> ver(1,vertexs[p]);
