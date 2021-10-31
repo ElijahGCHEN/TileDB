@@ -40,6 +40,7 @@ Vertex::Vertex(){
     uri="";
     versionNo=0;
     num_of_cells=0;
+    num_dim=0;
 }
 
 Vertex::Vertex(std::vector<std::pair<std::string, std::pair<int, int>>> non_empty, std::string uri,int ver,int num_of_cells)
@@ -91,8 +92,10 @@ bool Vertex::if_contain(const Vertex*vtr) const{
   //int dim_num = NDRange.size();
   
 
-  if(vtr->dim_num() > num_dim){return false;}
+  //if(vtr->dim_num() > num_dim){return false;}
   
+  if(vtr->get_version()==0){return false;}
+
   auto newNDRange=vtr->get_NDRange();
 
   
