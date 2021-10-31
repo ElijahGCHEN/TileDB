@@ -177,7 +177,7 @@ std::cout<<"-----line 167"<<std::endl;
 
                 //int ca=find_common_ancestor(&bases[0]);
                 int ca=find_common_ancestor(bases[0]);
-                std::vector<Vertex*> v(1,vertexs[ca]);
+                std::vector<Vertex*> v(1,&vertexs[ca]);
                 //v.push_back(vertexs[ca]);
                 insert(v,n);
 
@@ -196,7 +196,7 @@ std::cout<<"-----line 167"<<std::endl;
                         std::cout<<"-----line 195 parents number "<<parents.size()<<std::endl;
                         int p=parents[0];
                         std::cout<<"-----line 197 parent = "<<p<<std::endl;
-                        std::vector<Vertex*> ver(1,vertexs[p]);
+                        std::vector<Vertex*> ver(1,&vertexs[p]);
                         //ver.push_back(vertexs[p]);
                         insert(ver,n);
                     //}
