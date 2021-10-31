@@ -323,7 +323,7 @@ std::cout<<"2222222222222222"<<std::endl;
   //vec.push_back(V0);
 
   graph.insertRoot(&V0);
-  std::vector<Vertex> v0(1,V0);
+  std::vector<Vertex*> v0(1,&V0);
 std::cout<<"3333333333333333333"<<std::endl;
   int num_of_fragments=uri.size();
 
@@ -342,8 +342,8 @@ std::cout<<"3333333333333333333"<<std::endl;
 std::cout<<"444444444444444444"<<std::endl;
   std::vector<Vertex*> v1(1,&V1);
   std::vector<Vertex*> v2(1,&V2);
-  std::vector<Vertex> v3(1,V3);
-  std::vector<Vertex> v4(1,V4);
+  std::vector<Vertex*> v3(1,&V3);
+  std::vector<Vertex*> v4(1,&V4);
 std::cout<<"555555555555555555555"<<std::endl;
   graph.insert(v0,&V1);
   std::cout<<"6666666666666666666666666"<<std::endl;
