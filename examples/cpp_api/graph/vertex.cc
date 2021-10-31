@@ -211,7 +211,7 @@ void Vertex::print(){
     std::cout<<parents[i]<<" ";
   }
 
-  std::endl;
+  std::cout<<std::endl;
   
 
 }
