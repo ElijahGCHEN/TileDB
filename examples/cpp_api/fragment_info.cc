@@ -93,7 +93,7 @@ void write_array_1() {
   std::vector<int> coords;
   std::vector<int> data;
 
-  createData(0,0,2,4,coords,data);
+  createData(1,1,3,5,coords,data);
   Array array(ctx, array_name, TILEDB_WRITE);
   Query query(ctx, array);
   query.set_layout(TILEDB_UNORDERED)
@@ -111,7 +111,7 @@ void write_array_2() {
   std::vector<int> coords;
   std::vector<int> data;
 
-  createData(3,3,4,4,coords,data);
+  createData(4,4,5,5,coords,data);
   Array array(ctx, array_name, TILEDB_WRITE);
   Query query(ctx, array);
   query.set_layout(TILEDB_UNORDERED)
@@ -129,7 +129,7 @@ void write_array_3() {
   std::vector<int> coords;
   std::vector<int> data;
 
-  createData(0,3,4,4,coords,data);
+  createData(1,4,5,5,coords,data);
   Array array(ctx, array_name, TILEDB_WRITE);
   Query query(ctx, array);
   query.set_layout(TILEDB_UNORDERED)
@@ -146,7 +146,7 @@ void write_array_4() {
 
   std::vector<int> coords;
   std::vector<int> data;
-  createData(0,0,3,4,coords,data);
+  createData(1,1,4,5,coords,data);
   Array array(ctx, array_name, TILEDB_WRITE);
   Query query(ctx, array);
   query.set_layout(TILEDB_UNORDERED)
