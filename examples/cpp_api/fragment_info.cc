@@ -352,8 +352,8 @@ int main() {
   graph.insert(v1,&V2);
   //graph.insert(vec,)
 
-  
-
+  std::cout<<"------------------------------------------------------------------------------"<<std::endl;
+  graph.print_vertexs();
   
 
   return 0;
