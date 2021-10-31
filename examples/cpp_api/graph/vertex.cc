@@ -46,7 +46,7 @@ Vertex::Vertex(std::vector<std::pair<std::string, std::pair<int, int>>> non_empt
     :uri(uri),NDRange_(non_empty),versionNo(ver),num_of_cells(num_of_cells)
     {
       //no_of_cells=domain_->cell_num(ptr->domain_->domain());
-      
+      num_dim=non_empty.size();
 }
 
 Vertex::~Vertex() =default;
