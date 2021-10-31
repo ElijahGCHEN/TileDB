@@ -297,7 +297,7 @@ void get_fragment_info(std::vector<std::vector<std::pair<std::string, std::pair<
 }
 
 int main() {
-  //Context ctx;
+  Context ctx;
   Graph graph(2,2);
 
   if (Object::object(ctx, array_name).type() == Object::Type::Array) {
