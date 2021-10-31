@@ -337,8 +337,8 @@ std::cout<<"3333333333333333333"<<std::endl;
   // {
   Vertex V1(non_empty_vector[0],uri[0],1,num_of_cells[0]);
   Vertex V2(non_empty_vector[1],uri[1],2,num_of_cells[1]);
-  Vertex V3(non_empty_vector[2],uri[2],2,num_of_cells[2]);
-  Vertex V4(non_empty_vector[3],uri[3],2,num_of_cells[3]);
+  Vertex V3(non_empty_vector[2],uri[2],3,num_of_cells[2]);
+  Vertex V4(non_empty_vector[3],uri[3],4,num_of_cells[3]);
 std::cout<<"444444444444444444"<<std::endl;
   std::vector<Vertex> v1(1,V1);
   std::vector<Vertex> v2(1,V2);
