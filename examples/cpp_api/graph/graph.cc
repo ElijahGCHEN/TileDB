@@ -202,7 +202,7 @@ std::cout<<"-----line 167"<<std::endl;
                     //}
                 }else{
 
-                    std::cout<<"-----line 204"<<p<<std::endl;
+                    std::cout<<"-----line 204"<<std::endl;
                     std::shared_ptr<Vertex> new_root;
                     //std::Vertex new_root;
                     
