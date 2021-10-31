@@ -169,21 +169,30 @@ std::cout<<"-----line 167"<<std::endl;
         std::cout<<"-----line 169"<<std::endl;
 
         if(n->if_contain(&bases[0])){
-             std::cout<<"-----line 172"<<std::endl;
+            std::cout<<"-----line 172"<<std::endl;
 
             if(!bases[0].has_fragment()){
+                std::cout<<"-----line 175"<<std::endl;
+
                 int ca=find_common_ancestor(&bases[0]);
+
                 std::vector<Vertex> v(1,vertexs[ca]);
                 //v.push_back(vertexs[ca]);
                 insert(v,n);
 
             }else{
+                std::cout<<"-----line 184"<<std::endl;
                 if(bases[0].has_parent()){
+
+                    std::cout<<"-----line 186"<<std::endl;
+
                     std::vector<int> parents=bases[0].get_parent();
+                    std::cout<<"-----line 189"<<std::endl;
                     //for (int i = 0; i < parents.size(); i++)
                     //{
                         //if(   ){
                         int p=parents[0];
+                        std::cout<<"-----line 195 parent = "<<p<<std::endl;
                         std::vector<Vertex> ver(1,vertexs[p]);
                         //ver.push_back(vertexs[p]);
                         insert(ver,n);
@@ -199,6 +208,7 @@ std::cout<<"-----line 167"<<std::endl;
                 }
             //insert(base's parents,n);
             }
+
         }else{// 
             std::cout<<"-----line 203"<<std::endl;
             add_child(&bases[0],n);
