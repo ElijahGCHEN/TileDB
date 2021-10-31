@@ -6,7 +6,24 @@
  * The MIT License
  *
  * @copyright Copyright (c) 2021 TileDB, Inc.
-
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  *
  * @section DESCRIPTION
  *
@@ -39,8 +56,8 @@ void create_array() {//Domain &domain, Context &ctx
   // and space tiles 2x2
   Domain domain(ctx); ///modified
 
-  domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 5}}, 2))
-        .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 5}}, 2));
+  domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 4}}, 2))
+        .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 4}}, 2));
   
   // domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 400}}, 2))
   //     .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 400}}, 2));
@@ -57,43 +74,31 @@ void create_array() {//Domain &domain, Context &ctx
   Array::create(array_name, schema);
 }
 
-void createData(int x1,int y1,int x2,int y2,std::vector<int> &coords,std::vector<int> &data){
-
-  int iSecret;
-  /* initialize random seed: */
-  srand (time(NULL));
-  /* generate secret number between 1 and 10: */
-  //iSecret = rand() % 10 + 1;
-  std::pair<int ,int > start;
-  start.first=x1;
-  start.second=y1;
-
-  std::pair<int ,int > end;
-  end.first=x2;
-  end.second=y2;
-
-  // std::vector<int> coords;
-  // std::vector<int> data;
-  for (int i = start.first; i <= end.first; i++)
-  {
-    for (int j = start.second; j <= end.second; j++)
-    {
-      coords.push_back(i);
-      coords.push_back(j);
-      iSecret = rand() % 10 + 1;
-      data.push_back(iSecret);
-    }
-    
-  }
-}
-
 void write_array_1() {
   Context ctx;
 
-  std::vector<int> coords;
-  std::vector<int> data;
+  // Prepare some data for the array
+  //std::vector<int> data = {1, 2, 3, 4, 5, 6, 7, 8};
 
-  createData(0,0,2,4,coords,data);
+  //test/// sparse array
+  std::vector<int> coords = {1, 1, 2, 4, 2, 3};
+  std::vector<int> data = {1, 2, 3};
+
+  //int size=16000;
+  //int size=61;
+
+  // std::vector<int> data;
+  // for(int i=0; i<size; i++){ 
+  //        std::srand(time(0)); 
+  //        int b = std::rand() % 10;  
+  //        data.push_back (b);
+  // }
+  //
+
+  //std::vector<int> subarray = {1, 2, 1, 4};
+
+
+  // Open the array for writing and create the query.
   Array array(ctx, array_name, TILEDB_WRITE);
   Query query(ctx, array);
   query.set_layout(TILEDB_UNORDERED)
@@ -101,80 +106,81 @@ void write_array_1() {
       //.set_subarray(subarray);
       .set_coordinates(coords);
 
+  // Perform the write and close the array.
   query.submit();
+
+  // auto non_empty = array.non_empty_domain<int>();
+
+  // non_empty_vector.push_back(non_empty);
+
+  // std::string urii=array.uri();
+
+  // uri.push_back(urii);
+
+  // int num_of_dim= non_empty_vector.size();
+  
+  // for(int i=0;i<num_of_dim;i++){
+  //     std::cout << "Dimension named " << non_empty[i].first << " has cells in [" << non_empty[i].second.first << ", " << 
+  //         non_empty[i].second.second << "]" << std::endl;
+  // }
+
+
   array.close();
+  //Array array(ctx,array_name, TILEDB_READ);
+
+  // // Open the array for writing and create the query. again
+  // std::vector<int> data1 = {9, 10, 11, 12, 13, 14};
+  // std::vector<int> subarray1 = {1, 3, 1, 2};
+  // //Array array(ctx, array_name, TILEDB_WRITE);
+  // //Query query(ctx, array);
+  // query.set_layout(TILEDB_ROW_MAJOR)
+  //     .set_buffer("a", data1)
+  //     .set_subarray(subarray1);
+
+  // // Perform the write and close the array.
+  // query.submit();
+  // array.close();
+
 }
 
 void write_array_2() {
+
+  // std::vector<int> data = {5, 6, 7, 8, 9, 10, 11, 12};
+  // std::vector<int> subarray = {2, 3, 1, 4};
+
+  std::vector<int> coords = {1, 2, 2, 3, 3, 4, 3, 3};
+  std::vector<int> data = {2, 3, 1, 4};
+
   Context ctx;
-
-  std::vector<int> coords;
-  std::vector<int> data;
-
-  createData(3,3,4,4,coords,data);
   Array array(ctx, array_name, TILEDB_WRITE);
   Query query(ctx, array);
   query.set_layout(TILEDB_UNORDERED)
-      .set_buffer("a", data)
-      //.set_subarray(subarray);
-      .set_coordinates(coords);
+       .set_buffer("a", data)
+       //.set_subarray(subarray);
+       .set_coordinates(coords);
 
   query.submit();
+  
+  // auto non_empty = array.non_empty_domain<int>();
+
+  // non_empty_vector.push_back(non_empty);
+
+  // std::string urii=array.uri();
+
+  // uri.push_back(urii);
+
+  // int num_of_dim= non_empty_vector.size();
+  
+  // for(int i=0;i<num_of_dim;i++){
+  //     std::cout << "Dimension named " << non_empty[i].first << " has cells in [" << non_empty[i].second.first << ", " << 
+  //         non_empty[i].second.second << "]" << std::endl;
+  // }
+
+  
+  
   array.close();
+
 }
-
-void write_array_3() {
-  Context ctx;
-
-  std::vector<int> coords;
-  std::vector<int> data;
-
-  createData(0,3,4,4,coords,data);
-  Array array(ctx, array_name, TILEDB_WRITE);
-  Query query(ctx, array);
-  query.set_layout(TILEDB_UNORDERED)
-      .set_buffer("a", data)
-      //.set_subarray(subarray);
-      .set_coordinates(coords);
-
-  query.submit();
-  array.close();
-}
-
-void write_array_4() {
-  Context ctx;
-
-  std::vector<int> coords;
-  std::vector<int> data;
-  createData(0,0,3,4,coords,data);
-  Array array(ctx, array_name, TILEDB_WRITE);
-  Query query(ctx, array);
-  query.set_layout(TILEDB_UNORDERED)
-      .set_buffer("a", data)
-      //.set_subarray(subarray);
-      .set_coordinates(coords);
-
-  query.submit();
-  array.close();
-}
-
-// void write_array_2() {
-
-//   std::vector<int> coords = {1, 2, 2, 3, 3, 4, 3, 3};
-//   std::vector<int> data = {2, 3, 1, 4};
-
-//   Context ctx;
-//   Array array(ctx, array_name, TILEDB_WRITE);
-//   Query query(ctx, array);
-//   query.set_layout(TILEDB_UNORDERED)
-//        .set_buffer("a", data)
-//        //.set_subarray(subarray);
-//        .set_coordinates(coords);
-
-//   query.submit();
-//   array.close();
-
-// }
 
 void get_fragment_info(std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>> &non_empty_vector
 , std::vector<std::string> &urii, std::vector<int> &num_of_cells) {
@@ -307,14 +313,15 @@ int main() {
 
   std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>>  non_empty_vector;
 
+  //std::vector<std::vector<std::pair<int, std::pair<int, int>>>>  non_empty_vector;
+
+  //std::vector<NDRange>  non_empty;
   std::vector<std::string>  uri;
 
   std::vector<int> num_of_cells;
 
   write_array_1();
   write_array_2();
-  write_array_3();
-  write_array_4();
   get_fragment_info(non_empty_vector,uri,num_of_cells);
 std::cout<<"11111111111111111111"<<std::endl;
   Vertex V0;
@@ -323,7 +330,6 @@ std::cout<<"2222222222222222"<<std::endl;
   //vec.push_back(V0);
 
   graph.insertRoot(&V0);
-  std::vector<Vertex> v0(1,V0);
 std::cout<<"3333333333333333333"<<std::endl;
   int num_of_fragments=uri.size();
 
@@ -337,19 +343,14 @@ std::cout<<"3333333333333333333"<<std::endl;
   // {
   Vertex V1(non_empty_vector[0],uri[0],1,num_of_cells[0]);
   Vertex V2(non_empty_vector[1],uri[1],2,num_of_cells[1]);
-  Vertex V3(non_empty_vector[2],uri[2],2,num_of_cells[2]);
-  Vertex V4(non_empty_vector[3],uri[3],2,num_of_cells[3]);
+
 std::cout<<"444444444444444444"<<std::endl;
+  std::vector<Vertex> v0(1,V0);
   std::vector<Vertex> v1(1,V1);
   std::vector<Vertex> v2(1,V2);
-  std::vector<Vertex> v3(1,V3);
-  std::vector<Vertex> v4(1,V4);
 std::cout<<"555555555555555555555"<<std::endl;
   graph.insert(v0,&V1);
   graph.insert(v1,&V2);
-  graph.insert(v2,&V3);
-  graph.insert(v3,&V4);
-  //graph.insert(v4,&V5);
   //graph.insert(vec,)
 
   std::cout<<"------------------------------------------------------------------------------"<<std::endl;
