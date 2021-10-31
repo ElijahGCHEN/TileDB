@@ -76,6 +76,7 @@ class Graph{
   std::vector<Vertex> get_vertexs();
   void print_vertexs();
   std::vector<std::vector<int>> get_adj();
+  void registerVertex(Vertex* n);
 
   //private:
 
