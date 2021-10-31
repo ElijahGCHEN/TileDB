@@ -190,14 +190,14 @@ bool Vertex::has_fragment() const{
 
 void Vertex::print(){
   std::cout<< "Fragment ver : "<< versionNo << std::endl;
-
+  if(versionNo==0){return;}
   std::cout<< "NDRange :  "<< std::endl;
 
   for (int i = 0; i < num_dim; i++)
   {
     std::cout<< "Dimension named " << NDRange_[i].first 
-           << " has cells in [" << NDRange_[i].second.first << ", " 
-           << NDRange_[i].second.second << "]" << std::endl;
+          << " has cells in [" << NDRange_[i].second.first << ", " 
+          << NDRange_[i].second.second << "]" << std::endl;
   }
   
   
