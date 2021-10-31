@@ -164,9 +164,13 @@ void Graph::insertRoot(Vertex* n){
 }
 
 void Graph::insert(std::vector<Vertex> bases, Vertex* n){
-
+std::cout<<"-----insert"<<std::endl;
     if(bases.size()==1){
+        std::cout<<"-----if(bases.size()==1)"<<std::endl;
+
         if(n->if_contain(&bases[0])){
+             std::cout<<"-----if(n->if_contain(&bases[0])){"<<std::endl;
+
             if(!bases[0].has_fragment()){
                 int ca=find_common_ancestor(&bases[0]);
                 std::vector<Vertex> v(1,vertexs[ca]);
@@ -196,6 +200,7 @@ void Graph::insert(std::vector<Vertex> bases, Vertex* n){
             //insert(base's parents,n);
             }
         }else{// 
+            std::cout<<"-----line 203"<<std::endl;
             add_child(&bases[0],n);
         }
     }else{
@@ -253,8 +258,15 @@ void Graph::add_child(Vertex* newParent, Vertex* n){
 
     int parentVer=newParent->get_version();
 
-	adjacent_matrix[parentVer][adjacent_matrix[parentVer].size()-1] = n->no_of_cells();
+	
+    //adjacent_matrix[parentVer][adjacent_matrix[parentVer].size()-1] = n->no_of_cells();
+    
+    
+// //vector<vector<int>> M;
+// //int m = number of rows, n = number of columns;
+// M.resize(m, vector<int>(n));
 
+    adjacent_matrix[parentVer][n->get_version()] = n->no_of_cells();
     n->add_parent(newParent);
 
 	// if (parent.has_parent())
