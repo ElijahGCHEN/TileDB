@@ -340,8 +340,8 @@ std::cout<<"3333333333333333333"<<std::endl;
   Vertex V3(non_empty_vector[2],uri[2],3,num_of_cells[2]);
   Vertex V4(non_empty_vector[3],uri[3],4,num_of_cells[3]);
 std::cout<<"444444444444444444"<<std::endl;
-  std::vector<Vertex> v1(1,V1);
-  std::vector<Vertex> v2(1,V2);
+  std::vector<Vertex*> v1(1,&V1);
+  std::vector<Vertex*> v2(1,&V2);
   std::vector<Vertex> v3(1,V3);
   std::vector<Vertex> v4(1,V4);
 std::cout<<"555555555555555555555"<<std::endl;
@@ -355,7 +355,7 @@ std::cout<<"555555555555555555555"<<std::endl;
 
 std::cout<<"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"<<std::endl;
   graph.insert(v2,&V3);
-  
+
   std::cout<<"8888888888888888888888888"<<std::endl;
   graph.insert(v3,&V4);
   //graph.insert(v4,&V5);

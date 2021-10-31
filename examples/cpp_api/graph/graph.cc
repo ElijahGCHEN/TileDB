@@ -163,30 +163,31 @@ void Graph::insertRoot(Vertex* n){
     vertexs.push_back(*n);
 }
 
-void Graph::insert(std::vector<Vertex> bases, Vertex* n){
+void Graph::insert(std::vector<Vertex*> bases, Vertex* n){
 std::cout<<"-----line 167"<<std::endl;
     if(bases.size()==1){
         std::cout<<"-----line 169"<<std::endl;
 
-        if(n->if_contain(&bases[0])){
+        //if(n->if_contain(&bases[0])){
+        if(n->if_contain(bases[0])){
             std::cout<<"-----line 172"<<std::endl;
 
-            if(!bases[0].has_fragment()){
+            if(!bases[0]->has_fragment()){
                 std::cout<<"-----line 175"<<std::endl;
 
-                int ca=find_common_ancestor(&bases[0]);
-
-                std::vector<Vertex> v(1,vertexs[ca]);
+                //int ca=find_common_ancestor(&bases[0]);
+                int ca=find_common_ancestor(bases[0]);
+                std::vector<Vertex*> v(1,vertexs[ca]);
                 //v.push_back(vertexs[ca]);
                 insert(v,n);
 
             }else{
                 std::cout<<"-----line 184"<<std::endl;
-                if(bases[0].has_parent()){
+                if(bases[0]->has_parent()){
 
                     std::cout<<"-----line 186"<<std::endl;
 
-                    std::vector<int> parents=bases[0].get_parent();
+                    std::vector<int> parents=bases[0]->get_parent();
                     std::cout<<"-----line 189"<<std::endl;
                     //for (int i = 0; i < parents.size(); i++)
                     //{
@@ -194,12 +195,14 @@ std::cout<<"-----line 167"<<std::endl;
 
                         std::cout<<"-----line 195 parents number "<<parents.size()<<std::endl;
                         int p=parents[0];
-                        std::cout<<"-----line 195 parent = "<<p<<std::endl;
-                        std::vector<Vertex> ver(1,vertexs[p]);
+                        std::cout<<"-----line 197 parent = "<<p<<std::endl;
+                        std::vector<Vertex*> ver(1,vertexs[p]);
                         //ver.push_back(vertexs[p]);
                         insert(ver,n);
                     //}
                 }else{
+
+                    std::cout<<"-----line 204"<<p<<std::endl;
                     std::shared_ptr<Vertex> new_root;
                     //std::Vertex new_root;
                     
@@ -213,12 +216,12 @@ std::cout<<"-----line 167"<<std::endl;
 
         }else{// 
             std::cout<<"-----line 203"<<std::endl;
-            add_child(&bases[0],n);
+            add_child(bases[0],n);
         }
     }else{
         for (int i = 0; i < bases.size(); i++)
         {
-            add_child(&bases[i],n);
+            add_child(bases[i],n);
         }
     }
 
