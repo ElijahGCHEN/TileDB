@@ -343,10 +343,11 @@ std::cout<<"3333333333333333333"<<std::endl;
   // {
   Vertex V1(non_empty_vector[0],uri[0],1,num_of_cells[0]);
   Vertex V2(non_empty_vector[1],uri[1],2,num_of_cells[1]);
+
 std::cout<<"444444444444444444"<<std::endl;
   std::vector<Vertex> v0(1,V0);
-
-  std::vector<Vertex> v1(1,V2);
+  std::vector<Vertex> v1(1,V1);
+  std::vector<Vertex> v2(1,V2);
 std::cout<<"555555555555555555555"<<std::endl;
   graph.insert(v0,&V1);
   graph.insert(v1,&V2);
