@@ -349,14 +349,18 @@ std::cout<<"555555555555555555555"<<std::endl;
   std::cout<<"6666666666666666666666666"<<std::endl;
   graph.insert(v1,&V2);
   std::cout<<"777777777777777777777777"<<std::endl;
-  graph.insert(v2,&V3);
-  std::cout<<"8888888888888888888888888"<<std::endl;
-  graph.insert(v3,&V4);
-  //graph.insert(v4,&V5);
-  //graph.insert(vec,)
 
   std::cout<<"------------------------------------------------------------------------------"<<std::endl;
   graph.print_vertexs();
+
+  // graph.insert(v2,&V3);
+  // std::cout<<"8888888888888888888888888"<<std::endl;
+  // graph.insert(v3,&V4);
+  // //graph.insert(v4,&V5);
+  // //graph.insert(vec,)
+
+  // std::cout<<"------------------------------------------------------------------------------"<<std::endl;
+  // graph.print_vertexs();
   
 
   return 0;

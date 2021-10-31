@@ -134,8 +134,8 @@ void Vertex::add_parent(Vertex* ptr){
 
 bool Vertex::has_parent() const{
 
-  if(parents.empty()){return true;}
-  return false;
+  if(parents.empty()){return false;}
+  return true;
 }
 
 
