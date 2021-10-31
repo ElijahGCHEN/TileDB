@@ -164,12 +164,12 @@ void Graph::insertRoot(Vertex* n){
 }
 
 void Graph::insert(std::vector<Vertex> bases, Vertex* n){
-std::cout<<"-----insert"<<std::endl;
+std::cout<<"-----line 167"<<std::endl;
     if(bases.size()==1){
-        std::cout<<"-----if(bases.size()==1)"<<std::endl;
+        std::cout<<"-----line 169"<<std::endl;
 
         if(n->if_contain(&bases[0])){
-             std::cout<<"-----if(n->if_contain(&bases[0])){"<<std::endl;
+             std::cout<<"-----line 172"<<std::endl;
 
             if(!bases[0].has_fragment()){
                 int ca=find_common_ancestor(&bases[0]);
