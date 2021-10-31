@@ -182,7 +182,8 @@ void write_array_2() {
 
 }
 
-void get_fragment_info(std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>> &non_empty_vector, std::vector<std::string> &urii) {
+void get_fragment_info(std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>> &non_empty_vector
+, std::vector<std::string> &urii, std::vector<int> &num_of_cells) {
   // Create TileDB context
   Context ctx;
 
@@ -229,6 +230,7 @@ void get_fragment_info(std::vector<std::vector<std::pair<std::string, std::pair<
       std::cout << "The number of cells written to the fragment is " << cell_num
                 << ".\n"
                 << std::endl;
+      num_of_cells.push_back(cell_num);
 
 
 
@@ -316,9 +318,11 @@ int main() {
   //std::vector<NDRange>  non_empty;
   std::vector<std::string>  uri;
 
+  std::vector<int> num_of_cells;
+
   write_array_1();
   write_array_2();
-  get_fragment_info(non_empty_vector,uri);
+  get_fragment_info(non_empty_vector,uri,num_of_cells);
 
   Vertex V0;
   //std::vector<Vertex> vec;
@@ -337,8 +341,8 @@ int main() {
   // }
   // for (int i = 0; i < num_of_fragments; i++)
   // {
-  Vertex V1(non_empty_vector[0],uri[0],1);
-  Vertex V2(non_empty_vector[1],uri[1],2);
+  Vertex V1(non_empty_vector[0],uri[0],1,num_of_cells[0]);
+  Vertex V2(non_empty_vector[1],uri[1],2,num_of_cells[1]);
 
   std::vector<Vertex> v0(1,V0);
 
