@@ -233,7 +233,7 @@ std::cout<<"-----line 167"<<std::endl;
     }
 
     //vertexs.push_back(*n);
-    registerVertex(* n);
+    registerVertex(n);
 }
 
 // bool Graph::insert_recreated_version(){
