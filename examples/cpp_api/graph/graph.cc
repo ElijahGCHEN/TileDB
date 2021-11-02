@@ -299,7 +299,7 @@ void Graph::fragments_to_make_vertex(int ver, std::vector<int> *fragments_list){
     if(ver==0){return;}
 
     //if(ver not in fragments_list){
-    if (std::find(fragments_list.begin(), fragments_list.end(), ver) = fragments_list.end())
+    if (std::find(fragments_list->begin(), fragments_list->end(), ver) = fragments_list->end())
     {
         fragments_list->insert(ver);
     }
