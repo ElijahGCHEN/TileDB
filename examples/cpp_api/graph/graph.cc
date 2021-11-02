@@ -240,8 +240,8 @@ std::cout<<"-----line 167"<<std::endl;
             {
                 int ver=fragments_list2[j];
                 //if(ver not in fragments_list1){
-                if(!std::any_of(fragments_list1.begin(), fragments_list1.end(), compare(ver))){
-                    num_of_cell1=num_of_cell1+vertex[ver].no_of_cells();
+                if(!std::any_of(fragments_list1.begin(), fragments_list1.end(), std::compare(ver))){
+                    num_of_cell1=num_of_cell1+vertexs[ver].no_of_cells();
                 }
             }
 
@@ -250,8 +250,8 @@ std::cout<<"-----line 167"<<std::endl;
             {
                 int ver=fragments_list1[j];
                 //if(ver not in fragments_list2){
-                if(!std::any_of(fragments_list2.begin(), fragments_list2.end(), compare(ver))){   
-                    num_of_cell2=num_of_cell2+vertex[ver].no_of_cells();
+                if(!std::any_of(fragments_list2.begin(), fragments_list2.end(), std::compare(ver))){   
+                    num_of_cell2=num_of_cell2+vertexs[ver].no_of_cells();
                 }
             }
             
@@ -264,26 +264,26 @@ std::cout<<"-----line 167"<<std::endl;
     registerVertex(n);
 }
 
-std::vector<int> Graph::fragments_to_make_vertex(Vertex * v){
-    int ver=v->get_version();
+// std::vector<int> Graph::fragments_to_make_vertex(Vertex * v){
+//     int ver=v->get_version();
 
-    std::vector<int> fragments_list;
+//     std::vector<int> fragments_list;
 
-    fragments_list.push_back(ver);
+//     fragments_list.push_back(ver);
 
-    std::vector<int> parents=get_parents_from_ver(ver);
+//     std::vector<int> parents=get_parents_from_ver(ver);
 
-    int ver=parents[0];
+//     int ver=parents[0];
 
-    while (ver!=root->get_version())
-    {
-        fragments_list.push_back(ver);
-        parents=get_parents_from_ver(ver);
-        ver=parents[0];
-    }
+//     while (ver!=root->get_version())
+//     {
+//         fragments_list.push_back(ver);
+//         parents=get_parents_from_ver(ver);
+//         ver=parents[0];
+//     }
     
-    return fragments_list;
-}
+//     return fragments_list;
+// }
 
 void Graph::fragments_to_make_vertex(int ver, std::set<int> *fragments_list){
     //int ver=v->get_version();

@@ -77,7 +77,8 @@ class Graph{
   void print_vertexs();
   std::vector<std::vector<int>> get_adj();
   void registerVertex(Vertex* n);
-
+  void fragments_to_make_vertex(int ver, std::set<int> *fragments_list);
+  void add_child_m(vertex* newParent, Vertex* n,int num_of_cells);
   //private:
 
     int dim_num;
