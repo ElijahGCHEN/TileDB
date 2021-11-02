@@ -348,10 +348,10 @@ void Graph::add_child_m(Vertex* newParent, Vertex* n,int num_of_cells ){
 
     int ver=n->get_version();
 
-    if(adjacent_matrix.size()-1<ver){
-        adjacent_matrix.resize(ver,std::vector<int>(ver));
-        visited.resize(ver,std::vector<int>(ver));
-    }
+    // if(adjacent_matrix.size()-1<ver){
+    //     adjacent_matrix.resize(ver,std::vector<int>(ver));
+    //     visited.resize(ver,std::vector<int>(ver));
+    // }
 
     adjacent_matrix[parentVer][ver] = num_of_cells;
     n->add_parent(newParent);
@@ -383,15 +383,15 @@ void Graph::add_child(Vertex* newParent, Vertex* n){
     
     int ver=n->get_version();
 
-    if(adjacent_matrix.size()-1<ver){
-        //resize matrix
+//     if(adjacent_matrix.size()-1<ver){
+//         //resize matrix
 
-// //vector<vector<int>> M;
-// //int m = number of rows, n = number of columns;
-// M.resize(m, vector<int>(n));
-        adjacent_matrix.resize(ver,vector<int>(ver));
-        visited.resize(ver,vector<int>(ver));
-    }
+// // //vector<vector<int>> M;
+// // //int m = number of rows, n = number of columns;
+// // M.resize(m, vector<int>(n));
+//         adjacent_matrix.resize(ver,std::vector<int>(ver));
+//         visited.resize(ver,std::vector<int>(ver));
+//     }
 
     adjacent_matrix[parentVer][ver] = n->no_of_cells();
     n->add_parent(newParent);
