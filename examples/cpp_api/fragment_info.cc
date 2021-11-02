@@ -94,10 +94,14 @@ void write_array_1() {
   std::vector<int> data;
 
   createData(1,1,3,5,coords,data);
+
   Array array(ctx, array_name, TILEDB_WRITE);
   Query query(ctx, array);
   query.set_layout(TILEDB_UNORDERED)
       .set_buffer("a", data)
+
+      //.set_buffer("b",data2)
+
       //.set_subarray(subarray);
       .set_coordinates(coords);
 
@@ -315,6 +319,7 @@ int main() {
   write_array_2();
   write_array_3();
   write_array_4();
+
   get_fragment_info(non_empty_vector,uri,num_of_cells);
 std::cout<<"11111111111111111111"<<std::endl;
   Vertex V0;
@@ -339,6 +344,10 @@ std::cout<<"3333333333333333333"<<std::endl;
   Vertex V2(non_empty_vector[1],uri[1],2,num_of_cells[1]);
   Vertex V3(non_empty_vector[2],uri[2],3,num_of_cells[2]);
   Vertex V4(non_empty_vector[3],uri[3],4,num_of_cells[3]);
+
+  ////combine vertex
+  Vertex V5(non_empty_vector[3],uri[3],4,num_of_cells[3]);
+  
 std::cout<<"444444444444444444"<<std::endl;
   std::vector<Vertex*> v1(1,&V1);
   std::vector<Vertex*> v2(1,&V2);
@@ -363,6 +372,11 @@ std::cout<<"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
   std::cout<<"------------------------------------------------------------------------------"<<std::endl;
   graph.print_vertexs();
+
+  std::cout<<"=========================================================================="<<std::endl;
+
+  graph.insert(,)
+
   
 
   return 0;

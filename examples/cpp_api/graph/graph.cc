@@ -228,12 +228,82 @@ std::cout<<"-----line 167"<<std::endl;
     }else{
         for (int i = 0; i < bases.size(); i++)
         {
-            add_child(bases[i],n);
+            //add_child(bases[i],n);
+
+
+            /////////////////////// assume there are only 2 bases
+            std::vector<int> fragments_list1=fragments_to_make_vertex(bases[0]->get_version());
+            std::vector<int> fragments_list2=fragments_to_make_vertex(bases[1]->get_version());
+
+            int num_of_cell1=0;
+            for (int j = 0; j < fragments_list2.size(); j++)
+            {
+                int ver=fragments_list2[j];
+                //if(ver not in fragments_list1){
+                if(!std::any_of(fragments_list1.begin(), fragments_list1.end(), compare(ver))){
+                    num_of_cell1=num_of_cell1+vertex[ver].no_of_cells();
+                }
+            }
+
+            int num_of_cell2=0;
+            for (int j = 0; j < fragments_list1.size(); j++)
+            {
+                int ver=fragments_list1[j];
+                //if(ver not in fragments_list2){
+                if(!std::any_of(fragments_list2.begin(), fragments_list2.end(), compare(ver))){   
+                    num_of_cell2=num_of_cell2+vertex[ver].no_of_cells();
+                }
+            }
+            
+            add_child_m(bases[0],n,num_of_cell1);
+            add_child_m(bases[1],n,num_of_cell2);
         }
     }
 
     //vertexs.push_back(*n);
     registerVertex(n);
+}
+
+std::vector<int> Graph::fragments_to_make_vertex(Vertex * v){
+    int ver=v->get_version();
+
+    std::vector<int> fragments_list;
+
+    fragments_list.push_back(ver);
+
+    std::vector<int> parents=get_parents_from_ver(ver);
+
+    int ver=parents[0];
+
+    while (ver!=root->get_version())
+    {
+        fragments_list.push_back(ver);
+        parents=get_parents_from_ver(ver);
+        ver=parents[0];
+    }
+    
+    return fragments_list;
+}
+
+void Graph::fragments_to_make_vertex(int ver, std::set<int> *fragments_list){
+    //int ver=v->get_version();
+
+    //std::vector<int> fragments_list;
+    if(ver==0){return;}
+
+    //if(ver not in fragments_list){
+    // if (!std::any_of(fragments_list.begin(), fragments_list.end(), compare(ver)))
+    // {
+        fragments_list.insert(ver);
+    // }
+
+    std::vector<int> parents=get_parents_from_ver(ver);
+
+    for (int i = 0; i < parents.size(); i++)
+    {
+        fragments_to_make_vertex(parents[i],fragments_list);
+    }
+    
 }
 
 // bool Graph::insert_recreated_version(){
@@ -261,6 +331,23 @@ std::vector<int> Graph::get_parents_from_ver(int ver){
 }
 
 
+void Graph::add_child_m(vertex* newParent, Vertex* n,int num_of_cells ){
+
+
+    int parentVer=newParent->get_version();
+
+    int ver=n->get_version();
+
+    if(adjacent_matrix.size()-1<ver){
+        adjacent_matrix.resize(ver,vector<int>(ver));
+        visited.resize(ver,vector<int>(ver));
+    }
+
+    adjacent_matrix[parentVer][ver] = num_of_cells;
+    n->add_parent(newParent);
+    return;
+}
+
 
 void Graph::add_child(Vertex* newParent, Vertex* n){
     // for(int v = 0; v < adjacent_metrix.size(); v++) {
@@ -284,10 +371,17 @@ void Graph::add_child(Vertex* newParent, Vertex* n){
 	
     //adjacent_matrix[parentVer][adjacent_matrix[parentVer].size()-1] = n->no_of_cells();
     
-    
+    int ver=n->get_version;
+
+    if(adjacent_matrix.size()-1<n->get_version){
+        //resize matrix
+
 // //vector<vector<int>> M;
 // //int m = number of rows, n = number of columns;
 // M.resize(m, vector<int>(n));
+        adjacent_matrix.resize(ver,vector<int>(ver));
+        visited.resize(ver,vector<int>(ver));
+    }
 
     adjacent_matrix[parentVer][n->get_version()] = n->no_of_cells();
     n->add_parent(newParent);
@@ -313,7 +407,7 @@ void Graph::add_child(Vertex* newParent, Vertex* n){
     //     return false;
     // }
 
-void Graph::DFS(int v,int sum_of_weight)
+void Graph::DFS(int v,int sum_of_weight,int thresh)
 {
     //std::map<int, bool> visited;
    // vector<int> visited;
@@ -344,7 +438,7 @@ void Graph::DFS(int v,int sum_of_weight)
                 // DFS(*i);   
                 visited[v][i] = true;
 
-                DFS(i,sum_of_weight);             
+                DFS(i,sum_of_weight,thresh);             
             }
         }
         //DFS(i);  

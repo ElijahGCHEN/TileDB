@@ -117,6 +117,8 @@ class Vertex{
   std::vector<int> parents;
 
   int num_dim;
+
+  
   //NDRange ndrange;
 
   //Vertex clone() const;
