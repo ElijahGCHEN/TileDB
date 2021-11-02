@@ -318,7 +318,7 @@ void read_array() {
   Query query(ctx, array, TILEDB_READ);
   query.set_subarray(subarray)
       .set_layout(TILEDB_ROW_MAJOR)
-      .set_buffer("a", data);
+      .set_buffer("a", data)
       .set_buffer("rows", coords_rows)
       .set_buffer("cols", coords_cols);
   // Submit the query and close the array.
@@ -353,7 +353,7 @@ Array array(ctx, array_name, TILEDB_READ, timestamp);
   Query query(ctx, array, TILEDB_READ);
   query.set_subarray(subarray)
       .set_layout(TILEDB_ROW_MAJOR)
-      .set_buffer("a", data);
+      .set_buffer("a", data)
       .set_buffer("rows", coords_rows)
       .set_buffer("cols", coords_cols);
   // Submit the query and close the array.
@@ -463,8 +463,8 @@ std::cout<<"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
   std::cout<<"RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"<<std::endl;
   //read_array();
-  time_travel(timestamps_vector[2]);
-  time_travel(timestamps_vector[3]);
+  time_travel(timestamps_vector[2].second);
+  time_travel(timestamps_vector[3].second);
   std::cout<<"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"<<std::endl;
   return 0;
 }
