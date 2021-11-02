@@ -25,6 +25,7 @@
 #include <cassert>
 #include <iostream>
 #include <list>
+#include <algorithm>
 
 //using namespace tiledb::sm;
 
@@ -242,7 +243,7 @@ std::cout<<"-----line 167"<<std::endl;
             {
                 int ver=fragments_list2[j];
                 //if(ver not in fragments_list1){
-                if(!std::any_of(fragments_list1.begin(), fragments_list1.end(), std::compare(ver))){
+                if(!std::any_of(fragments_list1.begin(), fragments_list1.end(), compare(ver))){
                     num_of_cell1=num_of_cell1+vertexs[ver].no_of_cells();
                 }
             }
@@ -252,7 +253,7 @@ std::cout<<"-----line 167"<<std::endl;
             {
                 int ver=fragments_list1[j];
                 //if(ver not in fragments_list2){
-                if(!std::any_of(fragments_list2.begin(), fragments_list2.end(), std::compare(ver))){   
+                if(!std::any_of(fragments_list2.begin(), fragments_list2.end(), compare(ver))){   
                     num_of_cell2=num_of_cell2+vertexs[ver].no_of_cells();
                 }
             }
@@ -296,7 +297,7 @@ void Graph::fragments_to_make_vertex(int ver, std::set<int> *fragments_list){
     //if(ver not in fragments_list){
     // if (!std::any_of(fragments_list.begin(), fragments_list.end(), compare(ver)))
     // {
-        fragments_list.insert(ver);
+        fragments_list->insert(ver);
     // }
 
     std::vector<int> parents=get_parents_from_ver(ver);
@@ -341,8 +342,8 @@ void Graph::add_child_m(Vertex* newParent, Vertex* n,int num_of_cells ){
     int ver=n->get_version();
 
     if(adjacent_matrix.size()-1<ver){
-        adjacent_matrix.resize(ver,vector<int>(ver));
-        visited.resize(ver,vector<int>(ver));
+        adjacent_matrix.resize(ver,std::vector<int>(ver));
+        visited.resize(ver,std::vector<int>(ver));
     }
 
     adjacent_matrix[parentVer][ver] = num_of_cells;
