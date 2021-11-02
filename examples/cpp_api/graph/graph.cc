@@ -232,8 +232,10 @@ std::cout<<"-----line 167"<<std::endl;
 
 
             /////////////////////// assume there are only 2 bases
-            std::vector<int> fragments_list1=fragments_to_make_vertex(bases[0]->get_version());
-            std::vector<int> fragments_list2=fragments_to_make_vertex(bases[1]->get_version());
+            std::set<int> fragments_list1;
+            std::set<int> fragments_list2;
+            fragments_to_make_vertex(bases[0]->get_version(),&fragments_list1);
+            fragments_to_make_vertex(bases[1]->get_version(),&fragments_list2);
 
             int num_of_cell1=0;
             for (int j = 0; j < fragments_list2.size(); j++)
@@ -331,7 +333,7 @@ std::vector<int> Graph::get_parents_from_ver(int ver){
 }
 
 
-void Graph::add_child_m(vertex* newParent, Vertex* n,int num_of_cells ){
+void Graph::add_child_m(Vertex* newParent, Vertex* n,int num_of_cells ){
 
 
     int parentVer=newParent->get_version();
