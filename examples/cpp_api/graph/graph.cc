@@ -233,8 +233,10 @@ std::cout<<"-----line 167"<<std::endl;
 
 
             /////////////////////// assume there are only 2 bases
-            std::set<int> fragments_list1;
-            std::set<int> fragments_list2;
+            // std::set<int> fragments_list1;
+            // std::set<int> fragments_list2;
+            std::vector<int> fragments_list1;
+            std::vector<int> fragments_list2;
             fragments_to_make_vertex(bases[0]->get_version(),&fragments_list1);
             fragments_to_make_vertex(bases[1]->get_version(),&fragments_list2);
 
@@ -244,7 +246,7 @@ std::cout<<"-----line 167"<<std::endl;
                 int ver=fragments_list2[j];
                 //if(ver not in fragments_list1){
                 //if(!std::any_of(fragments_list1.begin(), fragments_list1.end(), compare(ver))){
-                if(!std::find(fragments_list1.begin(), fragments_list1.end(), ver) != fragments_list1.end()){
+                if(std::find(fragments_list1.begin(), fragments_list1.end(), ver) = fragments_list1.end()){
                     num_of_cell1=num_of_cell1+vertexs[ver].no_of_cells();
                 }
             }
@@ -255,7 +257,7 @@ std::cout<<"-----line 167"<<std::endl;
                 int ver=fragments_list1[j];
                 //if(ver not in fragments_list2){
                 //if(!std::any_of(fragments_list2.begin(), fragments_list2.end(), compare(ver))){ 
-                if(!std::find(fragments_list2.begin(), fragments_list2.end(), ver) != fragments_list2.end()){  
+                if(std::find(fragments_list2.begin(), fragments_list2.end(), ver) = fragments_list2.end()){  
                     num_of_cell2=num_of_cell2+vertexs[ver].no_of_cells();
                 }
             }
@@ -290,17 +292,17 @@ std::cout<<"-----line 167"<<std::endl;
 //     return fragments_list;
 // }
 
-void Graph::fragments_to_make_vertex(int ver, std::set<int> *fragments_list){
+void Graph::fragments_to_make_vertex(int ver, std::vector<int> *fragments_list){
     //int ver=v->get_version();
 
     //std::vector<int> fragments_list;
     if(ver==0){return;}
 
     //if(ver not in fragments_list){
-    // if (!std::any_of(fragments_list.begin(), fragments_list.end(), compare(ver)))
-    // {
+    if (std::find(fragments_list.begin(), fragments_list.end(), ver) = fragments_list.end())
+    {
         fragments_list->insert(ver);
-    // }
+    }
 
     std::vector<int> parents=get_parents_from_ver(ver);
 
