@@ -243,7 +243,8 @@ std::cout<<"-----line 167"<<std::endl;
             {
                 int ver=fragments_list2[j];
                 //if(ver not in fragments_list1){
-                if(!std::any_of(fragments_list1.begin(), fragments_list1.end(), compare(ver))){
+                //if(!std::any_of(fragments_list1.begin(), fragments_list1.end(), compare(ver))){
+                if(!std::find(fragments_list1.begin(), fragments_list1.end(), ver) != fragments_list1.end()){
                     num_of_cell1=num_of_cell1+vertexs[ver].no_of_cells();
                 }
             }
@@ -253,7 +254,8 @@ std::cout<<"-----line 167"<<std::endl;
             {
                 int ver=fragments_list1[j];
                 //if(ver not in fragments_list2){
-                if(!std::any_of(fragments_list2.begin(), fragments_list2.end(), compare(ver))){   
+                //if(!std::any_of(fragments_list2.begin(), fragments_list2.end(), compare(ver))){ 
+                if(!std::find(fragments_list2.begin(), fragments_list2.end(), ver) != fragments_list2.end()){  
                     num_of_cell2=num_of_cell2+vertexs[ver].no_of_cells();
                 }
             }
