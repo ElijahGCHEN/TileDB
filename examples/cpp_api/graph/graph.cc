@@ -302,7 +302,7 @@ void Graph::fragments_to_make_vertex(int ver, std::vector<int> *fragments_list){
 
     //if(ver not in fragments_list){
     //if (std::find(fragments_list->begin(), fragments_list->end(), ver) = fragments_list->end())
-    if (std::count(fragments_list->begin(), fragments_list->end(), ver)==0) {
+    if (std::count(fragments_list->begin(), fragments_list->end(), ver)==0) 
     {
         fragments_list->push_back(ver);
     }
