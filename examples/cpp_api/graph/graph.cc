@@ -246,7 +246,8 @@ std::cout<<"-----line 167"<<std::endl;
                 int ver=fragments_list2[j];
                 //if(ver not in fragments_list1){
                 //if(!std::any_of(fragments_list1.begin(), fragments_list1.end(), compare(ver))){
-                if(std::find(fragments_list1.begin(), fragments_list1.end(), ver) = fragments_list1.end()){
+                //if(std::find(fragments_list1.begin(), fragments_list1.end(), ver) = fragments_list1.end()){
+                if (std::count(fragments_list1.begin(), fragments_list1.end(), ver)==0) {
                     num_of_cell1=num_of_cell1+vertexs[ver].no_of_cells();
                 }
             }
@@ -257,7 +258,8 @@ std::cout<<"-----line 167"<<std::endl;
                 int ver=fragments_list1[j];
                 //if(ver not in fragments_list2){
                 //if(!std::any_of(fragments_list2.begin(), fragments_list2.end(), compare(ver))){ 
-                if(std::find(fragments_list2.begin(), fragments_list2.end(), ver) = fragments_list2.end()){  
+                //if(std::find(fragments_list2.begin(), fragments_list2.end(), ver) = fragments_list2.end()){  
+                if (std::count(fragments_list2.begin(), fragments_list2.end(), ver)==0) {
                     num_of_cell2=num_of_cell2+vertexs[ver].no_of_cells();
                 }
             }
@@ -299,9 +301,10 @@ void Graph::fragments_to_make_vertex(int ver, std::vector<int> *fragments_list){
     if(ver==0){return;}
 
     //if(ver not in fragments_list){
-    if (std::find(fragments_list->begin(), fragments_list->end(), ver) = fragments_list->end())
+    //if (std::find(fragments_list->begin(), fragments_list->end(), ver) = fragments_list->end())
+    if (std::count(fragments_list->begin(), fragments_list->end(), ver)==0) {
     {
-        fragments_list->insert(ver);
+        fragments_list->push_back(ver);
     }
 
     std::vector<int> parents=get_parents_from_ver(ver);
