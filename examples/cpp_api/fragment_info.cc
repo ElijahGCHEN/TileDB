@@ -116,6 +116,7 @@ void write_array_2() {
   std::vector<int> data;
 
   createData(4,4,5,5,coords,data);
+
   Array array(ctx, array_name, TILEDB_WRITE);
   Query query(ctx, array);
   query.set_layout(TILEDB_UNORDERED)
@@ -221,6 +222,7 @@ void get_fragment_info(std::vector<std::vector<std::pair<std::string, std::pair<
       std::cout << "The fragment's timestamp range is {" << timestamps.first << " ,"
                 << timestamps.second << "}.\n"
                 << std::endl;
+                
       timestamps_vector.push_back(timestamps);
 
       // Get the number of cells written to the fragment.
@@ -347,8 +349,8 @@ Array array(ctx, array_name, TILEDB_READ, timestamp);
 
   // Prepare the vector that will hold the result (of size 6 elements)
   std::vector<int> data(25);
-  std::vector<int> coords_rows(5);
-  std::vector<int> coords_cols(5);
+  std::vector<int> coords_rows(25);
+  std::vector<int> coords_cols(25);
   // Prepare the query
   Query query(ctx, array, TILEDB_READ);
   query.set_subarray(subarray)
@@ -362,6 +364,7 @@ Array array(ctx, array_name, TILEDB_READ, timestamp);
 
   // Print out the results.
   auto result_num = (int)query.result_buffer_elements()["a"].second;
+
   for (int r = 0; r < result_num; r++) {
     int i = coords_rows[r];
     int j = coords_cols[r];
@@ -463,7 +466,12 @@ std::cout<<"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
   std::cout<<"RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"<<std::endl;
   //read_array();
+  time_travel(timestamps_vector[1].second);
+
+std::cout<<"------------------------------------------------------------------------------"<<std::endl;
   time_travel(timestamps_vector[2].second);
+std::cout<<"------------------------------------------------------------------------------"<<std::endl;
+
   time_travel(timestamps_vector[3].second);
   std::cout<<"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"<<std::endl;
   return 0;
