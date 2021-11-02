@@ -381,9 +381,9 @@ void Graph::add_child(Vertex* newParent, Vertex* n){
 	
     //adjacent_matrix[parentVer][adjacent_matrix[parentVer].size()-1] = n->no_of_cells();
     
-    int ver=n->get_version;
+    int ver=n->get_version();
 
-    if(adjacent_matrix.size()-1<n->get_version){
+    if(adjacent_matrix.size()-1<ver){
         //resize matrix
 
 // //vector<vector<int>> M;
@@ -393,7 +393,7 @@ void Graph::add_child(Vertex* newParent, Vertex* n){
         visited.resize(ver,vector<int>(ver));
     }
 
-    adjacent_matrix[parentVer][n->get_version()] = n->no_of_cells();
+    adjacent_matrix[parentVer][ver] = n->no_of_cells();
     n->add_parent(newParent);
 
 	// if (parent.has_parent())

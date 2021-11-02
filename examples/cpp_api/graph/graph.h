@@ -79,7 +79,7 @@ class Graph{
   void registerVertex(Vertex* n);
   void fragments_to_make_vertex(int ver, std::vector<int> *fragments_list);
   void add_child_m(Vertex* newParent, Vertex* n,int num_of_cells);
-
+  void DFS(int v,int sum_of_weight,int thresh);
   //private:
 
     int dim_num;
