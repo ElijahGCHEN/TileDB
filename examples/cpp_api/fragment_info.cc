@@ -181,7 +181,7 @@ void write_array_4() {
 // }
 
 void get_fragment_info(std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>> &non_empty_vector
-, std::vector<std::string> &urii, std::vector<int> &num_of_cells) {
+, std::vector<std::string> &urii, std::vector<int> &num_of_cells,std::vector<std::pair<uint64_t, uint64_t>> &timestamps_vector) {
   // Create TileDB context
   Context ctx;
 
@@ -221,6 +221,7 @@ void get_fragment_info(std::vector<std::vector<std::pair<std::string, std::pair<
       std::cout << "The fragment's timestamp range is {" << timestamps.first << " ,"
                 << timestamps.second << "}.\n"
                 << std::endl;
+      timestamps_vector.push_back(timestamps);
 
       // Get the number of cells written to the fragment.
       uint64_t cell_num = fragment_info.cell_num(i);
@@ -284,6 +285,10 @@ void get_fragment_info(std::vector<std::vector<std::pair<std::string, std::pair<
   }
   
   
+  // std::cout << "PPPPPPPPPPPPPrinttttttttttttttttttttttttttttttttttttttttttt"<< std::endl;
+  // array.print();
+  // std::cout << "PPPPPPPPPPPPPrinttttttttttttttttttttttttttttttttttttttttttt"<< std::endl;;=
+
 
   auto non_empty = array.non_empty_domain<int>();
   int num_of_dim= non_empty.size();
@@ -295,6 +300,76 @@ void get_fragment_info(std::vector<std::vector<std::pair<std::string, std::pair<
 
       
 }
+
+void read_array() {
+  Context ctx;
+
+  // Prepare the array for reading
+  Array array(ctx, array_name, TILEDB_READ);
+
+  // Slice only rows 1, 2 and cols 2, 3, 4
+  const std::vector<int> subarray = {1, 5, 1, 5};
+
+  // Prepare the vector that will hold the result (of size 6 elements)
+  std::vector<int> data(25);
+  std::vector<int> coords_rows(3);
+  std::vector<int> coords_cols(3);
+  // Prepare the query
+  Query query(ctx, array, TILEDB_READ);
+  query.set_subarray(subarray)
+      .set_layout(TILEDB_ROW_MAJOR)
+      .set_buffer("a", data);
+      .set_buffer("rows", coords_rows)
+      .set_buffer("cols", coords_cols);
+  // Submit the query and close the array.
+  query.submit();
+  array.close();
+
+  // Print out the results.
+  auto result_num = (int)query.result_buffer_elements()["a"].second;
+  for (int r = 0; r < result_num; r++) {
+    int i = coords_rows[r];
+    int j = coords_cols[r];
+    int a = data[r];
+    std::cout << "Cell (" << i << ", " << j << ") has data " << a << "\n";
+  }
+}
+
+void time_travel(uint64_t timestamp){
+  // ... create context ctx
+Context ctx;
+
+// Open at a timestamp
+//uint64_t timestamp = 1561492235844; // In ms
+Array array(ctx, array_name, TILEDB_READ, timestamp);
+// Slice only rows 1, 2 and cols 2, 3, 4
+  const std::vector<int> subarray = {1, 5, 1, 5};
+
+  // Prepare the vector that will hold the result (of size 6 elements)
+  std::vector<int> data(25);
+  std::vector<int> coords_rows(5);
+  std::vector<int> coords_cols(5);
+  // Prepare the query
+  Query query(ctx, array, TILEDB_READ);
+  query.set_subarray(subarray)
+      .set_layout(TILEDB_ROW_MAJOR)
+      .set_buffer("a", data);
+      .set_buffer("rows", coords_rows)
+      .set_buffer("cols", coords_cols);
+  // Submit the query and close the array.
+  query.submit();
+  array.close();
+
+  // Print out the results.
+  auto result_num = (int)query.result_buffer_elements()["a"].second;
+  for (int r = 0; r < result_num; r++) {
+    int i = coords_rows[r];
+    int j = coords_cols[r];
+    int a = data[r];
+    std::cout << "Cell (" << i << ", " << j << ") has data " << a << "\n";
+  }
+}
+
 
 int main() {
   Context ctx;
@@ -315,12 +390,14 @@ int main() {
 
   std::vector<int> num_of_cells;
 
+  std::vector<std::pair<uint64_t, uint64_t>> timestamps_vector;
   write_array_1();
   write_array_2();
   write_array_3();
   write_array_4();
 
-  get_fragment_info(non_empty_vector,uri,num_of_cells);
+  get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
+
 std::cout<<"11111111111111111111"<<std::endl;
   Vertex V0;
   //std::vector<Vertex> vec;
@@ -345,9 +422,8 @@ std::cout<<"3333333333333333333"<<std::endl;
   Vertex V3(non_empty_vector[2],uri[2],3,num_of_cells[2]);
   Vertex V4(non_empty_vector[3],uri[3],4,num_of_cells[3]);
 
-  ////combine vertex
-  Vertex V5(non_empty_vector[3],uri[3],4,num_of_cells[3]);
-  
+
+
 std::cout<<"444444444444444444"<<std::endl;
   std::vector<Vertex*> v1(1,&V1);
   std::vector<Vertex*> v2(1,&V2);
@@ -374,10 +450,21 @@ std::cout<<"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   graph.print_vertexs();
 
   std::cout<<"=========================================================================="<<std::endl;
+  //   ////combine vertex
+  // Vertex V4C(non_empty_vector[3],"",5,24);
+  // std::vector<Vertex*> v4c;
+  // v4c.push_back(&V2);
+  // v4c.push_back(&V3);
+  // graph.insert(v4c,&V4C);
+  // std::cout<<"------------------------------------------------------------------------------"<<std::endl;
+  // graph.print_vertexs();
 
-  graph.insert(,)
 
-  
 
+  std::cout<<"RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"<<std::endl;
+  //read_array();
+  time_travel(timestamps_vector[2]);
+  time_travel(timestamps_vector[3]);
+  std::cout<<"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"<<std::endl;
   return 0;
 }
