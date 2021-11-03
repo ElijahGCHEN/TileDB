@@ -514,7 +514,7 @@ std::cout<<"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   std::cout<<"RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"<<std::endl;
   //read_array();
   auto VP1=time_travel(timestamps_vector[1].second);
-
+std::cout<<"JM9"<<std::endl;
 std::cout<<"------------------------------------------------------------------------------"<<std::endl;
   auto VP2=time_travel(timestamps_vector[2].second);
 std::cout<<"------------------------------------------------------------------------------"<<std::endl;
@@ -523,6 +523,7 @@ std::cout<<"--------------------------------------------------------------------
 std::cout<<"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"<<std::endl;
 
 
+std::cout<<"要得架wor"<<std::endl;
 
 auto result=combine_two_vertex(VP3,VP2);
   write_array_c(result);
