@@ -417,7 +417,7 @@ std::vector<std::vector<int>> combine_two_vertex(std::vector<std::vector<int>> &
   {
     for (int j = 0; j < VP1.size(); j++)
     {
-      result[i][j]=VP1[i][j]-VP2[i][j];
+      result[i-1][j-1]=VP1[i][j]-VP2[i][j];
     }
     
   }
