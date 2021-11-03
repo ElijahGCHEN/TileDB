@@ -175,8 +175,8 @@ void write_array_c(std::vector<std::vector<int>> &result) {
     for (int j = 0; i < result.size(); i++)
     {
       data.push_back(result[i][j]);
-      coords.push_back(result[i]);
-      coords.push_back(result[j]);
+      coords.push_back(i);
+      coords.push_back(j);
     }
     
   }

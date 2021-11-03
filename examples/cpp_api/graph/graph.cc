@@ -294,6 +294,10 @@ std::cout<<"-----line 167"<<std::endl;
 //     return fragments_list;
 // }
 
+void Graph::Recreation(int ver){
+    
+}
+
 void Graph::fragments_to_make_vertex(int ver, std::vector<int> *fragments_list){
     //int ver=v->get_version();
 
