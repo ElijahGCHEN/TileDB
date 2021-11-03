@@ -396,14 +396,14 @@ Array array(ctx, array_name, TILEDB_READ, timestamp);
   auto result_num = (int)query.result_buffer_elements()["a"].second;
 
   //std::vector<std::vector<int>> result;
-  std::vector<std::vector<int>> result(5, std::vector<int> (5, 0));
+  std::vector<std::vector<int>> result(5, std::vector<int> (6, 0));
 
   for (int r = 0; r < result_num; r++) {
     int i = coords_rows[r];
     int j = coords_cols[r];
     int a = data[r];
     std::cout << "Cell (" << i << ", " << j << ") has data " << a << "\n";
-    result[i-1][j-1]=a;
+    result[i][j]=a;
   }
   return result;
 }
