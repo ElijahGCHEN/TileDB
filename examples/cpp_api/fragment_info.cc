@@ -163,7 +163,7 @@ void write_array_4() {
   array.close();
 }
 
-void write_array_c(std::vector<std::vector<int>> * result) {
+void write_array_c(std::vector<std::vector<int>> &result) {
   Context ctx;
 
   std::vector<int> coords;
@@ -528,10 +528,10 @@ auto result=combine_two_vertex(&VP3,&VP2);
   write_array_c(result);
 
 
-std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>>  non_empty_vector;
-std::vector<std::string>  uri;
-std::vector<int> num_of_cells;
-std::vector<std::pair<uint64_t, uint64_t>> timestamps_vector;
+non_empty_vector.clear();
+uri.clear();
+num_of_cells.clear();
+timestamps_vector.clear();
 
 get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
 
