@@ -170,9 +170,9 @@ void write_array_c(std::vector<std::vector<int>> &result) {
   std::vector<int> data;
   //createData(1,1,4,5,coords,data);
 
-  for (int i = 0; i < result.size(); i++)
+  for (int i = 1; i < result.size(); i++)
   {
-    for (int j = 0; i < result.size(); i++)
+    for (int j = 1; i < result.size(); i++)
     {
       data.push_back(result[i][j]);
       coords.push_back(i);
@@ -412,12 +412,12 @@ Array array(ctx, array_name, TILEDB_READ, timestamp);
 
 std::vector<std::vector<int>> combine_two_vertex(std::vector<std::vector<int>> &VP1, std::vector<std::vector<int>> &VP2){
 
-  std::vector<std::vector<int>> result(5, std::vector<int> (5, 0));
+  std::vector<std::vector<int>> result(6, std::vector<int> (6, 0));
   for (int i = 0; i < VP1.size(); i++)
   {
     for (int j = 0; j < VP1.size(); j++)
     {
-      result[i-1][j-1]=VP1[i][j]-VP2[i][j];
+      result[i][j]=VP1[i][j]-VP2[i][j];
     }
     
   }
