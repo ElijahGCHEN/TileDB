@@ -537,7 +537,7 @@ timestamps_vector.clear();
 get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
 
 Vertex V4c(non_empty_vector[4],uri[4],5,num_of_cells[4]);
-v2.push_back(v3);
+v2.push_back(&v3);
 graph.insert(v2,&V4c);
 std::cout<<"------------------------------------------------------------------------------"<<std::endl;
   graph.print_vertexs();
