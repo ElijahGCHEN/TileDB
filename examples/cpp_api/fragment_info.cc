@@ -524,7 +524,7 @@ std::cout<<"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
 
 
 
-auto result=combine_two_vertex(&VP3,&VP2);
+auto result=combine_two_vertex(VP3,VP2);
   write_array_c(result);
 
 
