@@ -396,7 +396,7 @@ Array array(ctx, array_name, TILEDB_READ, timestamp);
   auto result_num = (int)query.result_buffer_elements()["a"].second;
 
   //std::vector<std::vector<int>> result;
-  std::vector<std::vector<int>> result(5, std::vector<int> (6, 0));
+  std::vector<std::vector<int>> result(6, std::vector<int> (6, 0));
 
   for (int r = 0; r < result_num; r++) {
     int i = coords_rows[r];
