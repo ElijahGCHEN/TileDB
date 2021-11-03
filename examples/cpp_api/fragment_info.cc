@@ -413,9 +413,9 @@ Array array(ctx, array_name, TILEDB_READ, timestamp);
 std::vector<std::vector<int>> combine_two_vertex(std::vector<std::vector<int>> &VP1, std::vector<std::vector<int>> &VP2){
 
   std::vector<std::vector<int>> result(5, std::vector<int> (5, 0));
-  for (int i = 0; i < VP1->size(); i++)
+  for (int i = 0; i < VP1.size(); i++)
   {
-    for (int j = 0; j < VP1->size(); j++)
+    for (int j = 0; j < VP1.size(); j++)
     {
       result[i][j]=VP1[i][j]-VP2[i][j];
     }
