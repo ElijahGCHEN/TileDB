@@ -163,6 +163,36 @@ void write_array_4() {
   array.close();
 }
 
+void write_array_c(std::vector<std::vector<int>> * result) {
+  Context ctx;
+
+  std::vector<int> coords;
+  std::vector<int> data;
+  //createData(1,1,4,5,coords,data);
+
+  for (int i = 0; i < result.size(); i++)
+  {
+    for (int j = 0; i < result.size(); i++)
+    {
+      data.push_back(result[i][j]);
+      coords.push_back(result[i]);
+      coords.push_back(result[j]);
+    }
+    
+  }
+  
+
+  Array array(ctx, array_name, TILEDB_WRITE);
+  Query query(ctx, array);
+  query.set_layout(TILEDB_UNORDERED)
+      .set_buffer("a", data)
+      //.set_subarray(subarray);
+      .set_coordinates(coords);
+
+  query.submit();
+  array.close();
+}
+
 // void write_array_2() {
 
 //   std::vector<int> coords = {1, 2, 2, 3, 3, 4, 3, 3};
@@ -222,7 +252,7 @@ void get_fragment_info(std::vector<std::vector<std::pair<std::string, std::pair<
       std::cout << "The fragment's timestamp range is {" << timestamps.first << " ,"
                 << timestamps.second << "}.\n"
                 << std::endl;
-                
+
       timestamps_vector.push_back(timestamps);
 
       // Get the number of cells written to the fragment.
@@ -337,7 +367,7 @@ void read_array() {
   }
 }
 
-void time_travel(uint64_t timestamp){
+std::vector<std::vector<int>> time_travel(uint64_t timestamp){
   // ... create context ctx
 Context ctx;
 
@@ -365,12 +395,34 @@ Array array(ctx, array_name, TILEDB_READ, timestamp);
   // Print out the results.
   auto result_num = (int)query.result_buffer_elements()["a"].second;
 
+  //std::vector<std::vector<int>> result;
+  std::vector<std::vector<int>> result(5, std::vector<int> (5, 0));
+
   for (int r = 0; r < result_num; r++) {
     int i = coords_rows[r];
     int j = coords_cols[r];
     int a = data[r];
     std::cout << "Cell (" << i << ", " << j << ") has data " << a << "\n";
+    result[i][j]=a;
   }
+  return result;
+}
+
+
+
+std::vector<std::vector<int>> combine_two_vertex(std::vector<std::vector<int>> *VP1, std::vector<std::vector<int>> *VP2){
+
+  std::vector<std::vector<int>> result(5, std::vector<int> (5, 0));
+  for (int i = 0; i < VP1.size(); i++)
+  {
+    for (int j = 0; j < VP1.size(); j++)
+    {
+      result[i][j]=VP1[i][j]-VP2[i][j];
+    }
+    
+  }
+
+return result;
 }
 
 
@@ -387,6 +439,13 @@ int main() {
   create_array();
   //vector<Range>
 
+
+  write_array_1();
+  write_array_2();
+  write_array_3();
+  write_array_4();
+
+
   std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>>  non_empty_vector;
 
   std::vector<std::string>  uri;
@@ -394,32 +453,20 @@ int main() {
   std::vector<int> num_of_cells;
 
   std::vector<std::pair<uint64_t, uint64_t>> timestamps_vector;
-  write_array_1();
-  write_array_2();
-  write_array_3();
-  write_array_4();
 
   get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
 
-std::cout<<"11111111111111111111"<<std::endl;
+  std::cout<<"11111111111111111111"<<std::endl;
   Vertex V0;
   //std::vector<Vertex> vec;
-std::cout<<"2222222222222222"<<std::endl;
+  std::cout<<"2222222222222222"<<std::endl;
   //vec.push_back(V0);
 
   graph.insertRoot(&V0);
   std::vector<Vertex*> v0(1,&V0);
-std::cout<<"3333333333333333333"<<std::endl;
+  std::cout<<"3333333333333333333"<<std::endl;
   int num_of_fragments=uri.size();
 
-  // for (int i = 0; i < num_of_fragments; i++)
-  // {
-  //   Vertex V(non_empty_vector[i],uri[i],i+1);
-  //   vec.push_back();
-    
-  // }
-  // for (int i = 0; i < num_of_fragments; i++)
-  // {
   Vertex V1(non_empty_vector[0],uri[0],1,num_of_cells[0]);
   Vertex V2(non_empty_vector[1],uri[1],2,num_of_cells[1]);
   Vertex V3(non_empty_vector[2],uri[2],3,num_of_cells[2]);
@@ -466,13 +513,34 @@ std::cout<<"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
   std::cout<<"RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"<<std::endl;
   //read_array();
-  time_travel(timestamps_vector[1].second);
+  auto VP1=time_travel(timestamps_vector[1].second);
 
 std::cout<<"------------------------------------------------------------------------------"<<std::endl;
-  time_travel(timestamps_vector[2].second);
+  auto VP2=time_travel(timestamps_vector[2].second);
 std::cout<<"------------------------------------------------------------------------------"<<std::endl;
 
-  time_travel(timestamps_vector[3].second);
-  std::cout<<"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"<<std::endl;
+  auto VP3=time_travel(timestamps_vector[3].second);
+std::cout<<"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"<<std::endl;
+
+
+
+auto result=combine_two_vertex(&VP3,&VP2);
+  write_array_c(result);
+
+
+std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>>  non_empty_vector;
+std::vector<std::string>  uri;
+std::vector<int> num_of_cells;
+std::vector<std::pair<uint64_t, uint64_t>> timestamps_vector;
+
+get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
+
+Vertex V4c(non_empty_vector[4],uri[4],5,num_of_cells[4]);
+std::vector<Vertex*> v4c(1,&V4c);
+graph.insert(v4c,&V4c);
+std::cout<<"------------------------------------------------------------------------------"<<std::endl;
+  graph.print_vertexs();
+
+std::cout<<"=========================================================================="<<std::endl;
   return 0;
 }
