@@ -403,7 +403,7 @@ Array array(ctx, array_name, TILEDB_READ, timestamp);
     int j = coords_cols[r];
     int a = data[r];
     std::cout << "Cell (" << i << ", " << j << ") has data " << a << "\n";
-    result[i][j]=a;
+    result[i-1][j-1]=a;
   }
   return result;
 }
