@@ -197,7 +197,7 @@ void write_array_5() {
 
   std::vector<int> coords;
   std::vector<int> data;
-  createData(1,5,1,5,coords,data);
+  createData(1,1,5,5,coords,data);
   Array array(ctx, array_name, TILEDB_WRITE);
   Query query(ctx, array);
   query.set_layout(TILEDB_UNORDERED)
