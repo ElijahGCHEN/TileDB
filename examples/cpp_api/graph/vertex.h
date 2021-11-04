@@ -95,7 +95,7 @@ class Vertex{
   bool has_fragment() const;
 
   void print();
-  int set_weight(int i);
+  int add_weight(int i);
   std::vector<int> get_weight();
   private:
 

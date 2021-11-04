@@ -148,7 +148,7 @@ std::vector<int> Vertex::get_weight(){
   return weights;
 }
 
-int Vertex::set_weight(int i){
+int Vertex::add_weight(int i){
   weights.push_back(i);
 }
 
@@ -201,7 +201,7 @@ bool Vertex::has_fragment() const{
 }
 
 void Vertex::print(){
-  
+
   std::cout<< "Fragment ver : "<< versionNo << std::endl;
   if(versionNo==0){return;}
   std::cout<< "NDRange :  "<< std::endl;
