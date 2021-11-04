@@ -99,7 +99,7 @@ std::vector<std::pair<std::string, std::pair<int, int>>> Vertex::get_NDRange() c
 bool Vertex::if_contain(const Vertex*vtr) const{
   //unsigned dim_num_=vtr->domain_->dim_num();
   //int dim_num = NDRange.size();
-  
+  std::cout<<"-----if_contain"<<std::endl;
 
   //if(vtr->dim_num() > num_dim){return false;}
   
