@@ -545,11 +545,7 @@ return result;
 
   Graph graph(2,5);
 
-  Context ctx;
-
-  if (Object::object(ctx, array_name).type() == Object::Type::Array) {
-    tiledb::Object::remove(ctx, array_name);
-  }
+  
 
 // int main() {
   
@@ -683,27 +679,6 @@ return result;
 
 //   return 0;
 // }
-
-
-int main() {
-  
-  
-
-  create_array();
-
-
-  createFragment(1,1,3,5);
-  //createFragment(4,4,5,5);
-  //createFragment(1,4,5,5);
-
-
-  //createFragment(1,1,3,5);
-
-  //createFragment(Vertex &VP1,Vertex &VP2);
-
-  return 0;
-}
-
 createFragment(int x1,int y1,int x2,int y2){
 
   write_array(x1,y1,x2,y2);
@@ -727,6 +702,31 @@ createFragment(int x1,int y1,int x2,int y2){
   std::cout<<"=========================================================================="<<std::endl;
 
 }
+
+int main() {
+  
+  Context ctx;
+
+  if (Object::object(ctx, array_name).type() == Object::Type::Array) {
+    tiledb::Object::remove(ctx, array_name);
+  }
+
+  create_array();
+
+
+  createFragment(1,1,3,5);
+  //createFragment(4,4,5,5);
+  //createFragment(1,4,5,5);
+
+
+  //createFragment(1,1,3,5);
+
+  //createFragment(Vertex &VP1,Vertex &VP2);
+
+  return 0;
+}
+
+
 
 createFragment(Vertex &VP1,Vertex &VP2){
 
