@@ -157,7 +157,7 @@ std::vector<int> Vertex::get_weight(){
   return weights;
 }
 
-int Vertex::add_weight(int i){
+void Vertex::add_weight(int i){
   weights.push_back(i);
 }
 
