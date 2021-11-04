@@ -689,9 +689,9 @@ void createFragment(int x1,int y1,int x2,int y2){
   timestamps_vector.clear();
   get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
 
-  Vertex VerNew(*non_empty_vector.end(),*uri.end(),Graph::vertexs.size(),*num_of_cells.end(),*timestamps_vector.end());
+  Vertex VerNew(*non_empty_vector.end(),*uri.end(),graph.vertexs.size(),*num_of_cells.end(),*timestamps_vector.end());
 
-  auto parentvertex=*Graph::vertexs.end();
+  auto parentvertex=*graph.vertexs.end();
 
   std::vector<Vertex*> vparent(1,&parentvertex);
 
