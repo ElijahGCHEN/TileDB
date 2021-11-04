@@ -192,7 +192,22 @@ void write_array_c(std::vector<std::vector<int>> &result) {
   query.submit();
   array.close();
 }
+void write_array_5() {
+  Context ctx;
 
+  std::vector<int> coords;
+  std::vector<int> data;
+  createData(1,5,1,5,coords,data);
+  Array array(ctx, array_name, TILEDB_WRITE);
+  Query query(ctx, array);
+  query.set_layout(TILEDB_UNORDERED)
+      .set_buffer("a", data)
+      //.set_subarray(subarray);
+      .set_coordinates(coords);
+
+  query.submit();
+  array.close();
+}
 // void write_array_2() {
 
 //   std::vector<int> coords = {1, 2, 2, 3, 3, 4, 3, 3};
@@ -612,9 +627,23 @@ std::cout<<"--------------------------------------------------------------------
   graph.print_vertexs();
 
 std::cout<<"=========================================================================="<<std::endl;
-  
-  
-  
-  
+
+write_array_5();
+
+non_empty_vector.clear();
+uri.clear();
+num_of_cells.clear();
+timestamps_vector.clear();
+
+get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
+
+Vertex V5(non_empty_vector[4],uri[4],5,num_of_cells[4]);
+std::vector<Vertex*> v4(1,&V4);
+graph.insert(v4,&V5);
+
+std::cout<<"------------------------------------------------------------------------------"<<std::endl;
+  graph.print_vertexs();
+std::cout<<"=========================================================================="<<std::endl;
+
   return 0;
 }
