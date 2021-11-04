@@ -253,7 +253,7 @@ void write_array(int x1,int y1,int x2,int y2) {
 // }
 
 void get_fragment_info(std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>> &non_empty_vector
-, std::vector<std::string> &urii, std::vector<int> &num_of_cells,std::vector<std::pair<uint64_t, uint64_t>> &timestamps_vector) {
+, std::vector<std::string> &urii, std::vector<int> &num_of_cells,std::vector<uint64_t> &timestamps_vector) {
   // Create TileDB context
   Context ctx;
 
