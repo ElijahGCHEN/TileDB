@@ -728,36 +728,36 @@ int main() {
 
 
 
-createFragment(Vertex &VP1,Vertex &VP2){
+// void createFragment(Vertex &VP1,Vertex &VP2){
 
 
   
-  auto VP1=time_travel(VP1.get_timestamps());
-  auto VP2=time_travel(VP2.get_timestamps());
-  auto result=combine_two_vertex(VP2,VP1);
-  write_array_c(result);
+//   auto VP1=time_travel(VP1.get_timestamps());
+//   auto VP2=time_travel(VP2.get_timestamps());
+//   auto result=combine_two_vertex(VP2,VP1);
+//   write_array_c(result);
 
-  //write_array(x1,y1,x2,y2);
+//   //write_array(x1,y1,x2,y2);
 
-  non_empty_vector.clear();
-  uri.clear();
-  num_of_cells.clear();
-  timestamps_vector.clear();
-  get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
+//   non_empty_vector.clear();
+//   uri.clear();
+//   num_of_cells.clear();
+//   timestamps_vector.clear();
+//   get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
 
-  Vertex VerNew(*non_empty_vector.end(),*uri.end(),Graph::vertexs.size(),*num_of_cells.end());
+//   Vertex VerNew(*non_empty_vector.end(),*uri.end(),Graph::vertexs.size(),*num_of_cells.end());
 
-  //auto parentvertex=*Graph::vertexs.end();
+//   //auto parentvertex=*Graph::vertexs.end();
 
-  std::vector<Vertex*> vparent;
+//   std::vector<Vertex*> vparent;
 
-  vparent.push_back();
-  vparent.push_back();
+//   vparent.push_back();
+//   vparent.push_back();
 
-  graph.insert(vparent,&VerNew);
+//   graph.insert(vparent,&VerNew);
 
-  std::cout<<"------------------------------------------------------------------------------"<<std::endl;
-  graph.print_vertexs();
-  std::cout<<"=========================================================================="<<std::endl;
+//   std::cout<<"------------------------------------------------------------------------------"<<std::endl;
+//   graph.print_vertexs();
+//   std::cout<<"=========================================================================="<<std::endl;
 
-}
+// }
