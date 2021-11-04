@@ -95,7 +95,8 @@ class Vertex{
   bool has_fragment() const;
 
   void print();
-
+  int set_weight(int i);
+  std::vector<int> get_weight();
   private:
 
   std::string uri;
@@ -113,7 +114,7 @@ class Vertex{
   bool materialized;
 
   int num_of_cells;
-  
+
   std::vector<int> weights;
 
   std::vector<int> parents;
