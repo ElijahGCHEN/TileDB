@@ -535,6 +535,13 @@ return result;
 
 
 //   }
+  std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>>  non_empty_vector;
+
+  std::vector<std::string>  uri;
+
+  std::vector<int> num_of_cells;
+
+  std::vector<uint64_t> timestamps_vector;
 
 int main() {
   Context ctx;
@@ -556,15 +563,7 @@ int main() {
   //write_array_4();
 
 
-  std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>>  non_empty_vector;
 
-  std::vector<std::string>  uri;
-
-  std::vector<int> num_of_cells;
-
-  //std::vector<std::pair<uint64_t, uint64_t>> timestamps_vector;
-
-  std::vector<uint64_t> timestamps_vector;
 
   get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
 
