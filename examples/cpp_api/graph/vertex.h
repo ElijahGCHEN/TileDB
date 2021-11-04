@@ -97,10 +97,13 @@ class Vertex{
   void print();
   int add_weight(int i);
   std::vector<int> get_weight();
+  uint64_t get_timestamps();
+
   private:
 
   std::string uri;
-
+  
+  uint64_t timestamps;
   //std::unordered_map<Vertex* vtx,std::int num_of_cells> child_map;
 
   //tiledb::sm::Domain* domain_;

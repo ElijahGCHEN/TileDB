@@ -200,6 +200,12 @@ bool Vertex::has_fragment() const{
   return true;
 }
 
+uint64_t Vertex::get_timestamps(){
+
+  return timestamps;
+  
+}
+
 void Vertex::print(){
 
   std::cout<< "Fragment ver : "<< versionNo << std::endl;

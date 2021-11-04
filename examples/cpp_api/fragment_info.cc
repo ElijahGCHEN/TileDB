@@ -408,6 +408,46 @@ Array array(ctx, array_name, TILEDB_READ, timestamp);
   return result;
 }
 
+std::vector<std::vector<int>> time_travel_by_subarray(uint64_t timestamp,std::vector<int> subarray){
+  // ... create context ctx
+Context ctx;
+
+// Open at a timestamp
+//uint64_t timestamp = 1561492235844; // In ms
+Array array(ctx, array_name, TILEDB_READ, timestamp);
+// Slice only rows 1, 2 and cols 2, 3, 4
+  //const std::vector<int> subarray = {1, 5, 1, 5};
+
+  // Prepare the vector that will hold the result (of size 6 elements)
+  std::vector<int> data(25);
+  std::vector<int> coords_rows(25);
+  std::vector<int> coords_cols(25);
+  // Prepare the query
+  Query query(ctx, array, TILEDB_READ);
+  query.set_subarray(subarray)
+      .set_layout(TILEDB_ROW_MAJOR)
+      .set_buffer("a", data)
+      .set_buffer("rows", coords_rows)
+      .set_buffer("cols", coords_cols);
+  // Submit the query and close the array.
+  query.submit();
+  array.close();
+
+  // Print out the results.
+  auto result_num = (int)query.result_buffer_elements()["a"].second;
+
+  //std::vector<std::vector<int>> result;
+  std::vector<std::vector<int>> result(6, std::vector<int> (6, 0));
+
+  for (int r = 0; r < result_num; r++) {
+    int i = coords_rows[r];
+    int j = coords_cols[r];
+    int a = data[r];
+    std::cout << "Cell (" << i << ", " << j << ") has data " << a << "\n";
+    result[i][j]=a;
+  }
+  return result;
+}
 
 
 std::vector<std::vector<int>> combine_two_vertex(std::vector<std::vector<int>> &VP1, std::vector<std::vector<int>> &VP2){
@@ -421,10 +461,39 @@ std::vector<std::vector<int>> combine_two_vertex(std::vector<std::vector<int>> &
     }
     
   }
+  ///calculate non_empty_domain
 
 return result;
+
 }
 
+// Recreation(int version){
+//   //version's parent;
+//   auto NDRange_=V4c.get_NDRange();
+
+//   auto parents=Graph::get_parents_from_ver(version);
+//   // std::vector<int> fragments_list1;
+//   // std::vector<int> fragments_list2;
+//   // graph::fragments_to_make_vertex(parents[0],&fragments_list1);
+//   // graph::fragments_to_make_vertex(parents[1],&fragments_list2);
+//   std:vector<int> subarray;
+
+//   for (int i = 0; i < 2; i++)
+//   {
+//     subarray.push_back(NDRange_[i].second.first);
+//     subarray.push_back(NDRange_[i].second.second);
+//   }
+  
+
+//   auto VP1=time_travel_by_subarray(Graph::vertexs[parents[0]].get_timestamps(),subarray);
+//   auto VP2=time_travel_by_subarray(Graph::vertexs[parents[1]].get_timestamps(),subarray);
+  
+
+  
+//   //VP1-VP2
+
+
+//   }
 
 int main() {
   Context ctx;
@@ -443,7 +512,7 @@ int main() {
   write_array_1();
   write_array_2();
   write_array_3();
-  write_array_4();
+  //write_array_4();
 
 
   std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>>  non_empty_vector;
@@ -470,7 +539,7 @@ int main() {
   Vertex V1(non_empty_vector[0],uri[0],1,num_of_cells[0]);
   Vertex V2(non_empty_vector[1],uri[1],2,num_of_cells[1]);
   Vertex V3(non_empty_vector[2],uri[2],3,num_of_cells[2]);
-  Vertex V4(non_empty_vector[3],uri[3],4,num_of_cells[3]);
+  //Vertex V4(non_empty_vector[3],uri[3],4,num_of_cells[3]);
 
 
 
@@ -478,7 +547,7 @@ std::cout<<"444444444444444444"<<std::endl;
   std::vector<Vertex*> v1(1,&V1);
   std::vector<Vertex*> v2(1,&V2);
   std::vector<Vertex*> v3(1,&V3);
-  std::vector<Vertex*> v4(1,&V4);
+  //std::vector<Vertex*> v4(1,&V4);
 std::cout<<"555555555555555555555"<<std::endl;
   graph.insert(v0,&V1);
   std::cout<<"6666666666666666666666666"<<std::endl;
@@ -492,7 +561,7 @@ std::cout<<"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   graph.insert(v2,&V3);
 
   std::cout<<"8888888888888888888888888"<<std::endl;
-  graph.insert(v3,&V4);
+  //graph.insert(v3,&V4);
   //graph.insert(v4,&V5);
   //graph.insert(vec,)
 
@@ -536,12 +605,16 @@ timestamps_vector.clear();
 
 get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
 
-Vertex V4c(non_empty_vector[4],uri[4],5,num_of_cells[4]);
+Vertex V4c(non_empty_vector[3],uri[3],4,num_of_cells[3]);
 v2.push_back(&V3);
 graph.insert(v2,&V4c);
 std::cout<<"------------------------------------------------------------------------------"<<std::endl;
   graph.print_vertexs();
 
 std::cout<<"=========================================================================="<<std::endl;
+  
+  
+  
+  
   return 0;
 }
