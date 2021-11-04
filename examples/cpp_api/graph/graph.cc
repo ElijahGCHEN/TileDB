@@ -398,7 +398,7 @@ void Graph::add_child(Vertex* newParent, Vertex* n){
 
     adjacent_matrix[parentVer][ver] = n->no_of_cells();
     n->add_parent(newParent);
-    n->add_weight(num_of_cells);
+    n->add_weight(n->no_of_cells());
 	// if (parent.has_parent())
 	// {
 	// 	vertex* parents_of_parent = parent.get_parent();
