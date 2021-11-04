@@ -690,7 +690,8 @@ void createFragment(int x1,int y1,int x2,int y2,std::vector<std::vector<std::pai
   Vertex VerNew(non_empty_vector[index],uri[index],graph.vertexs.size(),num_of_cells[index],timestamps_vector[index]);
   std::cout<<"------line691----"<<std::endl;
   
-  auto parentvertex=graph.vertexs[graph.vertexs.size()-1];
+  auto parentvertex=graph.vertexs[graph.vertexs.size()-2];
+
   std::cout<<"------line693----"<<std::endl;
   std::vector<Vertex*> vparent(1,&parentvertex);
   std::cout<<"------line695----"<<std::endl;
