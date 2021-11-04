@@ -43,7 +43,7 @@ class Vertex{
 
   /** Constructor. */
   Vertex(std::vector<std::pair<std::string, std::pair<int, int>>> non_empty,
-          std::string uri,int ver,int num_of_cells);
+          std::string uri,int ver,int num_of_cells,,uint64_t timestamps);
 
   /** Destructor. */
   ~Vertex();
