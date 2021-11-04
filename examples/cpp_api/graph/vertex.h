@@ -98,7 +98,7 @@ class Vertex{
   bool has_fragment() const;
 
   void print();
-  int add_weight(int i);
+  void add_weight(int i);
   std::vector<int> get_weight();
   uint64_t get_timestamps();
 
