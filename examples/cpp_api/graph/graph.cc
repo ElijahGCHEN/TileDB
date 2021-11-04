@@ -228,8 +228,8 @@ std::cout<<"-----line 167"<<std::endl;
         }
     }else{
         std::cout<<"-----line 230"<<std::endl;
-        for (int i = 0; i < bases.size(); i++)
-        {
+        //for (int i = 0; i < bases.size(); i++)
+        //{
             std::cout<<"-----line 233"<<std::endl;
             //add_child(bases[i],n);
             /////////////////////// assume there are only 2 bases
@@ -266,7 +266,7 @@ std::cout<<"-----line 167"<<std::endl;
             
             add_child_m(bases[0],n,num_of_cell1);
             add_child_m(bases[1],n,num_of_cell2);
-        }
+        //}
     }
 
     //vertexs.push_back(*n);
