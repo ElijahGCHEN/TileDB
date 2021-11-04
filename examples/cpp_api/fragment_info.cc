@@ -693,10 +693,11 @@ void createFragment(int x1,int y1,int x2,int y2,std::vector<std::vector<std::pai
   // auto parentvertex=graph.vertexs[graph.vertexs.size()-1];
   auto AllVertexs=graph.get_vertexs();
   std::cout<<"------line692----"<<std::endl;
-  auto parentvertex=AllVertexs[AllVertexs.size()-1];
+
+  //Vertex parentvertex=AllVertexs[AllVertexs.size()-1];
 
   std::cout<<"------line693----"<<std::endl;
-  std::vector<Vertex*> vparent(1,&parentvertex);
+  std::vector<Vertex*> vparent(1,&AllVertexs[AllVertexs.size()-1]);
   std::cout<<"------line695----"<<std::endl;
   graph.insert(vparent,&VerNew);
 
