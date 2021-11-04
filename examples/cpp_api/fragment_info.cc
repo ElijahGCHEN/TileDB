@@ -624,13 +624,13 @@ std::cout<<"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
   std::cout<<"RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"<<std::endl;
   //read_array();
-  auto VP1=time_travel(timestamps_vector[1].second);
+  auto VP1=time_travel(timestamps_vector[1]);
 std::cout<<"JM9"<<std::endl;
 std::cout<<"------------------------------------------------------------------------------"<<std::endl;
-  auto VP2=time_travel(timestamps_vector[2].second);
+  auto VP2=time_travel(timestamps_vector[2]);
 std::cout<<"------------------------------------------------------------------------------"<<std::endl;
 
-  auto VP3=time_travel(timestamps_vector[3].second);
+  auto VP3=time_travel(timestamps_vector[3]);
 std::cout<<"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"<<std::endl;
 
 
