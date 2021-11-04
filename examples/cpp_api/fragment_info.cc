@@ -679,7 +679,7 @@ return result;
 
 //   return 0;
 // }
-createFragment(int x1,int y1,int x2,int y2){
+void createFragment(int x1,int y1,int x2,int y2){
 
   write_array(x1,y1,x2,y2);
 
