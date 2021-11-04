@@ -543,139 +543,166 @@ return result;
 
   std::vector<uint64_t> timestamps_vector;
 
-int main() {
-  Context ctx;
   Graph graph(2,5);
+
+  Context ctx;
 
   if (Object::object(ctx, array_name).type() == Object::Type::Array) {
     tiledb::Object::remove(ctx, array_name);
   }
-  //Domain domain(ctx);
-  //create_array(domain,ctx);
+
+// int main() {
+  
+//   //Graph graph(2,5);
+
+//   if (Object::object(ctx, array_name).type() == Object::Type::Array) {
+//     tiledb::Object::remove(ctx, array_name);
+//   }
+//   //Domain domain(ctx);
+//   //create_array(domain,ctx);
+
+//   create_array();
+//   //vector<Range>
+
+//   write_array_0();
+//   write_array_1();
+//   write_array_2();
+//   write_array_3();
+//   //write_array_4();
+
+
+
+
+//   get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
+
+//   std::cout<<"11111111111111111111"<<std::endl;
+//   Vertex V0;
+//   //std::vector<Vertex> vec;
+//   std::cout<<"2222222222222222"<<std::endl;
+//   //vec.push_back(V0);
+
+//   graph.insertRoot(&V0);
+//   std::vector<Vertex*> v0(1,&V0);
+//   std::cout<<"3333333333333333333"<<std::endl;
+//   int num_of_fragments=uri.size();
+
+//   Vertex V1(non_empty_vector[0],uri[0],1,num_of_cells[0],timestamps_vector[0]);
+//   Vertex V2(non_empty_vector[1],uri[1],2,num_of_cells[1]);
+//   Vertex V3(non_empty_vector[2],uri[2],3,num_of_cells[2]);
+//   //Vertex V4(non_empty_vector[3],uri[3],4,num_of_cells[3]);
+
+
+
+// std::cout<<"444444444444444444"<<std::endl;
+//   std::vector<Vertex*> v1(1,&V1);
+//   std::vector<Vertex*> v2(1,&V2);
+//   std::vector<Vertex*> v3(1,&V3);
+//   //std::vector<Vertex*> v4(1,&V4);
+// std::cout<<"555555555555555555555"<<std::endl;
+//   graph.insert(v0,&V1);
+//   std::cout<<"6666666666666666666666666"<<std::endl;
+//   graph.insert(v1,&V2);
+//   std::cout<<"777777777777777777777777"<<std::endl;
+
+//   std::cout<<"------------------------------------------------------------------------------"<<std::endl;
+//   graph.print_vertexs();
+
+// std::cout<<"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"<<std::endl;
+//   graph.insert(v2,&V3);
+
+//   std::cout<<"8888888888888888888888888"<<std::endl;
+//   //graph.insert(v3,&V4);
+//   //graph.insert(v4,&V5);
+//   //graph.insert(vec,)
+
+//   std::cout<<"------------------------------------------------------------------------------"<<std::endl;
+//   graph.print_vertexs();
+
+//   std::cout<<"=========================================================================="<<std::endl;
+//   //   ////combine vertex
+//   // Vertex V4C(non_empty_vector[3],"",5,24);
+//   // std::vector<Vertex*> v4c;
+//   // v4c.push_back(&V2);
+//   // v4c.push_back(&V3);
+//   // graph.insert(v4c,&V4C);
+//   // std::cout<<"------------------------------------------------------------------------------"<<std::endl;
+//   // graph.print_vertexs();
+
+
+
+//   std::cout<<"RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"<<std::endl;
+//   //read_array();
+//   auto VP1=time_travel(timestamps_vector[1]);
+// std::cout<<"JM9"<<std::endl;
+// std::cout<<"------------------------------------------------------------------------------"<<std::endl;
+//   auto VP2=time_travel(timestamps_vector[2]);
+// std::cout<<"------------------------------------------------------------------------------"<<std::endl;
+
+//   auto VP3=time_travel(timestamps_vector[3]);
+// std::cout<<"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"<<std::endl;
+
+
+// std::cout<<"要得架wor"<<std::endl;
+
+// auto result=combine_two_vertex(VP3,VP2);
+//   write_array_c(result);
+
+
+// non_empty_vector.clear();
+// uri.clear();
+// num_of_cells.clear();
+// timestamps_vector.clear();
+
+// get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
+
+// Vertex V4c(non_empty_vector[3],uri[3],4,num_of_cells[3]);
+// v2.push_back(&V3);
+// graph.insert(v2,&V4c);
+// std::cout<<"------------------------------------------------------------------------------"<<std::endl;
+//   graph.print_vertexs();
+
+// std::cout<<"=========================================================================="<<std::endl;
+
+// write_array_5();
+
+// non_empty_vector.clear();
+// uri.clear();
+// num_of_cells.clear();
+// timestamps_vector.clear();
+
+// get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
+
+// Vertex V5(non_empty_vector[4],uri[4],5,num_of_cells[4]);
+
+// std::vector<Vertex*> v4(1,&V4c);
+// graph.insert(v4,&V5);
+
+// std::cout<<"------------------------------------------------------------------------------"<<std::endl;
+//   graph.print_vertexs();
+// std::cout<<"=========================================================================="<<std::endl;
+
+//   return 0;
+// }
+
+
+int main() {
+  
+  
 
   create_array();
-  //vector<Range>
-
-  write_array_0();
-  write_array_1();
-  write_array_2();
-  write_array_3();
-  //write_array_4();
 
 
+  createFragment(1,1,3,5);
+  //createFragment(4,4,5,5);
+  //createFragment(1,4,5,5);
 
 
-  get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
+  //createFragment(1,1,3,5);
 
-  std::cout<<"11111111111111111111"<<std::endl;
-  Vertex V0;
-  //std::vector<Vertex> vec;
-  std::cout<<"2222222222222222"<<std::endl;
-  //vec.push_back(V0);
-
-  graph.insertRoot(&V0);
-  std::vector<Vertex*> v0(1,&V0);
-  std::cout<<"3333333333333333333"<<std::endl;
-  int num_of_fragments=uri.size();
-
-  Vertex V1(non_empty_vector[0],uri[0],1,num_of_cells[0],timestamps_vector[0]);
-  Vertex V2(non_empty_vector[1],uri[1],2,num_of_cells[1]);
-  Vertex V3(non_empty_vector[2],uri[2],3,num_of_cells[2]);
-  //Vertex V4(non_empty_vector[3],uri[3],4,num_of_cells[3]);
-
-
-
-std::cout<<"444444444444444444"<<std::endl;
-  std::vector<Vertex*> v1(1,&V1);
-  std::vector<Vertex*> v2(1,&V2);
-  std::vector<Vertex*> v3(1,&V3);
-  //std::vector<Vertex*> v4(1,&V4);
-std::cout<<"555555555555555555555"<<std::endl;
-  graph.insert(v0,&V1);
-  std::cout<<"6666666666666666666666666"<<std::endl;
-  graph.insert(v1,&V2);
-  std::cout<<"777777777777777777777777"<<std::endl;
-
-  std::cout<<"------------------------------------------------------------------------------"<<std::endl;
-  graph.print_vertexs();
-
-std::cout<<"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"<<std::endl;
-  graph.insert(v2,&V3);
-
-  std::cout<<"8888888888888888888888888"<<std::endl;
-  //graph.insert(v3,&V4);
-  //graph.insert(v4,&V5);
-  //graph.insert(vec,)
-
-  std::cout<<"------------------------------------------------------------------------------"<<std::endl;
-  graph.print_vertexs();
-
-  std::cout<<"=========================================================================="<<std::endl;
-  //   ////combine vertex
-  // Vertex V4C(non_empty_vector[3],"",5,24);
-  // std::vector<Vertex*> v4c;
-  // v4c.push_back(&V2);
-  // v4c.push_back(&V3);
-  // graph.insert(v4c,&V4C);
-  // std::cout<<"------------------------------------------------------------------------------"<<std::endl;
-  // graph.print_vertexs();
-
-
-
-  std::cout<<"RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"<<std::endl;
-  //read_array();
-  auto VP1=time_travel(timestamps_vector[1]);
-std::cout<<"JM9"<<std::endl;
-std::cout<<"------------------------------------------------------------------------------"<<std::endl;
-  auto VP2=time_travel(timestamps_vector[2]);
-std::cout<<"------------------------------------------------------------------------------"<<std::endl;
-
-  auto VP3=time_travel(timestamps_vector[3]);
-std::cout<<"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"<<std::endl;
-
-
-std::cout<<"要得架wor"<<std::endl;
-
-auto result=combine_two_vertex(VP3,VP2);
-  write_array_c(result);
-
-
-non_empty_vector.clear();
-uri.clear();
-num_of_cells.clear();
-timestamps_vector.clear();
-
-get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
-
-Vertex V4c(non_empty_vector[3],uri[3],4,num_of_cells[3]);
-v2.push_back(&V3);
-graph.insert(v2,&V4c);
-std::cout<<"------------------------------------------------------------------------------"<<std::endl;
-  graph.print_vertexs();
-
-std::cout<<"=========================================================================="<<std::endl;
-
-write_array_5();
-
-non_empty_vector.clear();
-uri.clear();
-num_of_cells.clear();
-timestamps_vector.clear();
-
-get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
-
-Vertex V5(non_empty_vector[4],uri[4],5,num_of_cells[4]);
-
-std::vector<Vertex*> v4(1,&V4c);
-graph.insert(v4,&V5);
-
-std::cout<<"------------------------------------------------------------------------------"<<std::endl;
-  graph.print_vertexs();
-std::cout<<"=========================================================================="<<std::endl;
+  //createFragment(Vertex &VP1,Vertex &VP2);
 
   return 0;
 }
-
 
 createFragment(int x1,int y1,int x2,int y2){
 
@@ -687,7 +714,7 @@ createFragment(int x1,int y1,int x2,int y2){
   timestamps_vector.clear();
   get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
 
-  Vertex VerNew(*non_empty_vector.end(),*uri.end(),Graph::vertexs.size(),*num_of_cells.end());
+  Vertex VerNew(*non_empty_vector.end(),*uri.end(),Graph::vertexs.size(),*num_of_cells.end(),*timestamps_vector.end());
 
   auto parentvertex=*Graph::vertexs.end();
 
