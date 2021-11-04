@@ -192,12 +192,15 @@ void write_array_c(std::vector<std::vector<int>> &result) {
   query.submit();
   array.close();
 }
+
 void write_array_5() {
   Context ctx;
 
   std::vector<int> coords;
   std::vector<int> data;
+
   createData(1,1,5,5,coords,data);
+
   Array array(ctx, array_name, TILEDB_WRITE);
   Query query(ctx, array);
   query.set_layout(TILEDB_UNORDERED)
@@ -208,6 +211,29 @@ void write_array_5() {
   query.submit();
   array.close();
 }
+
+
+
+
+void write_array(int x1,int y1,int x2,int y2) {
+  Context ctx;
+
+  std::vector<int> coords;
+  std::vector<int> data;
+
+  createData(x1,y1,x2,y2,coords,data);
+
+  Array array(ctx, array_name, TILEDB_WRITE);
+  Query query(ctx, array);
+  query.set_layout(TILEDB_UNORDERED)
+      .set_buffer("a", data)
+      //.set_subarray(subarray);
+      .set_coordinates(coords);
+
+  query.submit();
+  array.close();
+}
+
 // void write_array_2() {
 
 //   std::vector<int> coords = {1, 2, 2, 3, 3, 4, 3, 3};
@@ -268,7 +294,7 @@ void get_fragment_info(std::vector<std::vector<std::pair<std::string, std::pair<
                 << timestamps.second << "}.\n"
                 << std::endl;
 
-      timestamps_vector.push_back(timestamps);
+      timestamps_vector.push_back(timestamps.second);
 
       // Get the number of cells written to the fragment.
       uint64_t cell_num = fragment_info.cell_num(i);
@@ -523,7 +549,7 @@ int main() {
   create_array();
   //vector<Range>
 
-
+  write_array_0();
   write_array_1();
   write_array_2();
   write_array_3();
@@ -536,7 +562,9 @@ int main() {
 
   std::vector<int> num_of_cells;
 
-  std::vector<std::pair<uint64_t, uint64_t>> timestamps_vector;
+  //std::vector<std::pair<uint64_t, uint64_t>> timestamps_vector;
+
+  std::vector<uint64_t> timestamps_vector;
 
   get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
 
@@ -551,7 +579,7 @@ int main() {
   std::cout<<"3333333333333333333"<<std::endl;
   int num_of_fragments=uri.size();
 
-  Vertex V1(non_empty_vector[0],uri[0],1,num_of_cells[0]);
+  Vertex V1(non_empty_vector[0],uri[0],1,num_of_cells[0],timestamps_vector[0]);
   Vertex V2(non_empty_vector[1],uri[1],2,num_of_cells[1]);
   Vertex V3(non_empty_vector[2],uri[2],3,num_of_cells[2]);
   //Vertex V4(non_empty_vector[3],uri[3],4,num_of_cells[3]);
@@ -638,6 +666,7 @@ timestamps_vector.clear();
 get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
 
 Vertex V5(non_empty_vector[4],uri[4],5,num_of_cells[4]);
+
 std::vector<Vertex*> v4(1,&V4c);
 graph.insert(v4,&V5);
 
@@ -646,4 +675,63 @@ std::cout<<"--------------------------------------------------------------------
 std::cout<<"=========================================================================="<<std::endl;
 
   return 0;
+}
+
+
+createFragment(int x1,int y1,int x2,int y2){
+
+  write_array(x1,y1,x2,y2);
+
+  non_empty_vector.clear();
+  uri.clear();
+  num_of_cells.clear();
+  timestamps_vector.clear();
+  get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
+
+  Vertex VerNew(*non_empty_vector.end(),*uri.end(),Graph::vertexs.size(),*num_of_cells.end());
+
+  auto parentvertex=*Graph::vertexs.end();
+
+  std::vector<Vertex*> vparent(1,&parentvertex);
+
+  graph.insert(vparent,&VerNew);
+
+  std::cout<<"------------------------------------------------------------------------------"<<std::endl;
+  graph.print_vertexs();
+  std::cout<<"=========================================================================="<<std::endl;
+
+}
+
+createFragment(Vertex &VP1,Vertex &VP2){
+
+
+  
+  auto VP1=time_travel(VP1.get_timestamps());
+  auto VP2=time_travel(VP2.get_timestamps());
+  auto result=combine_two_vertex(VP2,VP1);
+  write_array_c(result);
+
+  //write_array(x1,y1,x2,y2);
+
+  non_empty_vector.clear();
+  uri.clear();
+  num_of_cells.clear();
+  timestamps_vector.clear();
+  get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
+
+  Vertex VerNew(*non_empty_vector.end(),*uri.end(),Graph::vertexs.size(),*num_of_cells.end());
+
+  //auto parentvertex=*Graph::vertexs.end();
+
+  std::vector<Vertex*> vparent;
+
+  vparent.push_back();
+  vparent.push_back();
+
+  graph.insert(vparent,&VerNew);
+
+  std::cout<<"------------------------------------------------------------------------------"<<std::endl;
+  graph.print_vertexs();
+  std::cout<<"=========================================================================="<<std::endl;
+
 }

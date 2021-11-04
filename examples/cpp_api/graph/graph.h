@@ -82,7 +82,7 @@ class Graph{
   void DFS(int v,int sum_of_weight,int thresh);
   void Recreation(int ver);
 
-  
+
   //private:
 
     int dim_num;
@@ -97,6 +97,7 @@ class Graph{
     std::vector<Vertex> vertexs;
 
     int thresh;
+    
     
     //std::vector<std::vector<Vertex>> vertexs;
 

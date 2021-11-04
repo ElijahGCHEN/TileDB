@@ -211,13 +211,17 @@ std::cout<<"-----line 167"<<std::endl;
                 }else{
 
                     std::cout<<"-----line 204"<<std::endl;
-                    std::shared_ptr<Vertex> new_root;
-                    //std::Vertex new_root;
+                    // std::shared_ptr<Vertex> new_root(vertexs.size());
+                    // //Vertex nr();
+                    // //std::Vertex new_root;
                     
 
-                    add_child(new_root.get(), root);
-                    add_child(new_root.get(), n);
-                    root = new_root.get();
+                    // add_child(new_root.get(), root);
+                    // add_child(new_root.get(), n);
+                    // root = new_root.get();
+
+                    // vertexs.push_back(*new_root);
+                    add_child(root,n);
                 }
             //insert(base's parents,n);
             }
