@@ -91,7 +91,7 @@ Vertex::~Vertex() =default;
 /* ********************************* */
 
 std::vector<std::pair<std::string, std::pair<int, int>>> Vertex::get_NDRange() const{
-
+std::cout<<"-----get_NDRange"<<std::endl;
   return NDRange_;
 
 }
@@ -111,6 +111,8 @@ bool Vertex::if_contain(const Vertex*vtr) const{
   
 
   for(int i=0;i<(int)num_dim;i++){
+
+    std::cout<<"-----line 11555"<<std::endl;
     // Range Outside=vtr->domain_->domain(i);
     // Range Inside=domain_->domain(i);
     if(
