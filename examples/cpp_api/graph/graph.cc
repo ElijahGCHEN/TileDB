@@ -227,8 +227,10 @@ std::cout<<"-----line 167"<<std::endl;
             add_child(bases[0],n);
         }
     }else{
+        std::cout<<"-----line 230"<<std::endl;
         for (int i = 0; i < bases.size(); i++)
         {
+            std::cout<<"-----line 233"<<std::endl;
             //add_child(bases[i],n);
             /////////////////////// assume there are only 2 bases
             // std::set<int> fragments_list1;
@@ -344,7 +346,7 @@ std::vector<int> Graph::get_parents_from_ver(int ver){
 
 
 void Graph::add_child_m(Vertex* newParent, Vertex* n,int num_of_cells ){
-
+    std::cout<<"-----add_child_m"<<std::endl;
 
     int parentVer=newParent->get_version();
 
