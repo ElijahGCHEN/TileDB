@@ -230,8 +230,6 @@ std::cout<<"-----line 167"<<std::endl;
         for (int i = 0; i < bases.size(); i++)
         {
             //add_child(bases[i],n);
-
-
             /////////////////////// assume there are only 2 bases
             // std::set<int> fragments_list1;
             // std::set<int> fragments_list2;
@@ -295,7 +293,7 @@ std::cout<<"-----line 167"<<std::endl;
 // }
 
 void Graph::Recreation(int ver){
-    
+
 }
 
 void Graph::fragments_to_make_vertex(int ver, std::vector<int> *fragments_list){
@@ -359,6 +357,7 @@ void Graph::add_child_m(Vertex* newParent, Vertex* n,int num_of_cells ){
 
     adjacent_matrix[parentVer][ver] = num_of_cells;
     n->add_parent(newParent);
+    n->add_weight(num_of_cells);
     return;
 }
 
@@ -399,7 +398,7 @@ void Graph::add_child(Vertex* newParent, Vertex* n){
 
     adjacent_matrix[parentVer][ver] = n->no_of_cells();
     n->add_parent(newParent);
-
+    n->add_weight(num_of_cells);
 	// if (parent.has_parent())
 	// {
 	// 	vertex* parents_of_parent = parent.get_parent();

@@ -113,12 +113,14 @@ class Vertex{
   bool materialized;
 
   int num_of_cells;
+  
+  std::vector<int> weights;
 
   std::vector<int> parents;
 
   int num_dim;
 
-  
+
   //NDRange ndrange;
 
   //Vertex clone() const;

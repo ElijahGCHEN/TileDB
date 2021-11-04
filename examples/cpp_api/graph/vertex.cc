@@ -144,6 +144,14 @@ int Vertex::no_of_cells() const{
   return 0;
 }
 
+std::vector<int> Vertex::get_weight(){
+  return weights;
+}
+
+int Vertex::set_weight(int i){
+  weights.push_back(i);
+}
+
 int Vertex::get_version() const{
 
   return versionNo;
@@ -204,10 +212,17 @@ void Vertex::print(){
           << " has cells in [" << NDRange_[i].second.first << ", " 
           << NDRange_[i].second.second << "]" << std::endl;
   }
-  
-  
 
   std::cout<< "Number of cells : "<< num_of_cells << std::endl;
+
+  std::cout<<"Weights: ";
+
+  for (int i = 0; i < weights.size(); i++)
+  {
+    std::cout<<weights[i]<<" ";
+  }
+
+  std::cout<<std::endl;
 
   std::cout<< "Parents : " ;
 
@@ -217,6 +232,4 @@ void Vertex::print(){
   }
 
   std::cout<<std::endl;
-  
-
 }
