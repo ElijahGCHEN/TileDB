@@ -712,13 +712,14 @@ void createFragment(int x1,int y1,int x2,int y2,std::vector<std::vector<std::pai
   std::cout<<"=========================================================================="<<std::endl;
 
 }
-void createMergedFragment(Vertex &VP1,Vertex &VP2){
+void createMergedFragment(Vertex &VP1,Vertex &VP2,std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>> &non_empty_vector
+, std::vector<std::string> &uri, std::vector<int> &num_of_cells,std::vector<uint64_t> &timestamps_vector,Graph &graph){
 
 
   
-  auto VP1=time_travel(VP1.get_timestamps());
-  auto VP2=time_travel(VP2.get_timestamps());
-  auto result=combine_two_vertex(VP2,VP1);
+  auto V1=time_travel(VP1.get_timestamps());
+  auto V2=time_travel(VP2.get_timestamps());
+  auto result=combine_two_vertex(V2,V1);
   write_array_c(result);
 
   //write_array(x1,y1,x2,y2);
@@ -774,7 +775,7 @@ int main() {
   createFragment(4,4,5,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
   createFragment(1,4,5,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
   createFragment(1,1,4,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
-  createMergedFragment(graph.vertexs[graph.vertexs.size()-2],graph.vertexs[graph.vertexs.size()-1]);
+  createMergedFragment(graph.vertexs[graph.vertexs.size()-2],graph.vertexs[graph.vertexs.size()-1],non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
   // for (int i = 0; i < 100; i++)
   // {
   //   createFragment(1,1,100,100,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
