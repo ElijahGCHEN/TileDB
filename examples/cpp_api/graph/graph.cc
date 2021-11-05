@@ -532,7 +532,7 @@ void Graph::DFS(int v,int sum_of_weight,int thresh,int &Maxheight, int currentH)
                 // DFS(*i);   
                 //visited[v][i] = true;
 
-                DFS(i,sum_of_weight,thresh,Maxheight, currentH+1);             
+                visit(i,Maxheight, currentH+1);             
             //}
         }
         //DFS(i);  
