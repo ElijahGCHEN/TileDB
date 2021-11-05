@@ -780,8 +780,8 @@ int main() {
   // {
   //   createFragment(1,1,100,100,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
   // }
-  std::pair<int,int> maxHeight;
-  graph.DFS(0,0,5,maxHeight);
+  int maxHeight=0;
+  graph.DFS(0,0,5,maxHeight,0);
 
   graph.print_vertexs();
 
