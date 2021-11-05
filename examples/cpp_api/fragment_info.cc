@@ -676,6 +676,7 @@ return result;
 void createFragment(int x1,int y1,int x2,int y2,std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>> &non_empty_vector
 , std::vector<std::string> &uri, std::vector<int> &num_of_cells,std::vector<uint64_t> &timestamps_vector,Graph &graph){
 
+
   write_array(x1,y1,x2,y2);
 
   non_empty_vector.clear();
@@ -729,6 +730,12 @@ int main() {
 
   create_array();
 
+  Vertex V0;
+
+  //std::vector<Vertex> vec;
+  //std::cout<<"2222222222222222"<<std::endl;
+  //vec.push_back(V0);
+  graph.insertRoot(&V0);
 
   createFragment(1,1,3,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
   //createFragment(4,4,5,5);
