@@ -787,7 +787,7 @@ int main() {
   // createMergedFragment(graph.vertexs[graph.vertexs.size()-2],graph.vertexs[graph.vertexs.size()-1],non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
 
   
-  for (int i = 0; i < x_min.size(); i++)
+  for (int i = 0; i < 50; i++)
   {
     createFragment(x_min[i],y_min[i], x_max[i], y_max[i],non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
   }
