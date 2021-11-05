@@ -737,13 +737,15 @@ int main() {
   //vec.push_back(V0);
   graph.insertRoot(&V0);
 
-  createFragment(1,1,100,100,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
-  // createFragment(1,1,100,100,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
-  // createFragment(1,1,100,100,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
-  for (int i = 0; i < 100; i++)
-  {
-    createFragment(1,1,100,100,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
-  }
+  createFragment(1,1,3,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
+  createFragment(4,4,5,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
+  createFragment(1,4,5,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
+  createFragment(1,1,4,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
+
+  // for (int i = 0; i < 100; i++)
+  // {
+  //   createFragment(1,1,100,100,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
+  // }
   
 
   //createFragment(1,1,3,5);
