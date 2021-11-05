@@ -785,6 +785,8 @@ int main() {
 
   graph.print_vertexs();
 
+  std::cout<<"Maxheigh:"<<maxHeight.second();
+
   //createFragment(1,1,3,5);
 
   //createFragment(Vertex &VP1,Vertex &VP2);
