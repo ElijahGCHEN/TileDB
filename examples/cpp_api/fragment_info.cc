@@ -785,11 +785,11 @@ int main() {
   // createFragment(1,4,5,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
   // //createFragment(1,1,4,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
   // createMergedFragment(graph.vertexs[graph.vertexs.size()-2],graph.vertexs[graph.vertexs.size()-1],non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
-  int x1,y1,x2,y2;
+
   
-  for (int i = 0; i < 100; i+=2)
+  for (int i = 0; i < 100; i++)
   {
-    createFragment(x_min[i],x_max[i],y_min[i],y_max[i],non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
+    createFragment(x_min[i],y_min[i], x_max[i], y_max[i],non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
   }
 
   int maxHeight=0;
