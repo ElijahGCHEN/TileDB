@@ -686,7 +686,7 @@ void createFragment(int x1,int y1,int x2,int y2,std::vector<std::vector<std::pai
 
   int index=non_empty_vector.size()-1;
   //std::cout<<
-
+  std::cout<<"------index----"<<index<<std::endl;
   //Vertex VerNew(*non_empty_vector.end(),*uri.end(),graph.vertexs.size(),*num_of_cells.end(),*timestamps_vector.end());
   Vertex VerNew(non_empty_vector[index],uri[index],graph.vertexs.size(),num_of_cells[index],timestamps_vector[index]);
 
