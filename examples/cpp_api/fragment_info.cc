@@ -795,8 +795,18 @@ int main() {
 
   std::cout<<"Maxheigh:"<<maxHeight;
 
-  //createFragment(1,1,3,5);
+  int iSecret;
+  /* initialize random seed: */
+  srand (time(NULL));
 
+  iSecret = rand() % 50 + 1;
+
+  //createFragment(1,1,3,5);
+  std::cout<<"for Node:"<<iSecret<<" visited number of vertexs :"<<graph.visit(0,iSecret,0);
+  iSecret = rand() % 50 + 1;
+  std::cout<<"for Node:"<<iSecret<<" visited number of vertexs :"<<graph.visit(0,iSecret,0);
+  iSecret = rand() % 50 + 1;
+  std::cout<<"for Node:"<<iSecret<<" visited number of vertexs :"<<graph.visit(0,iSecret,0);
   //createFragment(Vertex &VP1,Vertex &VP2);
 
   return 0;
