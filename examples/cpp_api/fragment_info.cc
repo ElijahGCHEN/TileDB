@@ -774,7 +774,7 @@ int main() {
   createFragment(1,1,3,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
   createFragment(4,4,5,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
   createFragment(1,4,5,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
-  createFragment(1,1,4,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
+  //createFragment(1,1,4,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
   createMergedFragment(graph.vertexs[graph.vertexs.size()-2],graph.vertexs[graph.vertexs.size()-1],non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
   // for (int i = 0; i < 100; i++)
   // {
