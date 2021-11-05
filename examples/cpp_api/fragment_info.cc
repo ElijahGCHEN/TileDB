@@ -714,7 +714,7 @@ void createFragment(int x1,int y1,int x2,int y2,std::vector<std::vector<std::pai
 }
 
 int main() {
-  Graph graph(2,5);
+  Graph graph(2,100);
   Context ctx;
 
   if (Object::object(ctx, array_name).type() == Object::Type::Array) {
@@ -737,9 +737,9 @@ int main() {
   //vec.push_back(V0);
   graph.insertRoot(&V0);
 
-  createFragment(1,1,3,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
-  //createFragment(4,4,5,5);
-  //createFragment(1,4,5,5);
+  createFragment(1,1,100,100,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
+  createFragment(1,1,100,100,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
+  createFragment(1,1,100,100,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
 
 
   //createFragment(1,1,3,5);
