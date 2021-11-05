@@ -434,8 +434,9 @@ void Graph::add_child(Vertex* newParent, Vertex* n){
     //     return false;
     // }
 
-void Graph::DFS(int v,int sum_of_weight,int thresh)
+void Graph::DFS(int v,int sum_of_weight,int thresh,std::pair<int,int> &height)
 {
+
     //std::map<int, bool> visited;
    // vector<int> visited;
 
@@ -447,6 +448,12 @@ void Graph::DFS(int v,int sum_of_weight,int thresh)
     //vector<int>::iterator i;
     //int sum_of_weight=0;
     //for (i = adjacent_matrix[v][.begin()]; i != adjacent_matrix[v].end(); ++i){
+    height.first++;
+
+    if(height.first>height.second){
+        height.second=height.first;
+    }
+
     for (int i = 0; i < adjacent_matrix[v].size(); i++)
     {
         if(adjacent_matrix[v][i]!=0){
@@ -465,7 +472,7 @@ void Graph::DFS(int v,int sum_of_weight,int thresh)
                 // DFS(*i);   
                 visited[v][i] = true;
 
-                DFS(i,sum_of_weight,thresh);             
+                DFS(i,sum_of_weight,thresh,height);             
             }
         }
         //DFS(i);  
