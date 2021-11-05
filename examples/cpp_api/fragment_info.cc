@@ -38,10 +38,10 @@ void create_array() {//Domain &domain, Context &ctx
   // The array will be 4x4 with dimensions "rows" and "cols", with domain [1,4]
   // and space tiles 2x2
   Domain domain(ctx); ///modified
-
-  domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 100}}, 2))
-        .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 100}}, 2));
-  
+std::cout<<"------line41----"<<std::endl;
+  domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 10}}, 2))
+        .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 10}}, 2));
+std::cout<<"------line44----"<<std::endl;
   // domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 400}}, 2))
   //     .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 400}}, 2));
 
