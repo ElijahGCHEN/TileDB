@@ -49,6 +49,7 @@ Vertex::Vertex(int ver){
     versionNo=ver;
     num_of_cells=0;
     num_dim=0;
+    materialized=0;
 }
 
 Vertex::Vertex(std::vector<std::pair<std::string, std::pair<int, int>>> non_empty, std::string uri,
@@ -57,6 +58,7 @@ Vertex::Vertex(std::vector<std::pair<std::string, std::pair<int, int>>> non_empt
     {
       //no_of_cells=domain_->cell_num(ptr->domain_->domain());
       num_dim=non_empty.size();
+      materialized=0;
 }
 
 Vertex::~Vertex() =default;
@@ -249,4 +251,6 @@ void Vertex::print(){
   }
 
   std::cout<<std::endl;
+
+  std::cout<< "Materialized? : "<< materialized << std::endl;
 }

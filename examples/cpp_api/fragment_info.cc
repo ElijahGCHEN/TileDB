@@ -746,7 +746,9 @@ int main() {
   // {
   //   createFragment(1,1,100,100,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
   // }
+  graph.DFS(0,0,20);
   
+  graph.print_vertexs();
 
   //createFragment(1,1,3,5);
 
