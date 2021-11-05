@@ -107,7 +107,7 @@ bool Vertex::if_contain(const Vertex*vtr) const{
 
   auto baseNDRange=vtr->get_NDRange();
 
-  
+  std::cout<<"-----line 110"<<std::endl;
   
 
   for(int i=0;i<(int)num_dim;i++){
