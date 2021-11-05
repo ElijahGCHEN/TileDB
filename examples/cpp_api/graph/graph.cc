@@ -171,6 +171,14 @@ void Graph::registerVertex(Vertex* n){
     vertexs.push_back(*n);
 }
 
+Vertex Graph::get_vertex_by_id(int id){
+    return vertexs[id];
+}
+
+Vertex Graph::get_latest_vertex(){
+    return vertexs[vertexs.size()-1];
+}
+
 void Graph::insert(std::vector<Vertex*> bases, Vertex* n){
 std::cout<<"-----line 167"<<std::endl;
     if(bases.size()==1){

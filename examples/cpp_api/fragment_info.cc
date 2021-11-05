@@ -683,17 +683,22 @@ void createFragment(int x1,int y1,int x2,int y2,std::vector<std::vector<std::pai
   num_of_cells.clear();
   timestamps_vector.clear();
   get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
+
   int index=non_empty_vector.size()-1;
   //std::cout<<
 
   //Vertex VerNew(*non_empty_vector.end(),*uri.end(),graph.vertexs.size(),*num_of_cells.end(),*timestamps_vector.end());
   Vertex VerNew(non_empty_vector[index],uri[index],graph.vertexs.size(),num_of_cells[index],timestamps_vector[index]);
+
+  VerNew.print();
   std::cout<<"------line691----"<<std::endl;
   
   // auto parentvertex=graph.vertexs[graph.vertexs.size()-1];
   auto AllVertexs=graph.get_vertexs();
-  std::cout<<"------line692----"<<std::endl;
 
+  std::cout<<"------line692----"<<std::endl;
+  auto latestV=graph.get_latest_vertex();
+  latestV.print();
   //Vertex parentvertex=AllVertexs[AllVertexs.size()-1];
 
   std::cout<<"------line693----"<<std::endl;

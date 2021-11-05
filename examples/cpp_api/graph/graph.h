@@ -81,7 +81,8 @@ class Graph{
   void add_child_m(Vertex* newParent, Vertex* n,int num_of_cells);
   void DFS(int v,int sum_of_weight,int thresh);
   void Recreation(int ver);
-
+  Vertex get_vertex_by_id(int id);
+  Vertex get_latest_vertex();
 
   //private:
 
