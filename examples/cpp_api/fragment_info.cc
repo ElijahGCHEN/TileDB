@@ -493,7 +493,7 @@ Array array(ctx, array_name, TILEDB_READ, timestamp);
 
 std::vector<std::vector<int>> combine_two_vertex(std::vector<std::vector<int>> &VP1, std::vector<std::vector<int>> &VP2){
 
-  std::vector<std::vector<int>> result(6, std::vector<int> (6, 0));
+  std::vector<std::vector<int>> result(VP1.size(), std::vector<int> (VP1.size(), 0));
   for (int i = 0; i < VP1.size(); i++)
   {
     for (int j = 0; j < VP1.size(); j++)
@@ -712,6 +712,39 @@ void createFragment(int x1,int y1,int x2,int y2,std::vector<std::vector<std::pai
   std::cout<<"=========================================================================="<<std::endl;
 
 }
+void createMergedFragment(Vertex &VP1,Vertex &VP2){
+
+
+  
+  auto VP1=time_travel(VP1.get_timestamps());
+  auto VP2=time_travel(VP2.get_timestamps());
+  auto result=combine_two_vertex(VP2,VP1);
+  write_array_c(result);
+
+  //write_array(x1,y1,x2,y2);
+
+  non_empty_vector.clear();
+  uri.clear();
+  num_of_cells.clear();
+  timestamps_vector.clear();
+  get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
+  int index=non_empty_vector.size()-1;
+  Vertex VerNew(non_empty_vector[index],uri[index],graph.vertexs.size(),num_of_cells[index],timestamps_vector[index]);
+
+  //auto parentvertex=*Graph::vertexs.end();
+
+  std::vector<Vertex*> vparent;
+
+  vparent.push_back();
+  vparent.push_back();
+
+  graph.insert(vparent,&VerNew);
+
+  std::cout<<"------------------------------------------------------------------------------"<<std::endl;
+  graph.print_vertexs();
+  std::cout<<"=========================================================================="<<std::endl;
+
+}
 
 int main() {
   Graph graph(2,100);
@@ -741,7 +774,7 @@ int main() {
   createFragment(4,4,5,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
   createFragment(1,4,5,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
   createFragment(1,1,4,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
-
+  createMergedFragment(graph.vertexs[graph.vertexs.size()-2],graph.vertexs[graph.vertexs.size()-1]);
   // for (int i = 0; i < 100; i++)
   // {
   //   createFragment(1,1,100,100,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
@@ -759,36 +792,3 @@ int main() {
 
 
 
-// void createFragment(Vertex &VP1,Vertex &VP2){
-
-
-  
-//   auto VP1=time_travel(VP1.get_timestamps());
-//   auto VP2=time_travel(VP2.get_timestamps());
-//   auto result=combine_two_vertex(VP2,VP1);
-//   write_array_c(result);
-
-//   //write_array(x1,y1,x2,y2);
-
-//   non_empty_vector.clear();
-//   uri.clear();
-//   num_of_cells.clear();
-//   timestamps_vector.clear();
-//   get_fragment_info(non_empty_vector,uri,num_of_cells,timestamps_vector);
-
-//   Vertex VerNew(*non_empty_vector.end(),*uri.end(),Graph::vertexs.size(),*num_of_cells.end());
-
-//   //auto parentvertex=*Graph::vertexs.end();
-
-//   std::vector<Vertex*> vparent;
-
-//   vparent.push_back();
-//   vparent.push_back();
-
-//   graph.insert(vparent,&VerNew);
-
-//   std::cout<<"------------------------------------------------------------------------------"<<std::endl;
-//   graph.print_vertexs();
-//   std::cout<<"=========================================================================="<<std::endl;
-
-// }
