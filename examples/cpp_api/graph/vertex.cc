@@ -253,4 +253,6 @@ void Vertex::print(){
   std::cout<<std::endl;
 
   std::cout<< "Materialized? : "<< materialized << std::endl;
+
+  std::cout<<"-------------------------------------"<<std::endl;
 }

@@ -771,17 +771,19 @@ int main() {
   //vec.push_back(V0);
   graph.insertRoot(&V0);
 
-  createFragment(1,1,3,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
-  createFragment(4,4,5,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
-  createFragment(1,4,5,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
-  //createFragment(1,1,4,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
-  createMergedFragment(graph.vertexs[graph.vertexs.size()-2],graph.vertexs[graph.vertexs.size()-1],non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
-  // for (int i = 0; i < 100; i++)
-  // {
-  //   createFragment(1,1,100,100,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
-  // }
+  // createFragment(1,1,3,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
+  // createFragment(4,4,5,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
+  // createFragment(1,4,5,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
+  // //createFragment(1,1,4,5,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
+  // createMergedFragment(graph.vertexs[graph.vertexs.size()-2],graph.vertexs[graph.vertexs.size()-1],non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
+  
+  for (int i = 0; i < 100; i++)
+  {
+    createFragment(1,1,100,100,non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
+  }
+
   int maxHeight=0;
-  graph.DFS(0,0,5,maxHeight,0);
+  graph.DFS(0,0,200,maxHeight,0);
 
   graph.print_vertexs();
 
