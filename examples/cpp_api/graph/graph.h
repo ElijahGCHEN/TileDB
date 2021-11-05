@@ -71,7 +71,7 @@ class Graph{
   void set_materialized(int i);
   std::vector<int> get_parents_from_ver(int ver);
   int find_common_ancestor(const Vertex* v);
-  void DFS(int v,int sum_of_weight);
+  //void DFS(int v,int sum_of_weight);
   void insertRoot(Vertex* n);
   std::vector<Vertex> get_vertexs();
   void print_vertexs();
