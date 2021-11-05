@@ -736,8 +736,8 @@ void createMergedFragment(Vertex &VP1,Vertex &VP2,std::vector<std::vector<std::p
 
   std::vector<Vertex*> vparent;
 
-  vparent.push_back();
-  vparent.push_back();
+  vparent.push_back(VP1);
+  vparent.push_back(VP2);
 
   graph.insert(vparent,&VerNew);
 
