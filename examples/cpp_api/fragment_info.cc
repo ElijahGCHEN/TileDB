@@ -670,15 +670,15 @@ for(float i = 0.1; i < 10 ; i = i + 0.1){
   graph.materialization_list();
   graph.reset_materialization_list();
 }
-  iSecret = rand() % 50 + 1;
+  // iSecret = rand() % 50 + 1;
 
-  //createFragment(1,1,3,5);
-  std::cout<<"for Node:"<<iSecret<<" visited number of vertexs :"<<graph.visit(0,iSecret,0)<<std::endl;
-  iSecret = rand() % 50 + 1;
-  std::cout<<"for Node:"<<iSecret<<" visited number of vertexs :"<<graph.visit(0,iSecret,0)<<std::endl;
-  iSecret = rand() % 50 + 1;
-  std::cout<<"for Node:"<<iSecret<<" visited number of vertexs :"<<graph.visit(0,iSecret,0)<<std::endl;
-  //createFragment(Vertex &VP1,Vertex &VP2);
+  // //createFragment(1,1,3,5);
+  // std::cout<<"for Node:"<<iSecret<<" visited number of vertexs :"<<graph.visit(0,iSecret,0)<<std::endl;
+  // iSecret = rand() % 50 + 1;
+  // std::cout<<"for Node:"<<iSecret<<" visited number of vertexs :"<<graph.visit(0,iSecret,0)<<std::endl;
+  // iSecret = rand() % 50 + 1;
+  // std::cout<<"for Node:"<<iSecret<<" visited number of vertexs :"<<graph.visit(0,iSecret,0)<<std::endl;
+  // //createFragment(Vertex &VP1,Vertex &VP2);
 
   return 0;
 }
