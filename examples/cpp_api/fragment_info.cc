@@ -649,10 +649,10 @@ int main() {
 
   iSecret = rand() % dimension_size + 1;
   graph.visit(0,iSecret,0);
-  iSecret = rand() % dimension_size + 1;
-  graph.visit(0,iSecret,0);
-  iSecret = rand() % dimension_size + 1;
-  graph.visit(0,iSecret,0);
+  // iSecret = rand() % dimension_size + 1;
+  // graph.visit(0,iSecret,0);
+  // iSecret = rand() % dimension_size + 1;
+  // graph.visit(0,iSecret,0);
   //createFragment(Vertex &VP1,Vertex &VP2);
 
   return 0;
