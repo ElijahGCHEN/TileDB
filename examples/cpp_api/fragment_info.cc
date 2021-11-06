@@ -40,8 +40,8 @@ void create_array() {//Domain &domain, Context &ctx
   // and space tiles 2x2
   Domain domain(ctx); ///modified
 std::cout<<"------line41----"<<std::endl;
-  domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 10000}}, 20))
-        .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 10000}}, 20));
+  domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 5000}}, 20))
+        .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 5000}}, 20));
 std::cout<<"------line44----"<<std::endl;
   // domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 400}}, 2))
   //     .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 400}}, 2));
@@ -417,7 +417,7 @@ Context ctx;
 //uint64_t timestamp = 1561492235844; // In ms
 Array array(ctx, array_name, TILEDB_READ, timestamp);
 // Slice only rows 1, 2 and cols 2, 3, 4
-  const std::vector<int> subarray = {1, 5, 1, 5};
+  const std::vector<int> subarray = {1, 5000, 1, 5000};
 
   // Prepare the vector that will hold the result (of size 6 elements)
   std::vector<int> data(25);
@@ -611,7 +611,7 @@ int main() {
     using std::chrono::milliseconds;
 
   int dimension_size = 100;
-  int threshold = 0.2 * 10000 * 10000;
+  int threshold = 0.2 * 5000 * 5000;
 
   Graph graph(2,dimension_size);
   Context ctx;
@@ -706,7 +706,9 @@ std::vector<int> timeNeededForCreateEachVertex;
 for (int i = 0; i < timestamps_vector.size(); i++)
 {
   auto t1 = high_resolution_clock::now();
+
   time_travel(timestamps_vector[i]);
+
   auto t2 = high_resolution_clock::now();
   auto ms_int = duration_cast<milliseconds>(t2 - t1);
   timeNeededForCreateEachVertex.push_back(ms_int.count());
