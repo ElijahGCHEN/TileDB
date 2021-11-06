@@ -797,7 +797,7 @@ int main() {
 
   graph.print_vertexs();
 
-  std::cout<<"Maxheigh:"<<maxHeight;
+  std::cout<<"Maxheigh:"<<maxHeight << std::endl;
 
   int iSecret;
   /* initialize random seed: */
@@ -806,11 +806,11 @@ int main() {
   iSecret = rand() % 50 + 1;
 
   //createFragment(1,1,3,5);
-  std::cout<<"for Node:"<<iSecret<<" visited number of vertexs :"<<graph.visit(0,iSecret,0);
+  std::cout<<"for Node:"<<iSecret<<" visited number of vertexs :"<<graph.visit(0,iSecret,0) << std::endl;
   iSecret = rand() % 50 + 1;
-  std::cout<<"for Node:"<<iSecret<<" visited number of vertexs :"<<graph.visit(0,iSecret,0);
+  std::cout<<"for Node:"<<iSecret<<" visited number of vertexs :"<<graph.visit(0,iSecret,0) << std::endl;
   iSecret = rand() % 50 + 1;
-  std::cout<<"for Node:"<<iSecret<<" visited number of vertexs :"<<graph.visit(0,iSecret,0);
+  std::cout<<"for Node:"<<iSecret<<" visited number of vertexs :"<<graph.visit(0,iSecret,0) << std::endl;
   //createFragment(Vertex &VP1,Vertex &VP2);
 
   return 0;
