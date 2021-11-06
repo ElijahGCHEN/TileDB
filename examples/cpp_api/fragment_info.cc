@@ -643,11 +643,11 @@ int main() {
   }
 
   int maxHeight=0;
-  // graph.DFS(0,0,threshold,maxHeight,0);
-
+  graph.DFS(0,0,threshold,maxHeight,0);
+  graph.reset_materialization_list();
   graph.print_vertexs();
 
-  // std::cout<<"Maxheigh:"<<maxHeight << std::endl << std::endl;
+  std::cout<<"Maxheigh:"<<maxHeight << std::endl << std::endl;
 
   // graph.print_graph();
 
