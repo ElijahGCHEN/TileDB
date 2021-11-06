@@ -605,6 +605,7 @@ int y_max[]={
 int main() {
 
   int dimension_size = 100;
+  int threshold = 2 * dimension_size * dimension_size;
 
   Graph graph(2,dimension_size);
   Context ctx;
@@ -642,7 +643,7 @@ int main() {
   }
 
   int maxHeight=0;
-  graph.DFS(0,0,200,maxHeight,0);
+  graph.DFS(0,0,threshold,maxHeight,0);
 
   graph.print_vertexs();
 
@@ -662,6 +663,7 @@ int main() {
   iSecret = rand() % dimension_size + 1;
   graph.visit(0,iSecret,0);
 
+  graph.materialization_list();
 
   return 0;
 }
