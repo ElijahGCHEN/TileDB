@@ -496,13 +496,14 @@ void Graph::DFS(int v,int sum_of_weight,int thresh,int &Maxheight, int currentH)
         
 int Graph::visit(int v,int targetV, int currentH)
 {
-
+    std::cout << "current at:" << v << std::endl;
     currentH++;
     if(v == targetV){return currentH;}
     for (int i = 0; i < adjacent_matrix[v].size(); i++)
     {
         if(adjacent_matrix[v][i]!=0){
 
+                std::cout << "Visiting:" << i << std::endl;
                 visit(i,targetV, currentH);             
 
         }
