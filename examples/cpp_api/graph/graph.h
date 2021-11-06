@@ -83,7 +83,7 @@ class Graph{
   void Recreation(int ver);
   Vertex get_vertex_by_id(int id);
   Vertex get_latest_vertex();
-  int visit(int v,int targetV, int currentH);
+  void visit(int v,int targetV, int currentH);
   void print_graph();
   //private:
 
