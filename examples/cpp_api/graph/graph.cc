@@ -478,6 +478,7 @@ void Graph::print_graph(){
 
 int Graph::visit(int v,int targetV, int currentH)
 {
+    std::cout << "current height:" << currentH << std::endl;
     std::cout << "current at:" << v << std::endl;
     if(v == targetV){return currentH;}
     for (int i = 0; i < adjacent_matrix[v].size(); i++)
