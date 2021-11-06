@@ -656,7 +656,6 @@ int main() {
   /* initialize random seed: */
   srand (time(NULL));
 
-<<<<<<< Updated upstream
   iSecret = rand() % dimension_size + 1;
   graph.visit(0,iSecret,0);
   iSecret = rand() % dimension_size + 1;
@@ -664,14 +663,13 @@ int main() {
   iSecret = rand() % dimension_size + 1;
   graph.visit(0,iSecret,0);
 
-//for(float i = 0.1; i < 10 ; i = i + 0.1){
+for(float i = 0.1; i < 10 ; i = i + 0.1){
   threshold = i * 1000 * 1000;
   std::cout << "For "<<  i <<" x times, ";
   graph.DFS(0,0,threshold,maxHeight,0);
   graph.materialization_list();
   graph.reset_materialization_list();
-//}
-=======
+}
   iSecret = rand() % 50 + 1;
 
   //createFragment(1,1,3,5);
@@ -682,7 +680,6 @@ int main() {
   std::cout<<"for Node:"<<iSecret<<" visited number of vertexs :"<<graph.visit(0,iSecret,0)<<std::endl;
   //createFragment(Vertex &VP1,Vertex &VP2);
 
->>>>>>> Stashed changes
   return 0;
 }
 
