@@ -494,63 +494,21 @@ void Graph::DFS(int v,int sum_of_weight,int thresh,int &Maxheight, int currentH)
         
 }
         
-        int Graph::visit(int v,int targetV, int currentH)
+int Graph::visit(int v,int targetV, int currentH)
 {
 
-    //std::map<int, bool> visited;
-   // vector<int> visited;
-
-    //std::vector<std::vector<bool>> visited;
-    
-    //visited[v][i] = true;
-    //cout << v << " ";
-
-    //vector<int>::iterator i;
-    //int sum_of_weight=0;
-    //for (i = adjacent_matrix[v][.begin()]; i != adjacent_matrix[v].end(); ++i){
-    
     currentH++;
-    if(v==targetV){return currentH;}
-
-
-
+    if(v == targetV){return currentH;}
     for (int i = 0; i < adjacent_matrix[v].size(); i++)
     {
         if(adjacent_matrix[v][i]!=0){
 
-            //if(!visited[v][i]){
-
-                //sum_of_weight=sum_of_weight+adjacent_matrix[v][i];
-
-                // if(sum_of_weight>thresh){
-                //     //materialization(v,i);
-                //     materialization(i);
-                //     //set_materialized();
-                //     sum_of_weight=0;
-                // }
-
-                // DFS(*i);   
-                //visited[v][i] = true;
-
                 visit(i,targetV, currentH);             
-            //}
+
         }
-        //DFS(i);  
+
     }
     
-        // if(*i!=0){
-
-        // if (!visited[*i]){ //if not visited
-
-        //     sum_of_weight=sum_of_weight+adjacent_matrix[v][i];
-        //     if(check_materialization(sum_of_weight,thresh)){
-        //         materialization(v);
-        //     }
-        //     DFS(*i);
-        // }
-        // }
-
-        //return;
         
 }
 
