@@ -501,7 +501,7 @@ void print_graph(){
         {
             std::cout << adjacent_matrix[i][j] << ' ';
         }
-        std::cout << std::end;
+        std::cout << std::endl;
     }
 }
 
