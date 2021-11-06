@@ -520,8 +520,8 @@ void Graph::visit(int v,int targetV, int currentH)
 
    void Graph::materialization_list(){
         int counter = 0;
-        for(int i = 0; i < vertex.size(); i++){
-            if (vertex[i].if_materialized() == 1)
+        for(int i = 0; i < vertexs.size(); i++){
+            if (vertexs[i].if_materialized() == 1)
             {
                 // std::cout << v.get_version() << ' ';
                 counter++;
@@ -537,9 +537,9 @@ void Graph::visit(int v,int targetV, int currentH)
         //     v.reset_materialized();
         // }
 
-        for (int i = 0; i < vertex.size(); i++)
+        for (int i = 0; i < vertexs.size(); i++)
         {
-            vertex[i].reset_materialized();
+            vertexs[i].reset_materialized();
         }
         
 
