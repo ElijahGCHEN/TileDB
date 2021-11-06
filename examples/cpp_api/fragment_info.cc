@@ -32,6 +32,8 @@ typedef std::vector<std::vector<std::pair<int, std::pair<int, int>>>> non_empty;
 // Name of array.
 std::string array_name("fragment_info_array");
 
+int range=5000;
+
 void create_array() {//Domain &domain, Context &ctx
   // Create a TileDB context.
   Context ctx; ///modiified
@@ -40,8 +42,8 @@ void create_array() {//Domain &domain, Context &ctx
   // and space tiles 2x2
   Domain domain(ctx); ///modified
 std::cout<<"------line41----"<<std::endl;
-  domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 5000}}, 20))
-        .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 5000}}, 20));
+  domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, range}}, 20))
+        .add_dimension(Dimension::create<int>(ctx, "cols", {{1, range}}, 20));
 std::cout<<"------line44----"<<std::endl;
   // domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 400}}, 2))
   //     .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 400}}, 2));
@@ -417,7 +419,7 @@ Context ctx;
 //uint64_t timestamp = 1561492235844; // In ms
 Array array(ctx, array_name, TILEDB_READ, timestamp);
 // Slice only rows 1, 2 and cols 2, 3, 4
-  const std::vector<int> subarray = {1, 5000, 1, 5000};
+  const std::vector<int> subarray = {1, range, 1, range};
 
   // Prepare the vector that will hold the result (of size 6 elements)
   std::vector<int> data(25);
@@ -448,6 +450,44 @@ Array array(ctx, array_name, TILEDB_READ, timestamp);
     result[i][j]=a;
   }
   return result;
+}
+
+void time_travel_only(uint64_t timestamp){
+  // ... create context ctx
+Context ctx;
+
+// Open at a timestamp
+//uint64_t timestamp = 1561492235844; // In ms
+Array array(ctx, array_name, TILEDB_READ, timestamp);
+// Slice only rows 1, 2 and cols 2, 3, 4
+  const std::vector<int> subarray = {1, range, 1, range};
+
+  // Prepare the vector that will hold the result (of size 6 elements)
+  std::vector<int> data(25);
+  std::vector<int> coords_rows(25);
+  std::vector<int> coords_cols(25);
+  // Prepare the query
+  Query query(ctx, array, TILEDB_READ);
+  query.set_subarray(subarray)
+      .set_layout(TILEDB_ROW_MAJOR)
+      .set_buffer("a", data)
+      .set_buffer("rows", coords_rows)
+      .set_buffer("cols", coords_cols);
+  // Submit the query and close the array.
+  query.submit();
+  array.close();
+
+  // Print out the results.
+  auto result_num = (int)query.result_buffer_elements()["a"].second;
+
+  for (int r = 0; r < result_num; r++) {
+    int i = coords_rows[r];
+    int j = coords_cols[r];
+    int a = data[r];
+    std::cout << "Cell (" << i << ", " << j << ") has data " << a << "\n";
+
+  }
+
 }
 
 std::vector<std::vector<int>> time_travel_by_subarray(uint64_t timestamp,std::vector<int> subarray){
@@ -604,14 +644,14 @@ int y_max[]={
 
 
 int main() {
-
+  //range=5000;
   using std::chrono::high_resolution_clock;
     using std::chrono::duration_cast;
     using std::chrono::duration;
     using std::chrono::milliseconds;
 
   int dimension_size = 100;
-  int threshold = 0.2 * 5000 * 5000;
+  int threshold = 0.2 * range * range;
 
   Graph graph(2,dimension_size);
   Context ctx;
@@ -707,7 +747,7 @@ for (int i = 0; i < timestamps_vector.size(); i++)
 {
   auto t1 = high_resolution_clock::now();
 
-  time_travel(timestamps_vector[i]);
+  time_travel_only(timestamps_vector[i]);
 
   auto t2 = high_resolution_clock::now();
   auto ms_int = duration_cast<milliseconds>(t2 - t1);
