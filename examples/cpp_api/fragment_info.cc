@@ -490,6 +490,14 @@ Array array(ctx, array_name, TILEDB_READ, timestamp);
 
 }
 
+void materialization(uint64_t timestamp){
+
+Context ctx;
+Config config;
+config["sm.consolidation.timestamp_end"]=timestamp
+Array::consolidate(ctx, array_name, config);
+}
+
 std::vector<std::vector<int>> time_travel_by_subarray(uint64_t timestamp,std::vector<int> subarray){
   // ... create context ctx
 Context ctx;
@@ -761,8 +769,31 @@ for (auto v :timeNeededForCreateEachVertex){
   std::cout << v <<",";
 }
 
+std::cout<<std::endl;
 
-  
+
+std::vector<int> timeNeededForMAtEachVertex;
+
+auto mat_list= graph.return_materialize();
+
+for (int i = 0; i < mat_list.size(); i++)
+{
+  auto t1 = high_resolution_clock::now();
+
+  materialization(mat_list[i]);
+
+  auto t2 = high_resolution_clock::now();
+  auto ms_int = duration_cast<milliseconds>(t2 - t1);
+
+  timeNeededForMAtEachVertex.push_back(ms_int.count());
+}
+
+std::cout <<  "timeNeededForMAtEachVertex: "<<std::endl;
+
+for (auto v :timeNeededForMAtEachVertex){
+  std::cout << v <<",";
+}
+std::cout<<std::endl;
 
   return 0;
 }

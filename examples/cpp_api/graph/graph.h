@@ -87,6 +87,7 @@ class Graph{
   void print_graph();
   int  materialization_list();
   void reset_materialization_list();
+  std::vector<int> return_materialize();
   //private:
 
     int dim_num;
