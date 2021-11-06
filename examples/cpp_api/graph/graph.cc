@@ -437,19 +437,6 @@ void Graph::add_child(Vertex* newParent, Vertex* n){
 void Graph::DFS(int v,int sum_of_weight,int thresh,int &Maxheight, int currentH)
 {
 
-    //std::map<int, bool> visited;
-   // vector<int> visited;
-
-    //std::vector<std::vector<bool>> visited;
-    
-    //visited[v][i] = true;
-    //cout << v << " ";
-
-    //vector<int>::iterator i;
-    //int sum_of_weight=0;
-    //for (i = adjacent_matrix[v][.begin()]; i != adjacent_matrix[v].end(); ++i){
-    
-
     if(currentH>Maxheight){
         Maxheight=currentH;
     }
@@ -469,28 +456,12 @@ void Graph::DFS(int v,int sum_of_weight,int thresh,int &Maxheight, int currentH)
                     sum_of_weight=0;
                 }
 
-                // DFS(*i);   
                 visited[v][i] = true;
 
                 DFS(i,sum_of_weight,thresh,Maxheight, currentH+1);             
             }
         }
-        //DFS(i);  
     }
-    
-        // if(*i!=0){
-
-        // if (!visited[*i]){ //if not visited
-
-        //     sum_of_weight=sum_of_weight+adjacent_matrix[v][i];
-        //     if(check_materialization(sum_of_weight,thresh)){
-        //         materialization(v);
-        //     }
-        //     DFS(*i);
-        // }
-        // }
-
-        return;
         
 }
         
@@ -512,7 +483,7 @@ int Graph::visit(int v,int targetV, int currentH)
     if(v == targetV){return currentH;}
     for (int i = 0; i < adjacent_matrix[v].size(); i++)
     {
-        if(adjacent_matrix[v][i]!=0){
+        if(adjacent_matrix[v][i] != 0){
 
                 std::cout << "Visiting:" << i << std::endl;
                 visit(i,targetV, currentH);             
