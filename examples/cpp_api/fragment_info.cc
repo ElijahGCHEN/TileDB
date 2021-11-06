@@ -653,15 +653,18 @@ int main() {
 
 
   int iSecret;
+  int visited=0;
   /* initialize random seed: */
   srand (time(NULL));
 
   iSecret = rand() % dimension_size + 1;
-  graph.visit(0,iSecret,0);
+  graph.visit(0,iSecret,visited);
+  int visited=0;
   iSecret = rand() % dimension_size + 1;
-  graph.visit(0,iSecret,0);
+  graph.visit(0,iSecret,visited);
+  int visited=0;
   iSecret = rand() % dimension_size + 1;
-  graph.visit(0,iSecret,0);
+  graph.visit(0,iSecret,visited);
 
 for(float i = 0.1; i < 10 ; i = i + 0.1){
   threshold = i * 1000 * 1000;
