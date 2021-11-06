@@ -521,9 +521,9 @@ void Graph::visit(int v,int targetV, int currentH)
    void Graph::materialization_list(){
         int counter = 0;
         for(auto v :vertexs){
-            if (v.materialized == 1)
+            if (v.if_materialized() == 1)
             {
-                std::cout << v.versionNo << ' ';
+                std::cout << v.get_version() << ' ';
                 counter++;
             }
         }
