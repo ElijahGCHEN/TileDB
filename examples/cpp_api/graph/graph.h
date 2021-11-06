@@ -85,7 +85,7 @@ class Graph{
   Vertex get_latest_vertex();
   void visit(int v,int targetV, int currentH);
   void print_graph();
-  void materialization_list();
+  int  materialization_list();
   void reset_materialization_list();
   //private:
 
