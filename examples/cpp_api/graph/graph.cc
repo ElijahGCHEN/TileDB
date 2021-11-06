@@ -479,7 +479,6 @@ void Graph::print_graph(){
 int Graph::visit(int v,int targetV, int currentH)
 {
     std::cout << "current at:" << v << std::endl;
-    currentH++;
     if(v == targetV){return currentH;}
     for (int i = 0; i < adjacent_matrix[v].size(); i++)
     {
@@ -487,7 +486,7 @@ int Graph::visit(int v,int targetV, int currentH)
         if(adjacent_matrix[v][i] != 0){
 
                 std::cout << "Visiting:" << i << std::endl;
-                visit(i,targetV, currentH);             
+                visit(i,targetV, currentH + 1);             
 
         }
 
