@@ -518,7 +518,7 @@ void Graph::visit(int v,int targetV, int currentH)
 
    }
 
-   void Graph::materialization_list(){
+   int Graph::materialization_list(){
         int counter = 0;
         for(auto v :vertexs){
             if (v.if_materialized() == 1)
@@ -528,6 +528,7 @@ void Graph::visit(int v,int targetV, int currentH)
             }
         }
         std::cout << std::endl << "Total materialized number of vertices is: " << counter << std::endl;
+        return counter;
    }
 
 
@@ -537,7 +538,7 @@ void Graph::visit(int v,int targetV, int currentH)
             v.reset_materialized();
         }
 
-        std::vector<std::vector<bool>> vecbool(100, std::vector<bool> (100, 0));
+        std::vector<std::vector<bool>> vecbool(size, std::vector<bool> (size, 0));
         visited=vecbool;
    }
 

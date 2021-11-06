@@ -663,13 +663,34 @@ int main() {
   iSecret = rand() % dimension_size + 1;
   graph.visit(0,iSecret,0);
 
+std::vector<int> Totalmaterializednumberofvertices;
+std::vector<int> thresholdList;
+
 for(float i = 0.1; i < 10 ; i = i + 0.1){
   threshold = i * 1000 * 1000;
   std::cout << "For "<<  i <<" x times, ";
   graph.DFS(0,0,threshold,maxHeight,0);
-  graph.materialization_list();
+
+  thresholdList.push_back(threshold);
+  
+  int numOfMedV=graph.materialization_list();
+
+  Totalmaterializednumberofvertices.push_back(numOfMedV);
+
   graph.reset_materialization_list();
 }
+
+for (auto v :Totalmaterializednumberofvertices){
+ std::cout << v <<","
+}
+
+std::cout<< std::endl;
+
+for (auto v :thresholdList){
+  std::cout << v <<","
+}
+
+std::cout<< std::endl;
   
 
   return 0;
