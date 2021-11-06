@@ -737,7 +737,7 @@ for(float i = 0.1; i < 10 ; i = i + 0.1){
 
   Totalmaterializednumberofvertices.push_back(numOfMedV);
 
-  graph.reset_materialization_list();
+  //graph.reset_materialization_list();
 }
 
 for (auto v :Totalmaterializednumberofvertices){

@@ -506,6 +506,7 @@ void Graph::visit(int v,int targetV, int& currentH)
 
     std::vector<int> Graph::return_materialize(){
         std::vector<int> timestamplist;
+        
         for (int i = 0; i < vertexs.size(); i++)
         {
             if(vertexs[i].if_materialized()){
