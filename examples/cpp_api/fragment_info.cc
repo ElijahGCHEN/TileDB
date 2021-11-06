@@ -24,6 +24,7 @@
 #include <algorithm>
 #include <tiledb/tiledb>
 #include <vector>
+#include <chrono>
 //#include "tiledb/sm/misc/types.h"
 //#include "../../tiledb/sm/misc/types.h"
 using namespace tiledb;
@@ -604,6 +605,11 @@ int y_max[]={
 
 int main() {
 
+  using std::chrono::high_resolution_clock;
+    using std::chrono::duration_cast;
+    using std::chrono::duration;
+    using std::chrono::milliseconds;
+
   int dimension_size = 100;
   int threshold = 0.2 * 1000 * 1000;
 
@@ -694,6 +700,26 @@ for (auto v :thresholdList){
 }
 
 std::cout<< std::endl;
+
+std::vector<int> timeNeededForCreateEachVertex;
+
+for (int i = 0; i < timestamps_vector.size(); i++)
+{
+  auto t1 = high_resolution_clock::now();
+  time_travel(timestamps_vector[i]);
+  auto t2 = high_resolution_clock::now();
+  auto ms_int = duration_cast<milliseconds>(t2 - t1);
+  timeNeededForCreateEachVertex.push_back(ms_int.count());
+}
+
+
+std::cout <<  "timeNeededForCreateEachVertex: "<<std::endl;
+
+for (auto v :timeNeededForCreateEachVertex){
+  std::cout << v <<",";
+}
+
+
   
 
   return 0;
