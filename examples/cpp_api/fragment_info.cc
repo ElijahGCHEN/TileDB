@@ -659,10 +659,10 @@ int main() {
 
   iSecret = rand() % dimension_size + 1;
   graph.visit(0,iSecret,visited);
-  int visited=0;
+   visited=0;
   iSecret = rand() % dimension_size + 1;
   graph.visit(0,iSecret,visited);
-  int visited=0;
+   visited=0;
   iSecret = rand() % dimension_size + 1;
   graph.visit(0,iSecret,visited);
 
