@@ -656,6 +656,7 @@ int main() {
   /* initialize random seed: */
   srand (time(NULL));
 
+<<<<<<< Updated upstream
   iSecret = rand() % dimension_size + 1;
   graph.visit(0,iSecret,0);
   iSecret = rand() % dimension_size + 1;
@@ -670,6 +671,18 @@ int main() {
   graph.materialization_list();
   graph.reset_materialization_list();
 //}
+=======
+  iSecret = rand() % 50 + 1;
+
+  //createFragment(1,1,3,5);
+  std::cout<<"for Node:"<<iSecret<<" visited number of vertexs :"<<graph.visit(0,iSecret,0)<<std::endl;
+  iSecret = rand() % 50 + 1;
+  std::cout<<"for Node:"<<iSecret<<" visited number of vertexs :"<<graph.visit(0,iSecret,0)<<std::endl;
+  iSecret = rand() % 50 + 1;
+  std::cout<<"for Node:"<<iSecret<<" visited number of vertexs :"<<graph.visit(0,iSecret,0)<<std::endl;
+  //createFragment(Vertex &VP1,Vertex &VP2);
+
+>>>>>>> Stashed changes
   return 0;
 }
 
