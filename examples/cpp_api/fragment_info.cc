@@ -494,7 +494,7 @@ void materialization(uint64_t timestamp){
 
 Context ctx;
 Config config;
-config["sm.consolidation.timestamp_end"]=timestamp
+config["sm.consolidation.timestamp_end"]=timestamp;
 Array::consolidate(ctx, array_name, config);
 }
 
