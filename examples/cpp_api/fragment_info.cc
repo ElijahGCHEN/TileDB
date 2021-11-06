@@ -643,7 +643,7 @@ int main() {
   }
 
   int maxHeight=0;
-  graph.DFS(0,0,threshold,maxHeight,0);
+  // graph.DFS(0,0,threshold,maxHeight,0);
 
   graph.print_vertexs();
 
