@@ -95,6 +95,8 @@ class Vertex{
 
   void set_materialized();
 
+  void reset_materialized();
+
   bool has_fragment() const;
 
   void print();

@@ -208,6 +208,10 @@ void Vertex::set_materialized() {
   materialized=1;
 }
 
+void Vertex::reset_materialized() {
+  materialized=0;
+}
+
 bool Vertex::has_fragment() const{
   if(uri==""){return false;}
   return true;

@@ -531,6 +531,13 @@ void Graph::visit(int v,int targetV, int currentH)
    }
 
 
+   void Graph::reset_materialization_list(){
+
+        for(auto v :vertexs){
+            v.reset_materialized();
+        }
+   }
+
 
 
 

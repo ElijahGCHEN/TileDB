@@ -86,6 +86,7 @@ class Graph{
   void visit(int v,int targetV, int currentH);
   void print_graph();
   void materialization_list();
+  void reset_materialization_list();
   //private:
 
     int dim_num;

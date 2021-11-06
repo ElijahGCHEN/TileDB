@@ -668,6 +668,7 @@ for(float i = 0.1; i < 10 ; i = i + 0.1){
   std::cout << "For " << i << " x times, ";
   graph.DFS(0,0,threshold,maxHeight,0);
   graph.materialization_list();
+  graph.reset_materialization_list();
 }
   return 0;
 }
