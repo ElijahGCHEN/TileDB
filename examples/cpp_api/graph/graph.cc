@@ -527,7 +527,7 @@ void Graph::visit(int v,int targetV, int currentH)
                 counter++;
             }
         }
-        std::cout << "Total materialized number of vertices is: " << counter;
+        std::cout << std::endl << "Total materialized number of vertices is: " << counter << std::endl;
    }
 
 
