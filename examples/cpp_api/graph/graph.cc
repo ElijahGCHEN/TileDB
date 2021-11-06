@@ -480,7 +480,7 @@ int Graph::visit(int v,int targetV, int currentH)
 {
 
     if(v == targetV){
-        std::cout << "For node" << targetV << ", visited number of vertices is" << currentH << ", the rate is " << float(currentH) / targetV << std::endl;
+        std::cout << "For node" << targetV << ", visited number of vertices is " << currentH << ", the rate is " << float(currentH) / targetV << std::endl;
         return currentH;
     }
     for (int i = 0; i < adjacent_matrix[v].size(); i++)
