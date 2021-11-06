@@ -596,9 +596,9 @@ int y_max[]={998, 985, 998, 965, 915, 996, 983, 901, 855, 918, 791, 955, 906, 98
 
 int main() {
 
-  int dimensiona = 30;
+  int dimension_size = 50;
 
-  Graph graph(2,dimensiona);
+  Graph graph(2,dimension_size);
   Context ctx;
 
   if (Object::object(ctx, array_name).type() == Object::Type::Array) {
@@ -628,7 +628,7 @@ int main() {
   // createMergedFragment(graph.vertexs[graph.vertexs.size()-2],graph.vertexs[graph.vertexs.size()-1],non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
 
   
-  for (int i = 0; i < dimensiona; i++)
+  for (int i = 0; i < dimension_size; i++)
   {
     createFragment(x_min[i],y_min[i], x_max[i], y_max[i],non_empty_vector,uri,num_of_cells,timestamps_vector,graph);
   }
@@ -647,12 +647,12 @@ int main() {
   /* initialize random seed: */
   srand (time(NULL));
 
-  iSecret = rand() % dimensiona + 1;
+  iSecret = rand() % dimension_size + 1;
   graph.visit(0,iSecret,0);
-  iSecret = rand() % dimensiona + 1;
+  iSecret = rand() % dimension_size + 1;
   graph.visit(0,iSecret,0);
-  iSecret = rand() % dimensiona + 1;
-  graph.visit(0,29,0);
+  iSecret = rand() % dimension_size + 1;
+  graph.visit(0,iSecret,0);
   //createFragment(Vertex &VP1,Vertex &VP2);
 
   return 0;
