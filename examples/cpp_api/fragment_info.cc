@@ -494,9 +494,9 @@ void materialization(uint64_t timestamp){
 
 Context ctx;
 Config config;
-//config["sm.consolidation.timestamp_end"]=timestamp;
-config["sm.consolidation.steps"] = 3;
-Array::consolidate(ctx, array_name, config);
+config["sm.consolidation.timestamp_end"]=timestamp;
+//config["sm.consolidation.steps"] = 3;
+consolidate(ctx, array_name, config);
 }
 
 std::vector<std::vector<int>> time_travel_by_subarray(uint64_t timestamp,std::vector<int> subarray){
