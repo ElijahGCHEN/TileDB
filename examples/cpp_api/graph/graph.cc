@@ -504,9 +504,10 @@ void Graph::visit(int v,int targetV, int& currentH)
         vertexs[i].set_materialized();
     }
 
-    std::vector<int> Graph::return_materialize(){
-        std::vector<int> timestamplist;
-        
+    std::vector<uint64_t> Graph::return_materialize(){
+
+        std::vector<uint64_t> timestamplist;
+
         for (int i = 0; i < vertexs.size(); i++)
         {
             if(vertexs[i].if_materialized()){
