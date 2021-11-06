@@ -499,9 +499,9 @@ void print_graph(){
     {   
         for (int j = 0; j < adjacent_matrix[i].size; ++j)
         {
-            cout << adjacent_matrix[i][j] << ' ';
+            std::cout << adjacent_matrix[i][j] << ' ';
         }
-        cout << std::end;
+        std::cout << std::end;
     }
 }
 
