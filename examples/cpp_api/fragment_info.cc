@@ -799,6 +799,9 @@ int main() {
 
   std::cout<<"Maxheigh:"<<maxHeight << std::endl;
 
+  print_graph();
+  
+
   int iSecret;
   /* initialize random seed: */
   srand (time(NULL));
