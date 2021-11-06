@@ -480,15 +480,14 @@ int Graph::visit(int v,int targetV, int currentH)
 {
 
     if(v == targetV){
-        std::cout << "current height:" << currentH << std::endl;
+        std::cout << "For node" << targetV << ", visited number of vertices is" << currentH << ", the rate is " << float(currentH) / targetV << std::endl;
         return currentH;
     }
     for (int i = 0; i < adjacent_matrix[v].size(); i++)
     {
         if(adjacent_matrix[v][i] != 0){
 
-                std::cout << "Visiting:" << i << std::endl;
-                return visit(i,targetV, currentH + 1);             
+            visit(i,targetV, currentH + 1);             
 
         }
 
