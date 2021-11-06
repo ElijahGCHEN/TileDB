@@ -40,8 +40,8 @@ void create_array() {//Domain &domain, Context &ctx
   // and space tiles 2x2
   Domain domain(ctx); ///modified
 std::cout<<"------line41----"<<std::endl;
-  domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 1000}}, 2))
-        .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 1000}}, 2));
+  domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 10000}}, 20))
+        .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 10000}}, 20));
 std::cout<<"------line44----"<<std::endl;
   // domain.add_dimension(Dimension::create<int>(ctx, "rows", {{1, 400}}, 2))
   //     .add_dimension(Dimension::create<int>(ctx, "cols", {{1, 400}}, 2));
@@ -611,7 +611,7 @@ int main() {
     using std::chrono::milliseconds;
 
   int dimension_size = 100;
-  int threshold = 0.2 * 1000 * 1000;
+  int threshold = 0.2 * 10000 * 10000;
 
   Graph graph(2,dimension_size);
   Context ctx;
