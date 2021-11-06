@@ -483,7 +483,6 @@ int Graph::visit(int v,int targetV, int currentH)
     if(v == targetV){return currentH;}
     for (int i = 0; i < adjacent_matrix[v].size(); i++)
     {
-        std::cout << "adjacent_matrix[v][i] = " << adjacent_matrix[v][i] << std::endl;
         if(adjacent_matrix[v][i] != 0){
 
                 std::cout << "Visiting:" << i << std::endl;
