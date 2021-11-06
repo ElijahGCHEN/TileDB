@@ -488,7 +488,7 @@ int Graph::visit(int v,int targetV, int currentH)
         if(adjacent_matrix[v][i] != 0){
 
                 std::cout << "Visiting:" << i << std::endl;
-                visit(i,targetV, currentH + 1);             
+                return visit(i,targetV, currentH + 1);             
 
         }
 
