@@ -605,7 +605,7 @@ int y_max[]={
 int main() {
 
   int dimension_size = 100;
-  int threshold = 1 * 1000 * 1000;
+  int threshold = 0.1 * 1000 * 1000;
 
   Graph graph(2,dimension_size);
   Context ctx;
