@@ -523,7 +523,7 @@ void Graph::visit(int v,int targetV, int currentH)
         for(auto v :vertexs){
             if (v.if_materialized() == 1)
             {
-                std::cout << v.get_version() << ' ';
+                // std::cout << v.get_version() << ' ';
                 counter++;
             }
         }
