@@ -476,9 +476,9 @@ void Graph::print_graph(){
     }
 }
 
-void Graph::visit(int v,int targetV, int currentH)
+void Graph::visit(int v,int targetV, int& currentH)
 {
-
+    currentH++;
     if(v == targetV){
         std::cout << "For node " << targetV << ", visited number of vertices is " << currentH << ", the rate is " << float(currentH) / targetV << std::endl;
     }
@@ -486,7 +486,7 @@ void Graph::visit(int v,int targetV, int currentH)
     {
         if(adjacent_matrix[v][i] != 0){
 
-            visit(i,targetV, currentH + 1);             
+            visit(i,targetV, currentH);             
 
         }
 
