@@ -805,7 +805,7 @@ int main() {
 
   iSecret = rand() % 50 + 1;
 
-  //createFragment(1,1,3,5);
+  std::cout<<"for Node: 0 visited number of vertexs :"<<graph.visit(0,0,0) << std::endl;
   std::cout<<"for Node:"<<iSecret<<" visited number of vertexs :"<<graph.visit(0,iSecret,0) << std::endl;
   iSecret = rand() % 50 + 1;
   std::cout<<"for Node:"<<iSecret<<" visited number of vertexs :"<<graph.visit(0,iSecret,0) << std::endl;
