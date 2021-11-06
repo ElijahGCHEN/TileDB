@@ -663,7 +663,7 @@ int main() {
   iSecret = rand() % dimension_size + 1;
   graph.visit(0,iSecret,0);
 
-for(float i = 0.1; i < 10 ; i = i + 0.1){
+for(float i = 5; i < 10 ; i = i + 0.1){
   threshold = i * 1000 * 1000;
   std::cout << "For " << i << " x times, ";
   graph.DFS(0,0,threshold,maxHeight,0);
