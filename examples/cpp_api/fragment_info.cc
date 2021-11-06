@@ -652,7 +652,7 @@ int main() {
   iSecret = rand() % dimensiona + 1;
   graph.visit(0,iSecret,0);
   iSecret = rand() % dimensiona + 1;
-  graph.visit(0,iSecret,0);
+  graph.visit(0,29,0);
   //createFragment(Vertex &VP1,Vertex &VP2);
 
   return 0;
