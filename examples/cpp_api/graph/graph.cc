@@ -536,6 +536,9 @@ void Graph::visit(int v,int targetV, int currentH)
         for(auto v :vertexs){
             v.reset_materialized();
         }
+
+        std::vector<std::vector<bool>> vecbool(size, std::vector<bool> (size, 0));
+        visited=vecbool;
    }
 
 
