@@ -497,7 +497,7 @@ void Graph::DFS(int v,int sum_of_weight,int thresh,int &Maxheight, int currentH)
 void print_graph(){
     for (int i = 0; i < adjacent_matrix.size(); ++i)
     {   
-        for (int j = 0; j < adjacent_matrix[i].size; ++j)
+        for (int j = 0; j < adjacent_matrix[i].size(); ++j)
         {
             std::cout << adjacent_matrix[i][j] << ' ';
         }
