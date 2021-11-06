@@ -643,7 +643,7 @@ int main() {
   }
 
   int maxHeight=0;
-  // graph.DFS(0,0,threshold,maxHeight,0);
+  graph.DFS(0,0,threshold,maxHeight,0);
 
   graph.print_vertexs();
 
@@ -664,9 +664,9 @@ int main() {
   graph.visit(0,iSecret,0);
 
 // for(float i = 0.1; i < 10 ; i = i + 0.1){
-  threshold = 0.2 * 1000 * 1000;
-  std::cout << "For 0.2 " <<  << " x times, ";
-  graph.DFS(0,0,threshold,maxHeight,0);
+  // threshold = 0.2 * 1000 * 1000;
+  // std::cout << "For 0.2 " <<  << " x times, ";
+  // graph.DFS(0,0,threshold,maxHeight,0);
   graph.materialization_list();
   // graph.reset_materialization_list();
 // }
