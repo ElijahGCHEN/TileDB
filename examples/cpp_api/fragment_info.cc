@@ -684,13 +684,13 @@ for(float i = 0.1; i < 10 ; i = i + 0.1){
 }
 
 for (auto v :Totalmaterializednumberofvertices){
- std::cout << v <<","
+ std::cout << v <<",";
 }
 
 std::cout<< std::endl;
 
 for (auto v :thresholdList){
-  std::cout << v <<","
+  std::cout << v <<",";
 }
 
 std::cout<< std::endl;
