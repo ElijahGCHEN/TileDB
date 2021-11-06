@@ -644,7 +644,7 @@ int main() {
   /* initialize random seed: */
   srand (time(NULL));
 
-  iSecret = rand() % 50 + 1;
+  iSecret = rand() % 10 + 1;
 
   std::cout<<"for Node: 0 visited number of vertexs :"<<graph.visit(0,0,0) << std::endl;
   std::cout<<"for Node:"<<iSecret<<" visited number of vertexs :"<<graph.visit(0,iSecret,0) << std::endl;
