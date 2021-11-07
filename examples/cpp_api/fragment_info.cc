@@ -360,6 +360,111 @@ void get_fragment_info(std::vector<std::vector<std::pair<std::string, std::pair<
     non_empty_vector.push_back(f);
   }
   
+
+  void readTimestamp(std::vector<std::vector<std::pair<std::string, std::pair<int, int>>>> &non_empty_vector
+, std::vector<std::string> &urii, std::vector<int> &num_of_cells,std::vector<uint64_t> &timestamps_vector) {
+  // Create TileDB context
+  Context ctx;
+
+  Array array(ctx,array_name, TILEDB_READ); ///newadd
+
+  // Create fragment info object
+  FragmentInfo fragment_info(ctx, array_name);
+
+  // Load fragment
+  fragment_info.load();
+
+  // Get number of written fragments.
+  uint32_t num = fragment_info.fragment_num();
+  std::cout << "The number of written fragments is " << num << ".\n"
+            << std::endl;
+
+  for(int i=0;i<num;i++){
+  // Get fragment URI
+  
+
+      std::string uri = fragment_info.fragment_uri(i);
+      std::cout << "The fragment URI is " << uri.c_str() << ".\n" << std::endl;
+      urii.push_back(uri);
+      // Get fragment size
+      uint64_t size = fragment_info.fragment_size(i);
+      std::cout << "The fragment size is " << size << ".\n" << std::endl;
+
+      // Check if the fragment is dense or sparse.
+      bool dense = fragment_info.dense(i);
+      if (dense == 1)
+        std::cout << "The fragment is dense.\n" << std::endl;
+      else
+        std::cout << "The fragment is sparse.\n" << std::endl;
+
+      // Get the fragment timestamp range
+      std::pair<uint64_t, uint64_t> timestamps = fragment_info.timestamp_range(i);
+      std::cout << "The fragment's timestamp range is {" << timestamps.first << " ,"
+                << timestamps.second << "}.\n"
+                << std::endl;
+
+      timestamps_vector.push_back(timestamps.second);
+
+      // Get the number of cells written to the fragment.
+      uint64_t cell_num = fragment_info.cell_num(i);
+      //uint64_t cell_num = fragment_info.cell_num(); //test
+      std::cout << "The number of cells written to the fragment is " << cell_num
+                << ".\n"
+                << std::endl;
+      num_of_cells.push_back(cell_num);
+
+
+
+
+            // Get the format version of the fragment.
+      uint32_t version = fragment_info.version(i);
+      std::cout << "The fragment's format version is " << version << ".\n"
+                << std::endl;
+                
+
+      // Check if fragment has consolidated metadata.
+      // If not, get the number of fragments with unconsolidated metadata
+      //  in the fragment info object.
+      bool consolidated = fragment_info.has_consolidated_metadata(i);
+      if (consolidated != 0) {
+        std::cout << "The fragment has consolidated metadata.\n" << std::endl;
+      } else {
+        uint32_t unconsolidated = fragment_info.unconsolidated_metadata_num();
+        std::cout << "The fragment has " << unconsolidated
+                  << " unconsolidated metadata fragments.\n"
+                  << std::endl;
+      }
+
+        //Get non-empty domain from index
+      //uint64_t non_empty_dom[2];
+
+    int num_of_dim= 2;
+
+    std::vector<std::pair<std::string, std::pair<int, int>>> f;
+
+    for(int j=0;j<num_of_dim;j++){
+      int non_empty_dom[2];
+      fragment_info.get_non_empty_domain(i, j, &non_empty_dom[0]);
+      std::cout <<"Fragment "<<i<<" : "<<"dimension "<< j <<" : ("<<non_empty_dom[0]<<" , "<<non_empty_dom[1]<<"). \n"
+                <<std::endl;
+
+      std::pair<int, int> range;
+      range.first = non_empty_dom[0];
+      range.second = non_empty_dom[1];
+
+      std::pair<std::string, std::pair<int, int>> dimension;
+      //std::pair<int, int> dimension;
+      dimension.first=std::to_string(j);
+      dimension.second=range;
+
+      
+      f.push_back(dimension);
+    
+      
+    }
+
+    non_empty_vector.push_back(f);
+  }
   
   // std::cout << "PPPPPPPPPPPPPrinttttttttttttttttttttttttttttttttttttttttttt"<< std::endl;
   // array.print();
@@ -662,7 +767,7 @@ int main() {
     using std::chrono::milliseconds;
 
   int dimension_size = 100;
-  int threshold = 0.2 * range * range;
+  int threshold = 2 * range * range;
 
   Graph graph(2,dimension_size);
   Context ctx;
@@ -723,34 +828,35 @@ int main() {
   iSecret = rand() % dimension_size + 1;
   graph.visit(0,iSecret,visited);
 
-std::vector<int> Totalmaterializednumberofvertices;
-std::vector<int> thresholdList;
+// std::vector<int> Totalmaterializednumberofvertices;
+// std::vector<int> thresholdList;
 
-for(float i = 0.1; i < 10 ; i = i + 0.1){
-  threshold = i * 1000 * 1000;
-  std::cout << "For "<<  i <<" x times, ";
-  graph.DFS(0,0,threshold,maxHeight,0);
+// for(float i = 0.1; i < 10 ; i = i + 0.1){
+//   threshold = i * 1000 * 1000;
+//   std::cout << "For "<<  i <<" x times, ";
+//   graph.DFS(0,0,threshold,maxHeight,0);
 
-  thresholdList.push_back(threshold);
+//   thresholdList.push_back(threshold);
   
-  int numOfMedV=graph.materialization_list();
+//   int numOfMedV=graph.materialization_list();
 
-  Totalmaterializednumberofvertices.push_back(numOfMedV);
+//   Totalmaterializednumberofvertices.push_back(numOfMedV);
 
-  //graph.reset_materialization_list();
-}
+//   //graph.reset_materialization_list();
+// }
 
-for (auto v :Totalmaterializednumberofvertices){
- std::cout << v <<",";
-}
 
-std::cout<< std::endl;
+// for (auto v :Totalmaterializednumberofvertices){
+//  std::cout << v <<",";
+// }
 
-for (auto v :thresholdList){
-  std::cout << v <<",";
-}
+// std::cout<< std::endl;
 
-std::cout<< std::endl;
+// for (auto v :thresholdList){
+//   std::cout << v <<",";
+// }
+
+// std::cout<< std::endl;
 
 std::vector<int> timeNeededForCreateEachVertex;
 
@@ -775,28 +881,48 @@ for (auto v :timeNeededForCreateEachVertex){
 std::cout<<std::endl;
 std::cout <<  "hihi: "<<std::endl;
 
+
+
+int[dimension_size] SOWList;
+SOWList=graph.DFS(0,0,threshold,maxHeight,0);
+std::cout <<  "SOWList: "<<std::endl;
+for (auto v :SOWList){
+  std::cout << v <<",";
+}
+std::cout<<std::endl;
+
+
+
+
+
 std::vector<int> timeNeededForMAtEachVertex;
 
 auto mat_list= graph.return_materialize();
 
 for (int i = 0; i < mat_list.size(); i++)
 {
-  auto t1 = high_resolution_clock::now();
-
-  materialization(mat_list[i]);
-
-  auto t2 = high_resolution_clock::now();
-  auto ms_int = duration_cast<milliseconds>(t2 - t1);
-
-  timeNeededForMAtEachVertex.push_back(ms_int.count());
-}
-
-std::cout <<  "timeNeededForMAtEachVertex: "<<std::endl;
-
-for (auto v :timeNeededForMAtEachVertex){
-  std::cout << v <<",";
+  std::cout<<mat_list[i]<<",";
 }
 std::cout<<std::endl;
+
+// for (int i = 0; i < mat_list.size(); i++)
+// {
+//   auto t1 = high_resolution_clock::now();
+
+//   materialization(mat_list[i]);
+
+//   auto t2 = high_resolution_clock::now();
+//   auto ms_int = duration_cast<milliseconds>(t2 - t1);
+
+//   timeNeededForMAtEachVertex.push_back(ms_int.count());
+// }
+
+// std::cout <<  "timeNeededForMAtEachVertex: "<<std::endl;
+
+// for (auto v :timeNeededForMAtEachVertex){
+//   std::cout << v <<",";
+// }
+// std::cout<<std::endl;
 
   return 0;
 }

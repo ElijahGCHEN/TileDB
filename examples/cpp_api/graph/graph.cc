@@ -435,9 +435,9 @@ void Graph::add_child(Vertex* newParent, Vertex* n){
     //     return false;
     // }
 
-void Graph::DFS(int v,int sum_of_weight,int thresh,int &Maxheight, int currentH)
+int[] Graph::DFS(int v,int sum_of_weight,int thresh,int &Maxheight, int currentH)
 {
-
+    int[] SOWList;
     if(currentH>Maxheight){
         Maxheight=currentH;
     }
@@ -454,6 +454,7 @@ void Graph::DFS(int v,int sum_of_weight,int thresh,int &Maxheight, int currentH)
                     //materialization(v,i);
                     materialization(i);
                     //set_materialized();
+                    SOWList[i]=sum_of_weight;
                     sum_of_weight=0;
                 }
 
@@ -463,7 +464,7 @@ void Graph::DFS(int v,int sum_of_weight,int thresh,int &Maxheight, int currentH)
             }
         }
     }
-        
+        return SOWList;
 }
         
 void Graph::print_graph(){
