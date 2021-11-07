@@ -645,7 +645,7 @@ int main() {
   using std::chrono::high_resolution_clock;
     using std::chrono::duration_cast;
     using std::chrono::duration;
-    using std::chrono::milliseconds;
+    using std::chrono::nanoseconds;
 
   int dimension_size = 100;
   int threshold = 2 * range * range;
@@ -748,7 +748,7 @@ for (int i = 0; i < timestamps_vector.size(); i++)
   time_travel_only(timestamps_vector[i]);
 
   auto t2 = high_resolution_clock::now();
-  auto ms_int = duration_cast<milliseconds>(t2 - t1);
+  auto ms_int = duration_cast<nanoseconds>(t2 - t1);
   timeNeededForCreateEachVertex.push_back(ms_int.count());
 }
 
@@ -796,7 +796,7 @@ for (int i = 0; i < mat_list.size(); i++)
   materialization(mat_list[i]);
 
   auto t2 = high_resolution_clock::now();
-  auto ms_int = duration_cast<milliseconds>(t2 - t1);
+  auto ms_int = duration_cast<nanoseconds>(t2 - t1);
 
   timeNeededForMAtEachVertex.push_back(ms_int.count());
 }
@@ -817,7 +817,7 @@ for (int i = 0; i < timestamps_vector.size(); i++)
 
   auto t2 = high_resolution_clock::now();
 
-  auto ms_int = duration_cast<milliseconds>(t2 - t1);
+  auto ms_int = duration_cast<nanoseconds>(t2 - t1);
 
   timeNeededForReadingVertexAfterMaterialization.push_back(ms_int.count());
 }
