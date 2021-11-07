@@ -641,7 +641,7 @@ int y_max[]={
 
 
 int main() {
-  //range=5000;
+  range=1000;
   using std::chrono::high_resolution_clock;
     using std::chrono::duration_cast;
     using std::chrono::duration;
@@ -808,22 +808,22 @@ for (auto v :timeNeededForMAtEachVertex){
 }
 std::cout<<"-------------------------------------------------"<<std::endl;
 
-std::vector<int> timeNeededForReadingMAtEdVertex;
-for (int i = 0; i < mat_list.size(); i++)
+std::vector<int> timeNeededForReadingVertexAfterMaterialization;
+for (int i = 0; i < timestamps_vector.size(); i++)
 {
   auto t1 = high_resolution_clock::now();
 
-  time_travel_only(mat_list[i]);
+  time_travel_only(timestamps_vector[i]);
 
   auto t2 = high_resolution_clock::now();
 
   auto ms_int = duration_cast<milliseconds>(t2 - t1);
 
-  timeNeededForReadingMAtEdVertex.push_back(ms_int.count());
+  timeNeededForReadingVertexAfterMaterialization.push_back(ms_int.count());
 }
-std::cout <<  "timeNeededForReadingMAtEdVertex: "<<std::endl;
+std::cout <<  "timeNeededForReadingVertexAfterMaterialization: "<<std::endl;
 
-for (auto v :timeNeededForReadingMAtEdVertex){
+for (auto v :timeNeededForReadingVertexAfterMaterialization){
   std::cout << v <<",";
 }
 std::cout<<"-------------------------------------------------"<<std::endl;
