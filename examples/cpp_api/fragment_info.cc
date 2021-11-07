@@ -806,27 +806,27 @@ int main() {
 
   int maxHeight=0;
   graph.DFS(0,0,threshold,maxHeight,0);
-  graph.reset_materialization_list();
-  graph.print_vertexs();
+  //graph.reset_materialization_list();
+  //graph.print_vertexs();
 
   std::cout<<"Maxheigh:"<<maxHeight << std::endl << std::endl;
 
   // graph.print_graph();
 
 
-  int iSecret;
-  int visited=0;
-  /* initialize random seed: */
-  srand (time(NULL));
+  // int iSecret;
+  // int visited=0;
+  // /* initialize random seed: */
+  // srand (time(NULL));
 
-  iSecret = rand() % dimension_size + 1;
-  graph.visit(0,iSecret,visited);
-   visited=0;
-  iSecret = rand() % dimension_size + 1;
-  graph.visit(0,iSecret,visited);
-   visited=0;
-  iSecret = rand() % dimension_size + 1;
-  graph.visit(0,iSecret,visited);
+  // iSecret = rand() % dimension_size + 1;
+  // graph.visit(0,iSecret,visited);
+  //  visited=0;
+  // iSecret = rand() % dimension_size + 1;
+  // graph.visit(0,iSecret,visited);
+  //  visited=0;
+  // iSecret = rand() % dimension_size + 1;
+  // graph.visit(0,iSecret,visited);
 
 // std::vector<int> Totalmaterializednumberofvertices;
 // std::vector<int> thresholdList;
@@ -883,13 +883,13 @@ std::cout <<  "hihi: "<<std::endl;
 
 
 
-int[dimension_size] SOWList;
-SOWList=graph.DFS(0,0,threshold,maxHeight,0);
-std::cout <<  "SOWList: "<<std::endl;
-for (auto v :SOWList){
-  std::cout << v <<",";
-}
-std::cout<<std::endl;
+// int[dimension_size] SOWList;
+// SOWList=graph.DFS(0,0,threshold,maxHeight,0);
+// std::cout <<  "SOWList: "<<std::endl;
+// for (auto v :SOWList){
+//   std::cout << v <<",";
+// }
+// std::cout<<std::endl;
 
 
 
@@ -899,10 +899,13 @@ std::vector<int> timeNeededForMAtEachVertex;
 
 auto mat_list= graph.return_materialize();
 
+std::cout<<"timestemplist to be materialized:"<<std::endl;
+
 for (int i = 0; i < mat_list.size(); i++)
 {
   std::cout<<mat_list[i]<<",";
 }
+
 std::cout<<std::endl;
 
 // for (int i = 0; i < mat_list.size(); i++)
