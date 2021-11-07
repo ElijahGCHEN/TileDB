@@ -463,16 +463,16 @@ Array array(ctx, array_name, TILEDB_READ, timestamp);
   query.submit();
   array.close();
 
-  // Print out the results.
-  auto result_num = (int)query.result_buffer_elements()["a"].second;
+  // // Print out the results.
+  // auto result_num = (int)query.result_buffer_elements()["a"].second;
 
-  for (int r = 0; r < result_num; r++) {
-    int i = coords_rows[r];
-    int j = coords_cols[r];
-    int a = data[r];
-    std::cout << "Cell (" << i << ", " << j << ") has data " << a << "\n";
+  // for (int r = 0; r < result_num; r++) {
+  //   int i = coords_rows[r];
+  //   int j = coords_cols[r];
+  //   int a = data[r];
+  //   std::cout << "Cell (" << i << ", " << j << ") has data " << a << "\n";
 
-  }
+  // }
 
 }
 
@@ -774,9 +774,9 @@ std::cout <<  "hihi: "<<std::endl;
 
 
 
+std::cout<<"-------------------------------------------------"<<std::endl;
 
 
-std::vector<int> timeNeededForMAtEachVertex;
 
 auto mat_list= graph.return_materialize();
 
@@ -787,27 +787,46 @@ for (int i = 0; i < mat_list.size(); i++)
   std::cout<<mat_list[i]<<",";
 }
 
-std::cout<<std::endl;
+std::cout<<"-------------------------------------------------"<<std::endl;
+std::vector<int> timeNeededForMAtEachVertex;
+for (int i = 0; i < mat_list.size(); i++)
+{
+  auto t1 = high_resolution_clock::now();
 
-// for (int i = 0; i < mat_list.size(); i++)
-// {
-//   auto t1 = high_resolution_clock::now();
+  materialization(mat_list[i]);
 
-//   materialization(mat_list[i]);
+  auto t2 = high_resolution_clock::now();
+  auto ms_int = duration_cast<milliseconds>(t2 - t1);
 
-//   auto t2 = high_resolution_clock::now();
-//   auto ms_int = duration_cast<milliseconds>(t2 - t1);
+  timeNeededForMAtEachVertex.push_back(ms_int.count());
+}
 
-//   timeNeededForMAtEachVertex.push_back(ms_int.count());
-// }
+std::cout <<  "timeNeededForMAtEachVertex: "<<std::endl;
 
-// std::cout <<  "timeNeededForMAtEachVertex: "<<std::endl;
+for (auto v :timeNeededForMAtEachVertex){
+  std::cout << v <<",";
+}
+std::cout<<"-------------------------------------------------"<<std::endl;
 
-// for (auto v :timeNeededForMAtEachVertex){
-//   std::cout << v <<",";
-// }
-// std::cout<<std::endl;
+std::vector<int> timeNeededForReadingMAtEdVertex;
+for (int i = 0; i < mat_list.size(); i++)
+{
+  auto t1 = high_resolution_clock::now();
 
+  time_travel_only(mat_list[i]);
+
+  auto t2 = high_resolution_clock::now();
+
+  auto ms_int = duration_cast<milliseconds>(t2 - t1);
+
+  timeNeededForReadingMAtEdVertex.push_back(ms_int.count());
+}
+std::cout <<  "timeNeededForReadingMAtEdVertex: "<<std::endl;
+
+for (auto v :timeNeededForReadingMAtEdVertex){
+  std::cout << v <<",";
+}
+std::cout<<"-------------------------------------------------"<<std::endl;
   return 0;
 }
 
