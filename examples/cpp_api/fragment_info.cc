@@ -52,7 +52,7 @@ std::cout<<"------line44----"<<std::endl;
   ArraySchema schema(ctx, TILEDB_SPARSE);
   
   //schema.set_domain(domain).set_order({{TILEDB_ROW_MAJOR, TILEDB_ROW_MAJOR}}); //// Pair of {tile order, cell order}
-  schema.set_domain(domain).set_order({{TILEDB_HILBERT, TILEDB_HILBERT}}); //// Pair of {tile order, cell order}
+  schema.set_domain(domain).set_order({{TILEDB_ROW_MAJOR, TILEDB_HILBERT}}); //// Pair of {tile order, cell order}
 
 // Parameters
 
