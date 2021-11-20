@@ -1194,19 +1194,15 @@ Status Writer::check_coord_oob() const {
 
 Status Writer::check_global_order() const {
   auto timer_se = stats_->start_timer("check_global_order");
-
   // Check if applicable
   if (!check_global_order_)
     return Status::Ok();
-
   // Applicable only to sparse writes - exit if coordinates do not exist
   if (!has_coords_ || coords_num_ < 2)
     return Status::Ok();
-
   // Special case for Hilbert
   if (array_schema_->cell_order() == Layout::HILBERT)
     return check_global_order_hilbert();
-
   // Prepare auxiliary vector for better performance
   auto dim_num = array_schema_->dim_num();
   std::vector<const QueryBuffer*> buffs(dim_num);
@@ -1214,7 +1210,6 @@ Status Writer::check_global_order() const {
     const auto& dim_name = array_schema_->dimension(d)->name();
     buffs[d] = &(buffers_.find(dim_name)->second);
   }
-
   // Check if all coordinates fall in the domain in parallel
   auto domain = array_schema_->domain();
   auto status = parallel_for(
@@ -1223,7 +1218,6 @@ Status Writer::check_global_order() const {
         auto fail =
             (tile_cmp > 0) ||
             ((tile_cmp == 0) && domain->cell_order_cmp(buffs, i, i + 1) > 0);
-
         if (fail) {
           std::stringstream ss;
           ss << "Write failed; Coordinates " << coords_to_str(i);
@@ -1235,9 +1229,7 @@ Status Writer::check_global_order() const {
         }
         return Status::Ok();
       });
-
   RETURN_NOT_OK(status);
-
   return Status::Ok();
 }
 

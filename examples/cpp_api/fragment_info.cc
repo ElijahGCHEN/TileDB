@@ -51,7 +51,22 @@ std::cout<<"------line44----"<<std::endl;
   // The array will be dense.
   ArraySchema schema(ctx, TILEDB_SPARSE);
   
-  schema.set_domain(domain).set_order({{TILEDB_ROW_MAJOR, TILEDB_ROW_MAJOR}});
+  //schema.set_domain(domain).set_order({{TILEDB_ROW_MAJOR, TILEDB_ROW_MAJOR}}); //// Pair of {tile order, cell order}
+  schema.set_domain(domain).set_order({{TILEDB_HILBERT, TILEDB_HILBERT}}); //// Pair of {tile order, cell order}
+
+// Parameters
+
+// layout: For a write query, this specifies the order of the cells provided by the user in the buffers. For a read query, this specifies the order of the cells that will be retrieved as results and stored in the user buffers. The layout can be one of the following:
+
+// TILEDB_COL_MAJOR: This means column-major order with respect to the subarray.
+
+// TILEDB_ROW_MAJOR: This means row-major order with respect to the subarray.
+
+// TILEDB_GLOBAL_ORDER: This means that cells are stored or retrieved in the array global cell order.
+
+// TILEDB_UNORDERED: This is applicable only to writes for sparse arrays, or for sparse writes to dense arrays. It specifies that the cells are unordered and, hence, TileDB must sort the cells in the global cell order prior to writing.
+
+
 
   // Add a single attribute "a" so each (i,j) cell can store an integer.
   schema.add_attribute(Attribute::create<int>(ctx, "a"));

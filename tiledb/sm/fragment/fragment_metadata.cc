@@ -72,7 +72,9 @@ FragmentMetadata::FragmentMetadata(
     , fragment_uri_(fragment_uri)
     , timestamp_range_(timestamp_range) {
   has_consolidated_footer_ = false;
+
   rtree_ = RTree(array_schema_->domain(), constants::rtree_fanout);
+  
   meta_file_size_ = 0;
   version_ = array_schema_->write_version();
   tile_index_base_ = 0;
