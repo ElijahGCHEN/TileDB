@@ -652,7 +652,7 @@ int y_max[]={
 
 
 int main() {
-  range=1000;
+  range=5000;
   using std::chrono::high_resolution_clock;
     using std::chrono::duration_cast;
     using std::chrono::duration;
